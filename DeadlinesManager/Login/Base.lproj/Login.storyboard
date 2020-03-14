@@ -31,20 +31,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XcN-jl-S2Y">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcN-jl-S2Y">
                                 <rect key="frame" x="65.666666666666671" y="364" width="243.66666666666663" height="138"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAc-CY-1w2">
-                                        <rect key="frame" x="0.0" y="0.0" width="243.66666666666666" height="69"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAc-CY-1w2">
+                                        <rect key="frame" x="0.0" y="0.0" width="243.66666666666666" height="60.666666666666664"/>
+                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="tintColor" red="0.15821889040000001" green="0.26385146380000002" blue="0.32568314669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Зареєструватися"/>
                                         <connections>
                                             <action selector="didPressSingUpButton:" destination="AOi-0o-bYl" eventType="touchUpInside" id="6kT-Ch-8Yj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4l-xR-JWn">
-                                        <rect key="frame" x="0.0" y="69" width="243.66666666666666" height="69"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="0.0" y="77.666666666666686" width="243.66666666666666" height="60.333333333333343"/>
+                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="tintColor" red="0.15821889040000001" green="0.26385146380000002" blue="0.32568314669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Увійти"/>
                                         <connections>
                                             <action selector="didPressSingInButton:" destination="AOi-0o-bYl" eventType="touchUpInside" id="sdL-ER-eJ9"/>
@@ -53,7 +57,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.4182890058" green="0.33524447680000002" blue="0.43398258090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XcN-jl-S2Y" firstAttribute="centerY" secondItem="2Jj-q3-cbm" secondAttribute="centerY" id="1ot-7g-Ooo"/>
                             <constraint firstItem="XcN-jl-S2Y" firstAttribute="height" secondItem="2Jj-q3-cbm" secondAttribute="height" multiplier="0.2" id="P3a-I7-a2D"/>
@@ -63,6 +67,10 @@
                         <viewLayoutGuide key="safeArea" id="2Jj-q3-cbm"/>
                     </view>
                     <navigationItem key="navigationItem" id="NP3-jy-PEZ"/>
+                    <connections>
+                        <outlet property="signUpBetton" destination="hAc-CY-1w2" id="EW4-1p-87S"/>
+                        <outlet property="singInButton" destination="C4l-xR-JWn" id="cVb-iu-Fq5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivj-47-k8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

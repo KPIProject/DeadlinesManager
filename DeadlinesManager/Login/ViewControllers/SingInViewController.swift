@@ -29,7 +29,7 @@ class SingInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /// User pressed Login
         if isLogin {
             nameLabel.isHidden = true
             secondNameLabel.isHidden = true
@@ -46,7 +46,7 @@ class SingInViewController: UIViewController {
             view.layoutIfNeeded()
             stackViewHeightConstraint = newConstraint
         }
-        
+        /// User pressed Register
         if isRegister {
             nameLabel.isHidden = false
             secondNameLabel.isHidden = false
@@ -61,6 +61,7 @@ class SingInViewController: UIViewController {
 
     
     @IBAction func didPressSignInButton(_ sender: UIButton) {
+        /// User pressed Login
         if isLogin {
             
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
@@ -72,7 +73,7 @@ class SingInViewController: UIViewController {
             postAndGetUuID(url, parameters)
 
         }
-        
+        /// User pressed Register
         if isRegister{
             
             let nameHasNumbers = presenceNumberInString(nameTextField.text)
@@ -99,12 +100,13 @@ class SingInViewController: UIViewController {
         }
     }
     
+    /// Chack presence number in String
     func presenceNumberInString(_ str: String?) -> Bool {
         let numbersRange = str?.rangeOfCharacter(from: .decimalDigits)
         return (numbersRange != nil)
     }
     
-    ///Appears when the .
+    
     func noticeAlert(message: String) -> UIAlertController {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -112,6 +114,7 @@ class SingInViewController: UIViewController {
         return alert
     }
     
+    /// Sends data to serser using URL and get returned data from server
     func postAndGetUuID(_ url: URL, _ parameters: [String : Any]) {
         //create the session object
         let session = URLSession.shared
@@ -143,23 +146,29 @@ class SingInViewController: UIViewController {
         task.resume()
     }
     
+    /// Chacks if returned data is an error or expected information. Presents alert if it is an error.
     func processingReturnedData(_ dataString: String) {
         if dataString == "User is already exist"{
-            present(noticeAlert(message: "Користувач з таким іменем уже існує"), animated: true, completion: nil)
-            print(dataString)
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Користувач з таким іменем уже існує"), animated: true, completion: nil)
+            }
+//            print(dataString)
         } else if dataString == "Password is wrong" {
-            present(noticeAlert(message: "Неправильний пароль"), animated: true, completion: nil)
-            print(dataString)
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Неправильний пароль"), animated: true, completion: nil)
+            }
+//            print(dataString)
         } else if dataString == "User is not exist" {
-            present(noticeAlert(message: "Користувач з таким іменем не існує"), animated: true, completion: nil)
-            print(dataString)
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Користувач з таким іменем не існує"), animated: true, completion: nil)
+            }
+//            print(dataString)
         } else{
+            /// Transmits the user`s uuID to the settings
             Settings.shared.uuID = dataString
             DispatchQueue.main.async {
                 ViewManager.shared.toMainVC()
             }
         }
-        
     }
 }
-

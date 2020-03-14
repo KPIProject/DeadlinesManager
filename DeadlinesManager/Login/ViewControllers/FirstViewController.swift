@@ -9,10 +9,13 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    @IBOutlet weak var signUpBetton: UIButton!
+    @IBOutlet weak var singInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        signUpBetton.layer.cornerRadius = CGFloat((Double(signUpBetton.frame.height) ) / 2.5)
+        singInButton.layer.cornerRadius = CGFloat((Double(singInButton.frame.height) ) / 2.5)
         
     }
     
