@@ -18,7 +18,7 @@ class FirstViewController: UIViewController {
     
     
     @IBAction func didPressSingUpButton(_ sender: UIButton) {
-        guard let singInViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SingInViewController") as? SingInViewController else {
+        guard let singInViewController = UIStoryboard(name: "Login", bundle: .main).instantiateViewController(withIdentifier: "SingInViewController") as? SingInViewController else {
             return
         }
         singInViewController.isRegister = true
@@ -27,7 +27,7 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func didPressSingInButton(_ sender: UIButton) {
-        guard let singInViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SingInViewController") as? SingInViewController else {
+        guard let singInViewController = UIStoryboard(name: "Login", bundle: .main).instantiateViewController(withIdentifier: "SingInViewController") as? SingInViewController else {
             return
         }
         singInViewController.isLogin = true
