@@ -68,7 +68,7 @@ class SingInViewController: UIViewController {
             let parameters = ["username" : loginTextField.text ?? "", "password" : passwordTextField.text ?? ""] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://localhost:8080/main/login")! //change the url
+            let url = URL(string: "http://localhost:8080/login")! //change the url
 
             postAndGetUuID(url, parameters)
 
@@ -82,7 +82,7 @@ class SingInViewController: UIViewController {
             if nameHasNumbers || secondNameHasNumbers {
                 present(noticeAlert(message: "Ім'я та прізвище повинні містити лише літери!"), animated: true, completion: nil)
                 
-            } else if passwordTextField.text?.count ?? 0 < 6 {
+            } else if (passwordTextField.text?.count ?? 0 < 6) && passwordTextField.text?.count ?? 0 != 0 {
                 present(noticeAlert(message: "Пароль повинен містити щонайменше 6 символів!"), animated: true, completion: nil)
                 
             } else if passwordTextField.text != confirmPasswordTextField.text {
@@ -90,10 +90,10 @@ class SingInViewController: UIViewController {
                 
             } else {
                 //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-                let parameters = ["user_first_name": nameTextField.text ?? "", "user_second_name": secondNameTextField.text ?? "", "username" : loginTextField.text ?? "", "password" : passwordTextField.text ?? ""] as [String : Any]
+                let parameters = ["userFirstName": nameTextField.text ?? "", "userSecondName": secondNameTextField.text ?? "", "username" : loginTextField.text ?? "", "password" : passwordTextField.text ?? ""] as [String : Any]
 
                 //create the url with URL
-                let url = URL(string: "http://localhost:8080/main/registration")! //change the url
+                let url = URL(string: "http://localhost:8080/registration")! //change the url
                 
                 postAndGetUuID(url, parameters)
             }
@@ -140,35 +140,60 @@ class SingInViewController: UIViewController {
             }
 
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                self.processingReturnedData(dataString)
+                self.processingReturnedData(dataString, data)
             }
         })
         task.resume()
     }
     
     /// Chacks if returned data is an error or expected information. Presents alert if it is an error.
-    func processingReturnedData(_ dataString: String) {
-        if dataString == "User is already exist"{
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Користувач з таким іменем уже існує"), animated: true, completion: nil)
+    func processingReturnedData(_ dataString: String, _ data: Data) {
+//        print(dataString)
+        
+//        let decoder = JSONDecoder()
+        
+        if let error = try? JSONDecoder().decode(Error.self, from: data){
+            switch error.errorMessage {
+            case "User is already exist":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувач з таким іменем уже існує. Введіть, будь ласка, інший логін"), animated: true, completion: nil)
+                }
+            case "Invalid userFirstName":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Введіть, будь ласка, ім'я!"), animated: true, completion: nil)
+                }
+            case "Invalid userSecondName":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Введіть, будь ласка, прізвище!"), animated: true, completion: nil)
+                }
+            case "Invalid username":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Введіть, будь ласка, логін!"), animated: true, completion: nil)
+                }
+            case "Invalid password":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Введіть, будь ласка, пароль!"), animated: true, completion: nil)
+                }
+            case "User not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувач з таким ім'ям не існує!"), animated: true, completion: nil)
+                }
+            case "Password is wrong":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Неправильний пароль"), animated: true, completion: nil)
+                }
+            default:
+                break
             }
-//            print(dataString)
-        } else if dataString == "Password is wrong" {
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Неправильний пароль"), animated: true, completion: nil)
-            }
-//            print(dataString)
-        } else if dataString == "User is not exist" {
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Користувач з таким іменем не існує"), animated: true, completion: nil)
-            }
-//            print(dataString)
-        } else{
+        } else {
+            guard let signInUser = try? JSONDecoder().decode(User.self, from: data) else { return }
             /// Transmits the user`s uuID to the settings
-            Settings.shared.uuID = dataString
+            Settings.shared.uuID = signInUser.uuid
             DispatchQueue.main.async {
                 ViewManager.shared.toMainVC()
             }
+            print(signInUser.uuid)
         }
     }
 }
+
