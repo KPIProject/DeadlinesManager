@@ -42,7 +42,7 @@ class ViewManager {
     
     func toLoginVC() {
         if let window = self.appDelegate?.window {
-            let loginVC = mainStoryboard.instantiateInitialViewController()
+            let loginVC = loginStoryboard.instantiateInitialViewController()
             window.rootViewController =  loginVC
         }
     }

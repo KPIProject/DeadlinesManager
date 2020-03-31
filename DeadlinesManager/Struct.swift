@@ -12,12 +12,13 @@ import Foundation
 struct User: Codable {
     let userID: Int
     let userFirstName, userSecondName, username, uuid: String
-    let projectsCreated: [Project]
-    let projectsAppended: [Project]
+    let projectsCreated: [Project]?
+    let projectsAppended: [Project]?
+    let userCreationTime: Int
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case userFirstName, userSecondName, username, uuid, projectsCreated, projectsAppended
+        case userFirstName, userSecondName, username, uuid, projectsCreated, projectsAppended, userCreationTime
     }
 }
 
@@ -41,12 +42,14 @@ struct Project: Codable {
     let projectID: Int
     let projectName, projectDescription: String
     let deadlines: [Deadline]
-    let projectOwner: User
-    let projectUsers: [User]
+    let projectOwner: User?
+    let projectUsers: [User]?
+    let projectOwnerUuid: String?
+    let projectUsersUuid: [String]?
 
     enum CodingKeys: String, CodingKey {
         case projectID = "projectId"
-        case projectName, projectDescription, deadlines, projectOwner, projectUsers
+        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectOwnerUuid, projectUsersUuid
     }
 }
 

@@ -70,7 +70,7 @@ class SingInViewController: UIViewController {
             //create the url with URL
             let url = URL(string: "http://localhost:8080/login")! //change the url
 
-            postAndGetUuID(url, parameters)
+            postAndGetData(url, parameters)
 
         }
         /// User pressed Register
@@ -95,7 +95,7 @@ class SingInViewController: UIViewController {
                 //create the url with URL
                 let url = URL(string: "http://localhost:8080/registration")! //change the url
                 
-                postAndGetUuID(url, parameters)
+                postAndGetData(url, parameters)
             }
         }
     }
@@ -106,16 +106,16 @@ class SingInViewController: UIViewController {
         return (numbersRange != nil)
     }
     
-    
-    func noticeAlert(message: String) -> UIAlertController {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okBtn)
-        return alert
-    }
+//    public func noticeAlert(message: String) -> UIAlertController {
+//        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+//        let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//        alert.addAction(okBtn)
+//        return alert
+//    }
+
     
     /// Sends data to serser using URL and get returned data from server
-    func postAndGetUuID(_ url: URL, _ parameters: [String : Any]) {
+    func postAndGetData(_ url: URL, _ parameters: [String : Any]) {
         //create the session object
         let session = URLSession.shared
 
@@ -186,9 +186,14 @@ class SingInViewController: UIViewController {
                 break
             }
         } else {
+            print(dataString)
             guard let signInUser = try? JSONDecoder().decode(User.self, from: data) else { return }
             /// Transmits the user`s uuID to the settings
             Settings.shared.uuID = signInUser.uuid
+            Settings.shared.firstName = signInUser.userFirstName
+            Settings.shared.secondName = signInUser.userSecondName
+            Settings.shared.login = signInUser.username
+            Settings.shared.creatingTime = Int(signInUser.userCreationTime)
             DispatchQueue.main.async {
                 ViewManager.shared.toMainVC()
             }
@@ -197,3 +202,12 @@ class SingInViewController: UIViewController {
     }
 }
 
+extension UIViewController {
+     public func noticeAlert(message: String) -> UIAlertController {
+         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+         let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
+         alert.addAction(okBtn)
+         return alert
+     }
+
+}

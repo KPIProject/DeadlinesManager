@@ -22,5 +22,37 @@ class Settings {
            userDefaults.set(newValue, forKey: "uuID")
        }
    }
+    var firstName: String {
+        get {
+         return userDefaults.string(forKey: "firstName") ?? ""
+        }
+        set {
+            userDefaults.set(newValue, forKey: "firstName")
+        }
+    }
+    var secondName: String {
+        get {
+         return userDefaults.string(forKey: "secondName") ?? ""
+        }
+        set {
+            userDefaults.set(newValue, forKey: "secondName")
+        }
+    }
+    var login: String {
+        get {
+         return userDefaults.string(forKey: "login") ?? ""
+        }
+        set {
+            userDefaults.set(newValue, forKey: "login")
+        }
+    }
+    var creatingTime: Int {
+        get {
+            return userDefaults.integer(forKey: "creatingTime")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "creatingTime")
+        }
+    }
    
 }

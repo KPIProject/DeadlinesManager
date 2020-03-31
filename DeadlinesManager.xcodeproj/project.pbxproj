@@ -9,25 +9,36 @@
 /* Begin PBXBuildFile section */
 		5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A202417C96B00E5D6D4 /* FirstViewController.swift */; };
 		5D095A232417CA3400E5D6D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A222417CA3400E5D6D4 /* Extensions.swift */; };
+		5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */; };
+		5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */; };
 		5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D616B0A241BA0B300A72E33 /* Main.storyboard */; };
 		5D616B0D241BA30B00A72E33 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0C241BA30B00A72E33 /* Settings.swift */; };
 		5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0E241BA72500A72E33 /* ViewManager.swift */; };
 		5D616B11241C513600A72E33 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B10241C513600A72E33 /* Struct.swift */; };
+		5D616B152422BE6800A72E33 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B142422BE6800A72E33 /* AddProjectViewController.swift */; };
+		5D616B172422D9BB00A72E33 /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B162422D9BB00A72E33 /* Funcs.swift */; };
+		5D616B1924255C8A00A72E33 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B1824255C8A00A72E33 /* MenuViewController.swift */; };
 		5D6B04262410F87800AA7D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B04252410F87800AA7D3B /* AppDelegate.swift */; };
 		5D6B04282410F87800AA7D3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B04272410F87800AA7D3B /* SceneDelegate.swift */; };
 		5D6B042A2410F87800AA7D3B /* SingInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B04292410F87800AA7D3B /* SingInViewController.swift */; };
 		5D6B042D2410F87800AA7D3B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B042B2410F87800AA7D3B /* Login.storyboard */; };
 		5D6B042F2410F87D00AA7D3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B042E2410F87D00AA7D3B /* Assets.xcassets */; };
 		5D6B04322410F87D00AA7D3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B04302410F87D00AA7D3B /* LaunchScreen.storyboard */; };
+		5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D095A202417C96B00E5D6D4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		5D095A222417CA3400E5D6D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5D33CD8B2429399000E7454B /* DeadlinesManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeadlinesManager.xcdatamodel; sourceTree = "<group>"; };
+		5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFuncs.swift; sourceTree = "<group>"; };
 		5D616B0A241BA0B300A72E33 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5D616B0C241BA30B00A72E33 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5D616B0E241BA72500A72E33 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		5D616B10241C513600A72E33 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		5D616B142422BE6800A72E33 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		5D616B162422D9BB00A72E33 /* Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
+		5D616B1824255C8A00A72E33 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5D6B04222410F87800AA7D3B /* DeadlinesManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadlinesManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D6B04252410F87800AA7D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D6B04272410F87800AA7D3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +47,7 @@
 		5D6B042E2410F87D00AA7D3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D6B04312410F87D00AA7D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D6B04332410F87D00AA7D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +61,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D33CD8D24293EB100E7454B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5D33CD8E24293EF600E7454B /* ViewControllers */,
+				5D616B0A241BA0B300A72E33 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5D33CD8E24293EF600E7454B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D616B1824255C8A00A72E33 /* MenuViewController.swift */,
+				5D616B142422BE6800A72E33 /* AddProjectViewController.swift */,
+				5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5D616B12241D53E400A72E33 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,12 +119,15 @@
 			children = (
 				5D6B04252410F87800AA7D3B /* AppDelegate.swift */,
 				5D6B04272410F87800AA7D3B /* SceneDelegate.swift */,
+				5D616B0E241BA72500A72E33 /* ViewManager.swift */,
 				5D616B12241D53E400A72E33 /* Login */,
+				5D33CD8D24293EB100E7454B /* Main */,
+				5D616B162422D9BB00A72E33 /* Funcs.swift */,
 				5D095A222417CA3400E5D6D4 /* Extensions.swift */,
 				5D616B10241C513600A72E33 /* Struct.swift */,
-				5D616B0A241BA0B300A72E33 /* Main.storyboard */,
 				5D616B0C241BA30B00A72E33 /* Settings.swift */,
-				5D616B0E241BA72500A72E33 /* ViewManager.swift */,
+				5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */,
+				5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */,
 				5D6B042E2410F87D00AA7D3B /* Assets.xcassets */,
 				5D6B04302410F87D00AA7D3B /* LaunchScreen.storyboard */,
 				5D6B04332410F87D00AA7D3B /* Info.plist */,
@@ -176,11 +210,17 @@
 				5D616B0D241BA30B00A72E33 /* Settings.swift in Sources */,
 				5D095A232417CA3400E5D6D4 /* Extensions.swift in Sources */,
 				5D6B042A2410F87800AA7D3B /* SingInViewController.swift in Sources */,
+				5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */,
 				5D6B04262410F87800AA7D3B /* AppDelegate.swift in Sources */,
+				5D616B1924255C8A00A72E33 /* MenuViewController.swift in Sources */,
+				5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */,
+				5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */,
 				5D616B11241C513600A72E33 /* Struct.swift in Sources */,
 				5D6B04282410F87800AA7D3B /* SceneDelegate.swift in Sources */,
+				5D616B152422BE6800A72E33 /* AddProjectViewController.swift in Sources */,
 				5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */,
 				5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */,
+				5D616B172422D9BB00A72E33 /* Funcs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +418,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D33CD8B2429399000E7454B /* DeadlinesManager.xcdatamodel */,
+			);
+			currentVersion = 5D33CD8B2429399000E7454B /* DeadlinesManager.xcdatamodel */;
+			path = DeadlinesManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5D6B041A2410F87800AA7D3B /* Project object */;
 }
