@@ -37,6 +37,7 @@ class AddProjectViewController: UIViewController {
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProject")! //change the url
 
             postAndGetData(url, parameters)
+            
         }
     }
     
@@ -95,13 +96,23 @@ class AddProjectViewController: UIViewController {
                 break
             }
         } else {
-            guard let newProject = try? JSONDecoder().decode(Project.self, from: data) else { return }
+            if (try? JSONDecoder().decode(Project.self, from: data)) != nil {
+
+                DispatchQueue.main.async {
+//                    guard let menuVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
+//                    menuVC.needApdate = true
+                    ViewManager.shared.toMainVC()
+                }
+//                ViewManager.shared.toMainVC()
+            }
             /// Transmits the user`s uuID to the settings
 //                Settings.shared.uuID = newProject.uuid
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
 //                    ViewManager.shared.toMainVC()
-            }
-            print(newProject)
+//            }
+//            print(newProject)
+//            ViewManager.shared.toMainVC()
+
         }
     }
 

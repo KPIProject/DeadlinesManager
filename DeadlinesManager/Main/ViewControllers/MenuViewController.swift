@@ -17,6 +17,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var button4: UIButton!
     
     var projectArray: [Project] = []
+//    var needApdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +35,41 @@ class MenuViewController: UIViewController {
         //declare parameter as a dctionary which contains string as key and value combination. considering inputs are valid
 //        let parameters = ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? ""] as [String : Any]
 
+//        //create the url with URL
+//        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/allProjects")!
+//
+//        postAndGetData(url)
+//
+//        projectArray = fetchingCoreData()
+//        print(projectArray)
+        update()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("YES")
+        update()
+//        if needApdate{
+//            update()
+//            needApdate = false
+//        }
+    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        print("YES")
+//        if needApdate{
+//            update()
+//            needApdate = false
+//        }
+//    }
+
+    func update() {
         //create the url with URL
         let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/allProjects")!
 
         postAndGetData(url)
         
         projectArray = fetchingCoreData()
-//        print(projectArray)
+        tableView.reloadData()
     }
-    
-
     
     /// Sends data to serser using URL and get returned data from server
         func postAndGetData(_ url: URL) {
