@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SingInViewController: UIViewController {
+class SingInViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var scrolView: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     @IBOutlet weak var secondNameLabel: UILabel!
@@ -22,12 +23,20 @@ class SingInViewController: UIViewController {
     
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
+    //    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     
     
     var isLogin = false
     var isRegister = false
 
     override func viewDidLoad() {
+        
+        nameTextField.delegate = self
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        secondNameTextField.delegate = self
+        
         super.viewDidLoad()
         /// User pressed Login
         if isLogin {
@@ -39,7 +48,7 @@ class SingInViewController: UIViewController {
             confirmPasswordTextField.isHidden = true
             confirmButton.setTitle("Увійти", for: .normal)
             
-            
+//            print(stackViewHeightConstraint!)
             let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.3)
             view.removeConstraint(stackViewHeightConstraint)
             view.addConstraint(newConstraint)
@@ -58,8 +67,45 @@ class SingInViewController: UIViewController {
         }
         
         confirmButton.layer.cornerRadius = CGFloat((Double(confirmButton.frame.height) ) / 3.5)
+        registerForKeybourdNotofications()
+    }
+    
+    deinit {
+        removeKeybourdNotofications()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        loginTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
+        secondNameTextField.resignFirstResponder()
+        
+        return true
     }
 
+    func registerForKeybourdNotofications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keybourdWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keybourdWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeybourdNotofications() {
+        NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keybourdWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            scrolView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
+//            scrolView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        }
+    }
+    
+    @objc func keybourdWillHide() {
+        scrolView.contentOffset = CGPoint.zero
+    }
     
     @IBAction func didPressSignInButton(_ sender: UIButton) {
         /// User pressed Login
