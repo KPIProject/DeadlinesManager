@@ -85,75 +85,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZP-O8-llW">
-                                <rect key="frame" x="0.0" y="0.0" width="375.66666666666669" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="208-ni-5rh">
-                                        <rect key="frame" x="0.0" y="0.0" width="375.66666666666669" height="812"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5Z2-B2-AKG">
-                                                <rect key="frame" x="18.666666666666657" y="203" width="338.33333333333337" height="406"/>
+                                                <rect key="frame" x="18.666666666666657" y="222.66666666666663" width="337.66666666666674" height="367"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ім'я:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W5-3O-mdP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="337.66666666666669" height="30.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть своє ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J0Q-b9-las">
-                                                        <rect key="frame" x="0.0" y="34" width="338.33333333333331" height="33.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="30.333333333333343" width="337.66666666666669" height="30.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Прізвище:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APl-0G-VL2">
-                                                        <rect key="frame" x="0.0" y="67.666666666666686" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="61.000000000000021" width="337.66666666666669" height="30.666666666666664"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть своє прізвище" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsy-cV-kHV">
-                                                        <rect key="frame" x="0.0" y="101.66666666666669" width="338.33333333333331" height="33.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="91.666666666666657" width="337.66666666666669" height="30.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логін:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0p-7m-IQl">
-                                                        <rect key="frame" x="0.0" y="135.33333333333331" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="122.33333333333333" width="337.66666666666669" height="30.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Створіть логін" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vdY-rf-Bhh">
-                                                        <rect key="frame" x="0.0" y="169.33333333333331" width="338.33333333333331" height="33.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="152.66666666666666" width="337.66666666666669" height="30.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sze-sj-ovp">
-                                                        <rect key="frame" x="0.0" y="203" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="183.33333333333334" width="337.66666666666669" height="30.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Створіть пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8jX-VN-u4W">
-                                                        <rect key="frame" x="0.0" y="237" width="338.33333333333331" height="33.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="214.00000000000003" width="337.66666666666669" height="30.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Підтвердження паролю:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l14-5J-eWW">
-                                                        <rect key="frame" x="0.0" y="270.66666666666669" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="244.66666666666666" width="337.66666666666669" height="30.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть свій пароль знову" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjz-uy-wBf">
-                                                        <rect key="frame" x="0.0" y="304.66666666666669" width="338.33333333333331" height="33.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="275" width="337.66666666666669" height="30.666666666666686"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbB-IB-Fw3">
-                                                        <rect key="frame" x="0.0" y="338.33333333333337" width="338.33333333333331" height="34"/>
+                                                        <rect key="frame" x="0.0" y="305.66666666666674" width="337.66666666666669" height="30.666666666666686"/>
                                                         <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaz-St-Y4H">
-                                                        <rect key="frame" x="0.0" y="372.33333333333337" width="338.33333333333331" height="33.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="336.33333333333337" width="337.66666666666669" height="30.666666666666686"/>
                                                         <color key="backgroundColor" red="0.4182890058" green="0.33524447680000002" blue="0.43398258090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <state key="normal" title="Зареєструватися">
@@ -168,7 +168,6 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="height" secondItem="208-ni-5rh" secondAttribute="height" multiplier="0.5" id="2Cg-mC-rjC"/>
                                             <constraint firstItem="5Z2-B2-AKG" firstAttribute="width" secondItem="208-ni-5rh" secondAttribute="width" multiplier="0.900444" id="4Cp-GN-ZUt"/>
                                             <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerX" secondItem="208-ni-5rh" secondAttribute="centerX" id="Ihf-vd-YHl"/>
                                             <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerY" secondItem="208-ni-5rh" secondAttribute="centerY" id="jY4-Z8-qr8"/>
@@ -191,7 +190,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vZP-O8-llW" secondAttribute="bottom" id="JIk-Fb-ZPT"/>
-                            <constraint firstItem="208-ni-5rh" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="1.00178" id="eG8-q3-hkb"/>
+                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.5" id="Vny-a5-Qug"/>
+                            <constraint firstItem="208-ni-5rh" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="eG8-q3-hkb"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uFl-2V-DDH"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wTm-pO-z1O"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="y2u-sM-ydn"/>
