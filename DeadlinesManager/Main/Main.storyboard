@@ -53,7 +53,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логін " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZp-XT-INj">
                                                     <rect key="frame" x="103.5" y="7" width="290" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -78,13 +78,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9zO-Kg-qhK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="9zO-Kg-qhK">
                                         <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9zO-Kg-qhK" id="FHP-5Z-yXr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ip3-HP-tpD">
                                         <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
@@ -95,6 +96,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sny-Pb-dKB">
                                                     <rect key="frame" x="41.5" y="7" width="331" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <state key="normal" title="Вийти з облікового запиу">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -127,7 +129,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6OR-5R-tDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="474" y="772"/>
+            <point key="canvasLocation" x="474" y="755"/>
         </scene>
         <!--Налаштування-->
         <scene sceneID="zo9-le-PON">
@@ -154,9 +156,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-T3-E1E">
-                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
-                                <color key="backgroundColor" red="0.70310471559999999" green="0.82143001530000004" blue="0.70825094970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-T3-E1E">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="fSZ-vA-l7b">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
@@ -190,7 +192,7 @@
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проекти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIL-da-PRj">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Проекти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIL-da-PRj">
                                             <rect key="frame" x="16" y="202" width="382" height="30"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <color key="textColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -222,10 +224,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6U3-ss-ByC" detailTextLabel="jKJ-py-JAz" style="IBUITableViewCellStyleSubtitle" id="E7D-BM-gtz">
-                                        <rect key="frame" x="0.0" y="268" width="414" height="55.5"/>
+                                        <rect key="frame" x="20" y="295.5" width="374" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7D-BM-gtz" id="aaO-ND-DVA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6U3-ss-ByC">
@@ -255,10 +257,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ePa-Jt-SnP" firstAttribute="bottom" secondItem="Mhx-T3-E1E" secondAttribute="bottom" id="3Wv-3E-z21"/>
+                            <constraint firstAttribute="bottom" secondItem="Mhx-T3-E1E" secondAttribute="bottom" id="3Wv-3E-z21"/>
                             <constraint firstItem="ePa-Jt-SnP" firstAttribute="trailing" secondItem="Mhx-T3-E1E" secondAttribute="trailing" id="Tt2-Qr-Evh"/>
                             <constraint firstItem="Mhx-T3-E1E" firstAttribute="leading" secondItem="ePa-Jt-SnP" secondAttribute="leading" id="ovR-rc-jJc"/>
-                            <constraint firstItem="Mhx-T3-E1E" firstAttribute="top" secondItem="ePa-Jt-SnP" secondAttribute="top" id="uLn-ok-Rt4"/>
+                            <constraint firstItem="Mhx-T3-E1E" firstAttribute="top" secondItem="kqH-6j-f7M" secondAttribute="top" id="uLn-ok-Rt4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ePa-Jt-SnP"/>
                     </view>
@@ -332,7 +334,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-gz-u6p">
                                         <rect key="frame" x="0.0" y="410.5" width="398" height="62.5"/>
-                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.89552766080000001" green="0.71331250670000002" blue="0.72130745650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Додати"/>
                                         <connections>
@@ -349,7 +351,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.91818153859999996" green="0.86957782510000003" blue="0.8188254237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MJJ-fw-mUH" firstAttribute="leading" secondItem="kVR-5g-B7D" secondAttribute="leading" constant="8" id="POb-mc-RkT"/>
@@ -371,11 +373,11 @@
             </objects>
             <point key="canvasLocation" x="-371" y="755"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Проекти-->
         <scene sceneID="GbU-d1-Qh2">
             <objects>
                 <navigationController id="hZQ-JE-gqu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="square.stack.3d.down.right" catalog="system" selectedImage="square.stack.3d.down.right.fill" id="E2D-4o-2yC"/>
+                    <tabBarItem key="tabBarItem" title="Проекти" image="square.stack.3d.down.right" catalog="system" selectedImage="square.stack.3d.down.right.fill" id="E2D-4o-2yC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="prq-QL-Ec8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

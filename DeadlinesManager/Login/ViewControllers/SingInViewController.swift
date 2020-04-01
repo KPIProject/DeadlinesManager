@@ -40,7 +40,7 @@ class SingInViewController: UIViewController {
             confirmButton.setTitle("Увійти", for: .normal)
             
             
-            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.2)
+            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.3)
             view.removeConstraint(stackViewHeightConstraint)
             view.addConstraint(newConstraint)
             view.layoutIfNeeded()
@@ -57,6 +57,7 @@ class SingInViewController: UIViewController {
             confirmButton.setTitle("Зареєструватися", for: .normal)
         }
         
+        confirmButton.layer.cornerRadius = CGFloat((Double(confirmButton.frame.height) ) / 3.5)
     }
 
     

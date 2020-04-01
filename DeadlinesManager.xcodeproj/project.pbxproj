@@ -25,6 +25,8 @@
 		5D6B042F2410F87D00AA7D3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B042E2410F87D00AA7D3B /* Assets.xcassets */; };
 		5D6B04322410F87D00AA7D3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D6B04302410F87D00AA7D3B /* LaunchScreen.storyboard */; };
 		5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */; };
+		5DA4B1FB2433C1BE00C4262B /* PrejectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FA2433C1BE00C4262B /* PrejectDetailsViewController.swift */; };
+		5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		5D6B04312410F87D00AA7D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D6B04332410F87D00AA7D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5DA4B1FA2433C1BE00C4262B /* PrejectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrejectDetailsViewController.swift; sourceTree = "<group>"; };
+		5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectDetails.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			children = (
 				5D33CD8E24293EF600E7454B /* ViewControllers */,
 				5D616B0A241BA0B300A72E33 /* Main.storyboard */,
+				5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 				5D616B1824255C8A00A72E33 /* MenuViewController.swift */,
 				5D616B142422BE6800A72E33 /* AddProjectViewController.swift */,
 				5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */,
+				5DA4B1FA2433C1BE00C4262B /* PrejectDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			files = (
 				5D6B04322410F87D00AA7D3B /* LaunchScreen.storyboard in Resources */,
 				5D6B042F2410F87D00AA7D3B /* Assets.xcassets in Resources */,
+				5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */,
 				5D6B042D2410F87800AA7D3B /* Login.storyboard in Resources */,
 				5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */,
 			);
@@ -216,6 +223,7 @@
 				5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */,
 				5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */,
 				5D616B11241C513600A72E33 /* Struct.swift in Sources */,
+				5DA4B1FB2433C1BE00C4262B /* PrejectDetailsViewController.swift in Sources */,
 				5D6B04282410F87800AA7D3B /* SceneDelegate.swift in Sources */,
 				5D616B152422BE6800A72E33 /* AddProjectViewController.swift in Sources */,
 				5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */,
