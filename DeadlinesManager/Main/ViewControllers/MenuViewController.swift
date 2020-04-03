@@ -72,37 +72,37 @@ class MenuViewController: UIViewController {
     }
     
     /// Sends data to serser using URL and get returned data from server
-        func postAndGetData(_ url: URL) {
-            //create the session object
-            let session = URLSession.shared
+    func postAndGetData(_ url: URL) {
+        //create the session object
+        let session = URLSession.shared
 
-            //now create the URLRequest object using the url object
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
+        //now create the URLRequest object using the url object
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
 //            do {
 //                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
 //            } catch let error {
 //                print(error.localizedDescription)
 //            }
 
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    //        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
-            //create dataTask using the session object to send data to the server
-            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+        //create dataTask using the session object to send data to the server
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
 
-                guard error == nil else {
-                    return
-                }
+            guard error == nil else {
+                return
+            }
 
-                if let data = data {
-                    guard let newProject = try? JSONDecoder().decode([Project].self, from: data) else { return }
-                    updateCoreData(data: newProject)
-                    
-                }
-            })
-            task.resume()
-        }
+            if let data = data {
+                guard let projects = try? JSONDecoder().decode([Project].self, from: data) else { return }
+                updateCoreData(data: projects)
+                
+            }
+        })
+        task.resume()
+    }
     
 
 

@@ -24,10 +24,14 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     //    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
+    //    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     
     
     var isLogin = false
     var isRegister = false
+    
+    var scrollOffset : CGFloat = 0
+    var distance : CGFloat = 0
 
     override func viewDidLoad() {
         
@@ -83,10 +87,22 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
 
     func registerForKeybourdNotofications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keybourdWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keybourdWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func removeKeybourdNotofications() {
@@ -94,17 +110,49 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keybourdWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            scrolView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
 //            scrolView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            scrolView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
+
         }
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//
+//            var safeArea = self.view.frame
+//            safeArea.size.height += scrolView.contentOffset.y
+//            safeArea.size.height -= keyboardSize.height + (UIScreen.main.bounds.height*0.04) // Adjust buffer to your liking
+//
+//            // determine which UIView was selected and if it is covered by keyboard
+//
+//            let activeField: UIView? = [nameTextField, loginTextField, passwordTextField, confirmPasswordTextField, secondNameTextField].first { $0.isFirstResponder }
+//            if let activeField = activeField {
+//                if safeArea.contains(CGPoint(x: 0, y: activeField.frame.maxY)) {
+//                    print("No need to Scroll")
+//                    return
+//                } else {
+//                    distance = activeField.frame.maxY - safeArea.size.height
+//                    scrollOffset = scrolView.contentOffset.y
+//                    self.scrolView.setContentOffset(CGPoint(x: 0, y: scrollOffset + distance), animated: true)
+//                }
+//            }
+//            // prevent scrolling while typing
+//
+//            scrolView.isScrollEnabled = false
+//        }
     }
     
-    @objc func keybourdWillHide() {
+    @objc func keyboardWillHide() {
         scrolView.contentOffset = CGPoint.zero
+//        if distance == 0 {
+//            return
+//        }
+//        // return to origin scrollOffset
+//        self.scrolView.setContentOffset(CGPoint(x: 0, y: scrollOffset), animated: true)
+//        scrollOffset = 0
+//        distance = 0
+//        scrollView.isScrollEnabled = true
     }
     
     @IBAction func didPressSignInButton(_ sender: UIButton) {

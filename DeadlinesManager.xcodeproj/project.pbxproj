@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A202417C96B00E5D6D4 /* FirstViewController.swift */; };
 		5D095A232417CA3400E5D6D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A222417CA3400E5D6D4 /* Extensions.swift */; };
+		5D0B9DD124379FF300980A41 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */; };
 		5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */; };
 		5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */; };
 		5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D616B0A241BA0B300A72E33 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		5D095A202417C96B00E5D6D4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		5D095A222417CA3400E5D6D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5D33CD8B2429399000E7454B /* DeadlinesManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeadlinesManager.xcdatamodel; sourceTree = "<group>"; };
 		5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFuncs.swift; sourceTree = "<group>"; };
 		5D616B0A241BA0B300A72E33 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				5D616B142422BE6800A72E33 /* AddProjectViewController.swift */,
 				5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */,
 				5DA4B1FA2433C1BE00C4262B /* PrejectDetailsViewController.swift */,
+				5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				5D6B04262410F87800AA7D3B /* AppDelegate.swift in Sources */,
 				5D616B1924255C8A00A72E33 /* MenuViewController.swift in Sources */,
 				5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */,
+				5D0B9DD124379FF300980A41 /* SearchTableViewController.swift in Sources */,
 				5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */,
 				5D616B11241C513600A72E33 /* Struct.swift in Sources */,
 				5DA4B1FB2433C1BE00C4262B /* PrejectDetailsViewController.swift in Sources */,

@@ -166,22 +166,21 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="width" secondItem="208-ni-5rh" secondAttribute="width" multiplier="0.900444" id="4Cp-GN-ZUt"/>
-                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerX" secondItem="208-ni-5rh" secondAttribute="centerX" id="Ihf-vd-YHl"/>
-                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerY" secondItem="208-ni-5rh" secondAttribute="centerY" id="jY4-Z8-qr8"/>
+                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="leading" secondItem="208-ni-5rh" secondAttribute="leading" constant="18.666666666666657" id="A5K-Ew-jVe"/>
+                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerX" secondItem="208-ni-5rh" secondAttribute="centerX" id="Hh5-Ia-WVN"/>
+                                            <constraint firstItem="5Z2-B2-AKG" firstAttribute="centerY" secondItem="208-ni-5rh" secondAttribute="centerY" id="z8u-Ee-qPF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="208-ni-5rh" firstAttribute="centerX" secondItem="vZP-O8-llW" secondAttribute="centerX" id="E08-Ls-XGd"/>
-                                    <constraint firstItem="208-ni-5rh" firstAttribute="top" secondItem="lrp-1f-mtw" secondAttribute="top" id="KoX-F2-ElQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="208-ni-5rh" secondAttribute="bottom" id="Yvg-MS-lMS"/>
-                                    <constraint firstItem="208-ni-5rh" firstAttribute="top" secondItem="vZP-O8-llW" secondAttribute="top" id="gRt-qP-seO"/>
-                                    <constraint firstItem="208-ni-5rh" firstAttribute="bottom" secondItem="lrp-1f-mtw" secondAttribute="bottom" id="hgo-fH-b51"/>
-                                    <constraint firstAttribute="trailing" secondItem="208-ni-5rh" secondAttribute="trailing" id="iwp-S4-0Xi"/>
-                                    <constraint firstItem="208-ni-5rh" firstAttribute="leading" secondItem="vZP-O8-llW" secondAttribute="leading" id="p0W-ib-TlN"/>
+                                    <constraint firstItem="208-ni-5rh" firstAttribute="top" secondItem="vZP-O8-llW" secondAttribute="top" id="0yB-Lo-XZh"/>
+                                    <constraint firstItem="208-ni-5rh" firstAttribute="bottom" secondItem="lrp-1f-mtw" secondAttribute="bottom" id="6O8-zi-FSf"/>
+                                    <constraint firstItem="208-ni-5rh" firstAttribute="leading" secondItem="vZP-O8-llW" secondAttribute="leading" id="LD4-dM-yAX"/>
+                                    <constraint firstItem="208-ni-5rh" firstAttribute="centerX" secondItem="vZP-O8-llW" secondAttribute="centerX" id="RoU-4q-9HE"/>
+                                    <constraint firstAttribute="trailing" secondItem="208-ni-5rh" secondAttribute="trailing" id="Sf4-KV-nu9"/>
+                                    <constraint firstAttribute="bottom" secondItem="208-ni-5rh" secondAttribute="bottom" id="YEN-de-ctl"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="kGc-zD-gdY"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="lrp-1f-mtw"/>
@@ -190,8 +189,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vZP-O8-llW" secondAttribute="bottom" id="JIk-Fb-ZPT"/>
+                            <constraint firstItem="vZP-O8-llW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MM2-dt-bBU"/>
                             <constraint firstItem="5Z2-B2-AKG" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.5" id="Vny-a5-Qug"/>
-                            <constraint firstItem="208-ni-5rh" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="eG8-q3-hkb"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uFl-2V-DDH"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wTm-pO-z1O"/>
                             <constraint firstItem="vZP-O8-llW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="y2u-sM-ydn"/>
@@ -211,6 +210,7 @@
                         <outlet property="scrolView" destination="vZP-O8-llW" id="8wJ-Ea-xZR"/>
                         <outlet property="secondNameLabel" destination="APl-0G-VL2" id="bZ8-Vf-i47"/>
                         <outlet property="secondNameTextField" destination="nsy-cV-kHV" id="vlI-eY-OQ4"/>
+                        <outlet property="stackViewHeightConstraint" destination="Vny-a5-Qug" id="okR-Xg-yWt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

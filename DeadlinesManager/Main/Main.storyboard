@@ -295,45 +295,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MJJ-fw-mUH">
-                                <rect key="frame" x="8" y="88" width="398" height="473"/>
+                                <rect key="frame" x="8" y="88" width="398" height="541"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назва пректа:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-XN-xbM">
-                                        <rect key="frame" x="0.0" y="55.5" width="398" height="42"/>
+                                        <rect key="frame" x="0.0" y="62" width="398" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опис проета:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipT-sO-s3J">
-                                        <rect key="frame" x="0.0" y="105.5" width="398" height="47"/>
+                                        <rect key="frame" x="0.0" y="118" width="398" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-gK-emf">
-                                        <rect key="frame" x="0.0" y="160.5" width="398" height="131"/>
+                                        <rect key="frame" x="0.0" y="180" width="398" height="121"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Учасники:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Y-zB-ywm">
-                                        <rect key="frame" x="0.0" y="299.5" width="398" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="309" width="398" height="54.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Веедіть логін" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxk-IK-p6b">
-                                        <rect key="frame" x="0.0" y="355" width="398" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="371.5" width="398" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roA-4A-y51">
+                                        <rect key="frame" x="0.0" y="433.5" width="398" height="64.5"/>
+                                        <state key="normal" title="Додати учасника"/>
+                                        <connections>
+                                            <segue destination="aSt-Ng-I1r" kind="show" id="0J2-0D-mAw"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-gz-u6p">
-                                        <rect key="frame" x="0.0" y="410.5" width="398" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="506" width="398" height="35"/>
                                         <color key="backgroundColor" red="0.89552766080000001" green="0.71331250670000002" blue="0.72130745650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Додати"/>
@@ -357,7 +364,7 @@
                             <constraint firstItem="MJJ-fw-mUH" firstAttribute="leading" secondItem="kVR-5g-B7D" secondAttribute="leading" constant="8" id="POb-mc-RkT"/>
                             <constraint firstItem="kVR-5g-B7D" firstAttribute="trailing" secondItem="MJJ-fw-mUH" secondAttribute="trailing" constant="8" id="QdM-WM-vKi"/>
                             <constraint firstItem="MJJ-fw-mUH" firstAttribute="top" secondItem="kVR-5g-B7D" secondAttribute="top" id="Vlz-tg-sfe"/>
-                            <constraint firstItem="MJJ-fw-mUH" firstAttribute="height" secondItem="kVR-5g-B7D" secondAttribute="height" multiplier="0.7" id="o3m-8E-ibO"/>
+                            <constraint firstItem="MJJ-fw-mUH" firstAttribute="height" secondItem="kVR-5g-B7D" secondAttribute="height" multiplier="0.8" id="o3m-8E-ibO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kVR-5g-B7D"/>
                     </view>
@@ -372,6 +379,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLJ-lg-Vpz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-371" y="755"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="A7L-JG-kox">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="aSt-Ng-I1r" customClass="SearchTableViewController" customModule="DeadlinesManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pb0-NX-obw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="dBU-qB-kPa" detailTextLabel="Re4-WZ-ejw" style="IBUITableViewCellStyleSubtitle" id="Hub-RS-n65">
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hub-RS-n65" id="iH9-Gs-LI3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBU-qB-kPa">
+                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Re4-WZ-ejw">
+                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aSt-Ng-I1r" id="bVf-ED-zB7"/>
+                            <outlet property="delegate" destination="aSt-Ng-I1r" id="AOB-4f-yiB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9kv-dM-9c4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VeC-L0-LFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-371" y="1489"/>
         </scene>
         <!--Проекти-->
         <scene sceneID="GbU-d1-Qh2">
