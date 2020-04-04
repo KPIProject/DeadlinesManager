@@ -10,6 +10,7 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+    var usersToAdd: [User] = []
     private let searchController = UISearchController(searchResultsController: nil)
     private var filtredUsers: [User] = []
     private var searchBarIsEmpty: Bool {
@@ -28,6 +29,7 @@ class SearchTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,9 +55,11 @@ class SearchTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Yes"
-//            filtredUsers[indexPath.row].username
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let user = filtredUsers[indexPath.row]
+        cell.textLabel?.text = user.username
+        cell.detailTextLabel?.text = user.userFirstName + " " + user.userSecondName
 //        print(cell.textLabel?.text)
         return cell
     }
@@ -126,25 +130,35 @@ class SearchTableViewController: UITableViewController {
             }
 
             if let data = data {
-                guard let users = try? JSONDecoder().decode([User].self, from: data) else { return }
-//                updateCoreData(data: projects)
-                self.filtredUsers = users
-                print(self.filtredUsers)
-                
+                if let error = try? JSONDecoder().decode(Error.self, from: data) {
+                    switch error.errorMessage {
+                    case "Users not found":
+                        DispatchQueue.main.async {
+                            self.present(self.noticeAlert(message: "Юзерів з даним логіном немає"), animated: true, completion: nil)
+                        }
+                    default:
+                        break
+                    }
+                } else {
+                    guard let users = try? JSONDecoder().decode([User].self, from: data) else { return }
+                    //                updateCoreData(data: projects)
+                    self.filtredUsers = users
+                    print(self.filtredUsers)
+                    DispatchQueue.main.async { self.tableView.reloadData() }
+                }
             }
         })
         task.resume()
     }
-
 }
 
 extension SearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
 //        print(®searchController.searchBar.text ?? "NOTHING")
 //        print("http://localhost:8080/findByUsername/\(searchController.searchBar.text ?? "")")
+        filtredUsers = []
         let url = URL(string: "http://localhost:8080/findByUsername/\(searchController.searchBar.text ?? "")")!
         getDataFromServer(url)
-        tableView.reloadData()
     }
     
 //    private func filterContentForSearchText(_ searchText)

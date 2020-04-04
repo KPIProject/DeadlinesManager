@@ -66,13 +66,14 @@
                                     <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OvW-w5-dah">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DeadlineCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OvW-w5-dah">
                                         <rect key="frame" x="20" y="455.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OvW-w5-dah" id="5JE-RS-N9u">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="DeadlineCell"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

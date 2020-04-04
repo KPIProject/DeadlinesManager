@@ -233,7 +233,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
             guard error == nil else {
                 return
             }
-
+// MARK: - dataString doesn`t needed
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 self.processingReturnedData(dataString, data)
             }
@@ -247,7 +247,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         
 //        let decoder = JSONDecoder()
         
-        if let error = try? JSONDecoder().decode(Error.self, from: data){
+        if let error = try? JSONDecoder().decode(Error.self, from: data) {
             switch error.errorMessage {
             case "User is already exist":
                 DispatchQueue.main.async {
