@@ -164,25 +164,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry3-2l-hRA">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry3-2l-hRA">
                                             <rect key="frame" x="16" y="8" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.68045765160000005" green="0.40023863320000003" blue="0.51260614400000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Button1">
+                                            <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Сьогодні" image="sun.max" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pav-5C-X2J">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pav-5C-X2J">
                                             <rect key="frame" x="215" y="8" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.53551053751780819" green="0.73541224988904119" blue="0.70825094970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Button2">
+                                            <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Заплановано" image="calendar" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-xJ-kGV">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-xJ-kGV">
                                             <rect key="frame" x="16" y="100" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.15821889040000001" green="0.26385146380000002" blue="0.32568314669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Button3">
+                                            <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Призначено вам" image="person" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOL-Lv-YLE">
@@ -437,10 +443,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="settings" width="30" height="30"/>
         <image name="square.stack.3d.down.right" catalog="system" width="124" height="128"/>
         <image name="square.stack.3d.down.right.fill" catalog="system" width="124" height="128"/>
+        <image name="sun.max" catalog="system" width="128" height="124"/>
     </resources>
 </document>

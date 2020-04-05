@@ -12,28 +12,17 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
 
     @IBOutlet weak var projectNameTextField: UITextField!
-//    @IBOutlet weak var projectMembersTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
     @IBOutlet weak var addProjectButton: UIButton!
     @IBOutlet weak var membersTextView: UITextView!
     
     private var usersToAddUuid: [String] = []
-//    public var usersToAddUsername: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        print(fetchingCoreData())
-//      х membersTextView.text = usersToAddUsername.joined(separator: ", ")
-    }
-    
-    // MARK: - SearchTableViewControllerDelegate
-    func fillTextFieldWithUsers(usersNames: [String], usersUuid: [String]) {
-        membersTextView.text = usersNames.joined(separator: ", ")
-        usersToAddUuid = usersUuid
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -46,10 +35,6 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         projectDescriptionTextView.resignFirstResponder()
     }
     
-//    @IBAction func didTapOnScreen(_ sender: Any) {
-//        projectNameTextField.resignFirstResponder()
-//        projectDescriptionTextView.resignFirstResponder()
-//    }
     @IBAction func didPressAddProjectButton(_ sender: UIButton) {
         
         if projectDescriptionTextView.text.count > 7000 {
@@ -98,7 +83,6 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         task.resume()
     }
     
-
     
     /// Chacks if returned data is an error or expected information. Presents alert if it is an error.
     func processingReturnedData(_ dataString: String, _ data: Data) {
@@ -126,36 +110,25 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
             }
         } else {
             if (try? JSONDecoder().decode(Project.self, from: data)) != nil {
-
                 DispatchQueue.main.async {
-//                    guard let menuVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
-//                    menuVC.needApdate = true
                     ViewManager.shared.toMainVC()
                 }
-//                ViewManager.shared.toMainVC()
             }
-            /// Transmits the user`s uuID to the settings
-//                Settings.shared.uuID = newProject.uuid
-//            DispatchQueue.main.async {
-//                    ViewManager.shared.toMainVC()
-//            }
-//            print(newProject)
-//            ViewManager.shared.toMainVC()
-
         }
     }
     
+    
+    // MARK: - SearchTableViewControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSearchVC" {
             let destinationVC = segue.destination as! SearchTableViewController
             destinationVC.delegate = self
         }
     }
+    
+    func fillTextFieldWithUsers(usersNames: [String], usersUuid: [String]) {
+        membersTextView.text = usersNames.joined(separator: ", ")
+        usersToAddUuid = usersUuid
+    }
 
-//    public func noticeAlert(message: String) -> UIAlertController {
-//        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-//        let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//        alert.addAction(okBtn)
-//        return alert
-//    }
 }

@@ -122,4 +122,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+//        ViewManager.shared.toDetailVC()
+        guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+        DispatchQueue.main.async {
+            detailVC.project = self.projectArray[indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
 }

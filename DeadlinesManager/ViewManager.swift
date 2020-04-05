@@ -15,6 +15,7 @@ class ViewManager {
     
     private let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     private let loginStoryboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+    private let detailsStoryboard = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main)
     
     func setupInitialController() {
         if let window = self.appDelegate?.window {
@@ -44,6 +45,13 @@ class ViewManager {
         if let window = self.appDelegate?.window {
             let loginVC = loginStoryboard.instantiateInitialViewController()
             window.rootViewController =  loginVC
+        }
+    }
+    
+    func toDetailVC() {
+        if let window = self.appDelegate?.window {
+            let detailVC = detailsStoryboard.instantiateInitialViewController()
+            window.rootViewController = detailVC
         }
     }
 
