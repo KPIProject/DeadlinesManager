@@ -38,7 +38,7 @@
                         <sections>
                             <tableViewSection headerTitle="Обліковий запис" id="7l5-yY-8W7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="QHs-Ke-hG7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="71" id="QHs-Ke-hG7">
                                         <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QHs-Ke-hG7" id="Yv1-H0-dFV">
@@ -296,52 +296,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MJJ-fw-mUH">
-                                <rect key="frame" x="8" y="88" width="398" height="541"/>
+                                <rect key="frame" x="8" y="88" width="398" height="608.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назва пректа:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-XN-xbM">
-                                        <rect key="frame" x="0.0" y="62" width="398" height="48"/>
+                                        <rect key="frame" x="0.0" y="69" width="398" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опис проета:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipT-sO-s3J">
-                                        <rect key="frame" x="0.0" y="118" width="398" height="54"/>
+                                        <rect key="frame" x="0.0" y="131" width="398" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-gK-emf">
-                                        <rect key="frame" x="0.0" y="180" width="398" height="121"/>
+                                        <rect key="frame" x="0.0" y="200" width="398" height="182.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Учасники:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Y-zB-ywm">
-                                        <rect key="frame" x="0.0" y="309" width="398" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="390.5" width="398" height="60.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Веедіть логін" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxk-IK-p6b">
-                                        <rect key="frame" x="0.0" y="371.5" width="398" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="username"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roA-4A-y51">
-                                        <rect key="frame" x="0.0" y="433.5" width="398" height="64.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YpS-yB-zpD">
+                                        <rect key="frame" x="0.0" y="459" width="398" height="73"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roA-4A-y51">
+                                        <rect key="frame" x="0.0" y="540" width="398" height="25.5"/>
                                         <state key="normal" title="Додати учасника"/>
                                         <connections>
-                                            <segue destination="aSt-Ng-I1r" kind="show" id="0J2-0D-mAw"/>
+                                            <segue destination="aSt-Ng-I1r" kind="show" identifier="toSearchVC" id="0J2-0D-mAw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-gz-u6p">
-                                        <rect key="frame" x="0.0" y="506" width="398" height="35"/>
+                                        <rect key="frame" x="0.0" y="573.5" width="398" height="35"/>
                                         <color key="backgroundColor" red="0.89552766080000001" green="0.71331250670000002" blue="0.72130745650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Додати"/>
@@ -353,31 +355,41 @@
                                 <constraints>
                                     <constraint firstItem="CVx-XN-xbM" firstAttribute="height" secondItem="SNF-pA-Aaj" secondAttribute="height" multiplier="0.888889" id="C2X-iE-oP3"/>
                                     <constraint firstItem="M5Y-zB-ywm" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.1" id="OFR-8f-6qG"/>
+                                    <constraint firstItem="GoF-gK-emf" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.3" id="djU-uk-Gbm"/>
                                     <constraint firstItem="SNF-pA-Aaj" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.1" id="q41-I6-ZFb"/>
                                     <constraint firstItem="ipT-sO-s3J" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.1" id="wTl-O7-xp8"/>
-                                    <constraint firstItem="rxk-IK-p6b" firstAttribute="height" secondItem="SNF-pA-Aaj" secondAttribute="height" id="zBJ-LE-nlA"/>
+                                    <constraint firstItem="YpS-yB-zpD" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.12" id="ydm-5V-FFb"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="MJJ-fw-mUH" firstAttribute="leading" secondItem="kVR-5g-B7D" secondAttribute="leading" constant="8" id="POb-mc-RkT"/>
                             <constraint firstItem="kVR-5g-B7D" firstAttribute="trailing" secondItem="MJJ-fw-mUH" secondAttribute="trailing" constant="8" id="QdM-WM-vKi"/>
                             <constraint firstItem="MJJ-fw-mUH" firstAttribute="top" secondItem="kVR-5g-B7D" secondAttribute="top" id="Vlz-tg-sfe"/>
-                            <constraint firstItem="MJJ-fw-mUH" firstAttribute="height" secondItem="kVR-5g-B7D" secondAttribute="height" multiplier="0.8" id="o3m-8E-ibO"/>
+                            <constraint firstItem="MJJ-fw-mUH" firstAttribute="height" secondItem="kVR-5g-B7D" secondAttribute="height" multiplier="0.9" id="o3m-8E-ibO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kVR-5g-B7D"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4SS-uC-EfG" appends="YES" id="iJu-FO-yU8"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Новий проект" id="f40-rd-uv2"/>
                     <connections>
                         <outlet property="addProjectButton" destination="rqA-gz-u6p" id="c0v-iJ-rjB"/>
+                        <outlet property="membersTextView" destination="YpS-yB-zpD" id="hVc-jh-80Y"/>
                         <outlet property="projectDescriptionTextView" destination="GoF-gK-emf" id="Pg7-AV-Bdz"/>
-                        <outlet property="projectMembersTextField" destination="rxk-IK-p6b" id="2P3-vy-0md"/>
                         <outlet property="projectNameTextField" destination="CVx-XN-xbM" id="gGf-W0-hDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLJ-lg-Vpz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4SS-uC-EfG">
+                    <connections>
+                        <action selector="tapOnScreen:" destination="m6Y-Dz-fVm" id="FPZ-d6-nbv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-371" y="755"/>
         </scene>
@@ -394,7 +406,13 @@
                             <outlet property="delegate" destination="aSt-Ng-I1r" id="AOB-4f-yiB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9kv-dM-9c4"/>
+                    <navigationItem key="navigationItem" id="9kv-dM-9c4">
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="vLp-Te-5EL">
+                            <connections>
+                                <action selector="didPressDone:" destination="aSt-Ng-I1r" id="vRR-Zk-ucM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VeC-L0-LFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

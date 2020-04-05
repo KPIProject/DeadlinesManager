@@ -8,13 +8,17 @@
 
 import UIKit
 
-class AddProjectViewController: UIViewController {
+class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
+    
 
     @IBOutlet weak var projectNameTextField: UITextField!
-    @IBOutlet weak var projectMembersTextField: UITextField!
+//    @IBOutlet weak var projectMembersTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
     @IBOutlet weak var addProjectButton: UIButton!
-   
+    @IBOutlet weak var membersTextView: UITextView!
+    
+    private var usersToAddUuid: [String] = []
+//    public var usersToAddUsername: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +26,37 @@ class AddProjectViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(fetchingCoreData())
+//        print(fetchingCoreData())
+//      х membersTextView.text = usersToAddUsername.joined(separator: ", ")
     }
     
+    // MARK: - SearchTableViewControllerDelegate
+    func fillTextFieldWithUsers(usersNames: [String], usersUuid: [String]) {
+        membersTextView.text = usersNames.joined(separator: ", ")
+        usersToAddUuid = usersUuid
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        projectNameTextField.resignFirstResponder()
+    }
+    
+    // MARK: - IBActions
+    @IBAction func tapOnScreen(_ sender: UITapGestureRecognizer) {
+        projectNameTextField.resignFirstResponder()
+        projectDescriptionTextView.resignFirstResponder()
+    }
+    
+//    @IBAction func didTapOnScreen(_ sender: Any) {
+//        projectNameTextField.resignFirstResponder()
+//        projectDescriptionTextView.resignFirstResponder()
+//    }
     @IBAction func didPressAddProjectButton(_ sender: UIButton) {
         
         if projectDescriptionTextView.text.count > 7000 {
-            present(self.noticeAlert(message: "Занадто великий опис! Опис повинен містити не більше 255 символів."), animated: true, completion: nil)
+            present(self.noticeAlert(message: "Занадто великий опис! Опис повинен містити не більше 7000 символів."), animated: true, completion: nil)
         } else {
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? ""], "usersToAdd": [] ] as [String : Any]
+            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? ""], "usersToAdd": usersToAddUuid] as [String : Any]
 
             //create the url with URL
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProject")! //change the url
@@ -91,6 +116,10 @@ class AddProjectViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Користувач з таким ім'ям не існує!"), animated: true, completion: nil)
                 }
+            case "nvalid projectDescription":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Немає опису проекта!"), animated: true, completion: nil)
+                }
 
             default:
                 break
@@ -113,6 +142,13 @@ class AddProjectViewController: UIViewController {
 //            print(newProject)
 //            ViewManager.shared.toMainVC()
 
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSearchVC" {
+            let destinationVC = segue.destination as! SearchTableViewController
+            destinationVC.delegate = self
         }
     }
 
