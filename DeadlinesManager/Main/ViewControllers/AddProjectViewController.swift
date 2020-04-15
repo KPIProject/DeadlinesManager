@@ -10,20 +10,49 @@ import UIKit
 
 class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
     
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     @IBOutlet weak var projectNameTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
     @IBOutlet weak var addProjectButton: UIButton!
     @IBOutlet weak var membersTextView: UITextView!
+    @IBOutlet weak var deadlineDateTextField: UITextField!
     
     private var usersToAddUuid: [String] = []
     
+    let datePicker = UIDatePicker()
+    var timeIntervslFromDatePicker: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        deadlineDateTextField.inputView = datePicker
+        datePicker.datePickerMode = .date
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localeID!)
+        deadlineDateTextField.inputAccessoryView = toolbar
+        
+        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    @objc func doneAction() {
+        timeIntervslFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
+        view.endEditing(true)
     }
+    
+    @objc func dateChanged() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        deadlineDateTextField.text = formatter.string(from: datePicker.date)
+        
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         projectNameTextField.resignFirstResponder()
@@ -33,6 +62,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     @IBAction func tapOnScreen(_ sender: UITapGestureRecognizer) {
         projectNameTextField.resignFirstResponder()
         projectDescriptionTextView.resignFirstResponder()
+        deadlineDateTextField.resignFirstResponder()
     }
     
     @IBAction func didPressAddProjectButton(_ sender: UIButton) {
@@ -41,7 +71,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
             present(self.noticeAlert(message: "Занадто великий опис! Опис повинен містити не більше 7000 символів."), animated: true, completion: nil)
         } else {
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? ""], "usersToAdd": usersToAddUuid] as [String : Any]
+            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervslFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUuid] as [String : Any]
 
             //create the url with URL
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProject")! //change the url
@@ -67,7 +97,6 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         }
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         //create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
