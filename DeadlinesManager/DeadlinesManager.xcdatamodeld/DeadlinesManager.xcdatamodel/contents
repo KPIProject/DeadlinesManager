@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DeadlineData" representedClassName="DeadlineData" syncable="YES" codeGenerationType="class">
+        <attribute name="deadlineCreationTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deadlineDescription" optional="YES" attributeType="String"/>
+        <attribute name="deadlineExecutionTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deadlineExecutorsUuid" optional="YES" attributeType="String"/>
         <attribute name="deadlineId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deadlineName" optional="YES" attributeType="String"/>
         <attribute name="deadlineProjectId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectDeadlines" inverseEntity="ProjectData"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="deadline" inverseEntity="UserData"/>
     </entity>
     <entity name="ProjectData" representedClassName="ProjectData" syncable="YES" codeGenerationType="class">
-        <attribute name="projectCreationTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="projectCreationTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="projectDescription" optional="YES" attributeType="String"/>
-        <attribute name="projectExecutionTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="projectExecutionTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="projectId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="projectName" optional="YES" attributeType="String"/>
+        <relationship name="projectDeadlines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineData" inverseName="project" inverseEntity="DeadlineData"/>
         <relationship name="projectOwner" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="projectsCreated" inverseEntity="UserData"/>
         <relationship name="projectUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="projectsAppended" inverseEntity="UserData"/>
     </entity>
@@ -23,12 +28,13 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="userSecondName" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="deadline" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineData" inverseName="user" inverseEntity="DeadlineData"/>
         <relationship name="projectsAppended" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectUsers" inverseEntity="ProjectData"/>
         <relationship name="projectsCreated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectOwner" inverseEntity="ProjectData"/>
     </entity>
     <elements>
-        <element name="DeadlineData" positionX="-36" positionY="9" width="128" height="118"/>
-        <element name="ProjectData" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="UserData" positionX="-54" positionY="-9" width="128" height="163"/>
+        <element name="DeadlineData" positionX="-36" positionY="9" width="128" height="178"/>
+        <element name="ProjectData" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="UserData" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
 </model>

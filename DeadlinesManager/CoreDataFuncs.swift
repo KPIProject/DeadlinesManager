@@ -26,18 +26,26 @@ func updateCoreData(data:  [Project]) {
             projectData.projectId = Int16(project.projectID)
             projectData.projectName = project.projectName
             projectData.projectDescription = project.projectDescription
+            projectData.projectCreationTime = Int64(project.projectCreationTime)
+            projectData.projectExecutionTime = Int64(project.projectExecutionTime)
             
             let userData = userToUserData(project.projectOwner, managedContext)
+//            let deadlineData = deadlineToDeadlineData(project.deadlines, managedContext)
             
             var projectUsersArray: [UserData]?
+            var deadlineArray: [DeadlineData]?
             
             for projectUser in project.projectUsers ?? [] {
                 projectUsersArray?.append(userToUserData(projectUser, managedContext))
             }
+            for deadline in project.deadlines {
+                deadlineArray?.append(deadlineToDeadlineData(deadline, managedContext))
+            }
+            
         
             projectData.projectOwner = userData
             projectData.addToProjectUsers(NSSet(array: projectUsersArray ?? []))
-            
+            projectData.addToProjectDeadlines(NSSet(array: deadlineArray ?? []))
 
             do {
                 try managedContext.save()
@@ -60,6 +68,26 @@ func userToUserData(_ user: User?, _ managedContext: NSManagedObjectContext) -> 
     return userData
 }
 
+func deadlineToDeadlineData (_ deadline: Deadline?, _ managedContext: NSManagedObjectContext) -> DeadlineData {
+    let deadlineData = DeadlineData(context: managedContext)
+    deadlineData.deadlineId = Int16(deadline?.deadlineID ?? 0)
+    deadlineData.deadlineName = deadline?.deadlineName
+    deadlineData.deadlineDescription = deadline?.deadlineDescription
+    deadlineData.deadlineProjectId = Int16(deadline?.deadlineProjectID ?? 0)
+    deadlineData.deadlineCreationTime = Int64(deadline?.deadlineCreatedTime ?? 0)
+    deadlineData.deadlineExecutionTime = Int64(deadline?.deadlineExecutionTime ?? 0)
+    
+    var deadlineUsersArray: [UserData]?
+    
+    for deadlineUser in deadline?.deadlineExecutors ?? [] {
+        deadlineUsersArray?.append(userToUserData(deadlineUser, managedContext))
+    }
+    
+    deadlineData.addToUser(NSSet(array: deadlineUsersArray ?? []))
+    return deadlineData
+}
+
+
 // MARK:- fetchingCoreData
 /// Function which fetch lesson from core data
 func fetchingCoreData() -> [Project] {
@@ -72,27 +100,52 @@ func fetchingCoreData() -> [Project] {
 
     var projectsArray: [Project] = []
     do {
+        /// All projects from Core Data
         guard let fetchResult = try managedContext.fetch(fetchRequest) as? [ProjectData] else { return [] }
-
+        /// For each project
         for projectData in fetchResult {
             
             var projectUsersArray: [User]?
-            
-            if let projectDataUserArray = projectData.projectUsers?.allObjects as? [User] {
-                
+            var projectDeadlineArray: [Deadline]?
+            /// All project users
+            if let projectDataUserArray = projectData.projectUsers?.allObjects as? [UserData] {
+                /// For each project user
                 for projectDataUser in projectDataUserArray {
                    
-                    let user = User(userID: projectDataUser.userID, userFirstName: projectDataUser.userFirstName, userSecondName: projectDataUser.userSecondName, username: projectDataUser.username, uuid: projectDataUser.uuid, projectsCreated: [], projectsAppended: [], userCreationTime: projectDataUser.userCreationTime)
+                    let user = fetchOneUser(projectDataUser)
+//                    let user = User(userID: Int(projectDataUser.userId), userFirstName: projectDataUser.userFirstName ?? "", userSecondName: projectDataUser.userSecondName ?? "", username: projectDataUser.username ?? "", uuid: projectDataUser.uuid ?? "", projectsCreated: [], projectsAppended: [], userCreationTime: Int(projectDataUser.userCreationTime))
                     
                     projectUsersArray?.append(user)
                 }
             }
+            /// All project deadlines
+            if let projectDataDeadlineArray = projectData.projectDeadlines?.allObjects as? [DeadlineData] {
+                /// For each project deadline
+                for projectDataDeadline in projectDataDeadlineArray {
+                   
+                    var deadlineUsersArray: [User]?
+                    
+                    /// All deadline users
+                    if let deadlineDataUserArray = projectDataDeadline.user?.allObjects as? [UserData] {
+                        /// For each deadline user
+                        for deadlineDataUser in deadlineDataUserArray {
+                            let user = fetchOneUser(deadlineDataUser)
+                            deadlineUsersArray?.append(user)
+                        }
+                    }
+                    /// Fetch one deadline
+                    let deadline = Deadline(deadlineID: Int(projectDataDeadline.deadlineId), deadlineName: projectDataDeadline.deadlineName ?? "", deadlineDescription: projectDataDeadline.deadlineDescription ?? "", deadlineProjectID: Int(projectDataDeadline.deadlineProjectId), deadlineExecutorsUUID: [], deadlineExecutors: deadlineUsersArray, deadlineCreatedTime: Int(projectDataDeadline.deadlineCreationTime), deadlineExecutionTime: Int(projectDataDeadline.deadlineExecutionTime))
+                    
+                    projectDeadlineArray?.append(deadline)
+                }
+            }
             
             if let projectDataOwner = projectData.projectOwner {
+                let projectOwner = fetchOneUser(projectDataOwner)
 
-                let projectOwner = User(userID: Int(projectDataOwner.userId ), userFirstName: projectDataOwner.userFirstName ?? "", userSecondName: projectDataOwner.userSecondName ?? "", username: projectDataOwner.username ?? "", uuid: projectDataOwner.uuid ?? "", projectsCreated: [], projectsAppended: [], userCreationTime: Int(projectDataOwner.userCreationTime))
+//                let projectOwner = User(userID: Int(projectDataOwner.userId), userFirstName: projectDataOwner.userFirstName ?? "", userSecondName: projectDataOwner.userSecondName ?? "", username: projectDataOwner.username ?? "", uuid: projectDataOwner.uuid ?? "", projectsCreated: [], projectsAppended: [], userCreationTime: Int(projectDataOwner.userCreationTime))
             
-                let project = Project(projectID: Int(projectData.projectId), projectName: projectData.projectName ?? "", projectDescription: projectData.projectDescription ?? "", deadlines: [], projectOwner: projectOwner, projectUsers: projectUsersArray, projectOwnerUuid: projectOwner.uuid, projectUsersUuid: [])
+                let project = Project(projectID: Int(projectData.projectId), projectName: projectData.projectName ?? "", projectDescription: projectData.projectDescription ?? "", deadlines: projectDeadlineArray ?? [], projectOwner: projectOwner, projectUsers: projectUsersArray, projectOwnerUuid: projectOwner.uuid, projectUsersUuid: [], projectCreationTime: Int(projectData.projectCreationTime), projectExecutionTime: Int(projectData.projectExecutionTime))
                 
                 projectsArray.append(project)
             }
@@ -103,6 +156,14 @@ func fetchingCoreData() -> [Project] {
     }
     
     return projectsArray
+}
+
+
+func fetchOneUser(_ projectDataUser: UserData) -> User {
+    
+    let user = User(userID: Int(projectDataUser.userId), userFirstName: projectDataUser.userFirstName ?? "", userSecondName: projectDataUser.userSecondName ?? "", username: projectDataUser.username ?? "", uuid: projectDataUser.uuid ?? "", projectsCreated: [], projectsAppended: [], userCreationTime: Int(projectDataUser.userCreationTime))
+    
+    return user
 }
 
 

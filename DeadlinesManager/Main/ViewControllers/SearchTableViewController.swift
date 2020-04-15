@@ -16,9 +16,11 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
 
     var delegate: SearchTableViewControllerDelegate?
     
+//    public var isAddingUser: Bool = true
+    
     public var usersToAddName: [String] = []
     public var usersToAddUuID: [String] = []
-    var usersToAdd: [User] = []
+    public var usersToAdd: [User] = []
     private let searchController = UISearchController(searchResultsController: nil)
     private var filtredUsers: [User] = []
     private var searchBarIsEmpty: Bool {
@@ -112,15 +114,8 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     }
     
     @IBAction func didPressDone(_ sender: UIBarButtonItem) {
-//        guard let addProjectVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectViewController else { return }
-//        addProjectVC.usersToAddUuid = usersToAddUuID
-//        addProjectVC.usersToAddUsername = usersToAddName
-//
-//        self.dismiss(animated: true, completion: nil)
         delegate?.fillTextFieldWithUsers(usersNames: usersToAddName, usersUuid: usersToAddUuID)
-        
         self.navigationController?.popViewController(animated: true)
-
     }
     
     
@@ -153,7 +148,6 @@ extension SearchTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         var user: User
         

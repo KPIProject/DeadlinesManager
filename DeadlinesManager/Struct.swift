@@ -27,11 +27,14 @@ struct Deadline: Codable {
     let deadlineID: Int
     let deadlineName, deadlineDescription: String
     let deadlineProjectID: Int
-    let deadlineExecutorsUUID: [String]
+    let deadlineExecutorsUUID: [String]?
+    let deadlineExecutors: [User]?
+    let deadlineCreatedTime: Int
+    let deadlineExecutionTime: Int
 
     enum CodingKeys: String, CodingKey {
         case deadlineID = "deadlineId"
-        case deadlineName, deadlineDescription
+        case deadlineName, deadlineDescription, deadlineCreatedTime, deadlineExecutionTime, deadlineExecutors
         case deadlineProjectID = "deadlineProjectId"
         case deadlineExecutorsUUID = "deadlineExecutorsUuid"
     }
@@ -46,10 +49,12 @@ struct Project: Codable {
     let projectUsers: [User]?
     let projectOwnerUuid: String?
     let projectUsersUuid: [String]?
+    let projectCreationTime: Int
+    let projectExecutionTime: Int
 
     enum CodingKeys: String, CodingKey {
         case projectID = "projectId"
-        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectOwnerUuid, projectUsersUuid
+        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectOwnerUuid, projectUsersUuid, projectCreationTime, projectExecutionTime
     }
 }
 
