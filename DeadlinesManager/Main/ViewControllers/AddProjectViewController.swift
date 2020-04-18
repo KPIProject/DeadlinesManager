@@ -19,10 +19,14 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     @IBOutlet weak var membersTextView: UITextView!
     @IBOutlet weak var deadlineDateTextField: UITextField!
     
+    /// adding deadline if false
+    var isAddProject = true
+    var projectID: String = ""
+    /// information from SearchTableViewController
     private var usersToAddUuid: [String] = []
-    
-    let datePicker = UIDatePicker()
-    var timeIntervslFromDatePicker: Int = 0
+    private let datePicker = UIDatePicker()
+    /// date of the deadline
+    private var timeIntervslFromDatePicker: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +45,8 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
+    
+    // MARK: - date Picker funcs
     @objc func doneAction() {
         timeIntervslFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
         view.endEditing(true)
@@ -56,6 +62,8 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         projectNameTextField.resignFirstResponder()
+        projectDescriptionTextView.resignFirstResponder()
+        return true
     }
     
     // MARK: - IBActions
@@ -65,11 +73,16 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         deadlineDateTextField.resignFirstResponder()
     }
     
-    @IBAction func didPressAddProjectButton(_ sender: UIButton) {
+    @IBAction func didPressDoneButton(_ sender: UIButton) {
+        /// for ability to leave the description field blank
+        if projectDescriptionTextView.text.count < 1 {
+            projectDescriptionTextView.text = " "
+        }
         
         if projectDescriptionTextView.text.count > 7000 {
             present(self.noticeAlert(message: "Занадто великий опис! Опис повинен містити не більше 7000 символів."), animated: true, completion: nil)
-        } else {
+        } else if isAddProject {
+            
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
             let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervslFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUuid] as [String : Any]
 
@@ -78,6 +91,14 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
 
             postAndGetData(url, parameters)
             
+        } else {
+            //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
+            let parameters = ["deadline": ["deadlineName" : projectNameTextField.text ?? "", "deadlineDescription" : projectDescriptionTextView.text ?? "", "deadlineExecutionTime" : timeIntervslFromDatePicker , "deadlineCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUuid] as [String : Any]
+
+            //create the url with URL
+            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
+
+            postAndGetData(url, parameters)
         }
     }
     
@@ -113,6 +134,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     }
     
     
+    
     /// Chacks if returned data is an error or expected information. Presents alert if it is an error.
     func processingReturnedData(_ dataString: String, _ data: Data) {
         print(dataString)
@@ -133,12 +155,19 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Немає опису проекта!"), animated: true, completion: nil)
                 }
-
+            case "Invalid deadlnineName":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Введіть, будь ласка, назву задачі!"), animated: true, completion: nil)
+                }
+            case "Invalid deadlineDescription":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Немає опису задачі!"), animated: true, completion: nil)
+                }
             default:
                 break
             }
         } else {
-            if (try? JSONDecoder().decode(Project.self, from: data)) != nil {
+            if ((try? JSONDecoder().decode(Project.self, from: data)) != nil) || ((try? JSONDecoder().decode(Deadline.self, from: data)) != nil) {
                 DispatchQueue.main.async {
                     ViewManager.shared.toMainVC()
                 }

@@ -32,16 +32,6 @@ class MenuViewController: UIViewController {
         button3.layer.cornerRadius = CGFloat((Double(button3.frame.height) ) / 3.5)
         button4.layer.cornerRadius = CGFloat((Double(button4.frame.height) ) / 3.5)
 
-        //declare parameter as a dctionary which contains string as key and value combination. considering inputs are valid
-//        let parameters = ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? ""] as [String : Any]
-
-//        //create the url with URL
-//        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/allProjects")!
-//
-//        postAndGetData(url)
-//
-//        projectArray = fetchingCoreData()
-//        print(projectArray)
         update()
     }
     
@@ -79,14 +69,7 @@ class MenuViewController: UIViewController {
         //now create the URLRequest object using the url object
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-//            do {
-//                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
-//            } catch let error {
-//                print(error.localizedDescription)
-//            }
-
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         //create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
@@ -94,7 +77,6 @@ class MenuViewController: UIViewController {
             guard error == nil else {
                 return
             }
-
             if let data = data {
                 guard let projects = try? JSONDecoder().decode([Project].self, from: data) else { return }
                 updateCoreData(data: projects)
@@ -104,7 +86,6 @@ class MenuViewController: UIViewController {
         task.resume()
     }
     
-
 
 }
 
