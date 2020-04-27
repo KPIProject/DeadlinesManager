@@ -99,6 +99,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
 
             postAndGetData(url, parameters)
+//            isAddProject = true
         }
     }
     
@@ -167,7 +168,12 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
                 break
             }
         } else {
-            if ((try? JSONDecoder().decode(Project.self, from: data)) != nil) || ((try? JSONDecoder().decode(Deadline.self, from: data)) != nil) {
+            if isAddProject && ((try? JSONDecoder().decode(Project.self, from: data)) != nil) {
+                DispatchQueue.main.async {
+                    ViewManager.shared.toMainVC()
+                }
+            } else if !isAddProject && ((try? JSONDecoder().decode(Deadline.self, from: data)) != nil) {
+                isAddProject = true
                 DispatchQueue.main.async {
                     ViewManager.shared.toMainVC()
                 }

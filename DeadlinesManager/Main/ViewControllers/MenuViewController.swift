@@ -38,6 +38,7 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
 //        print("YES")
         update()
+        print(projectArray)
 //        if needApdate{
 //            update()
 //            needApdate = false

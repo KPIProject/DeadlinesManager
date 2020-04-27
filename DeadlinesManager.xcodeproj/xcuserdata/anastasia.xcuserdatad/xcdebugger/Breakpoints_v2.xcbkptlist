@@ -78,8 +78,8 @@
             filePath = "DeadlinesManager/Main/ViewControllers/MenuViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "MenuViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -162,6 +162,182 @@
             endingLineNumber = "52"
             landmarkName = "doneAction()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08DCEA0F-BBC3-4B79-AD75-32A16B22618A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "didPressDoneButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "608AF87D-1546-463D-BD85-E565F78CAF60"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "didPressDoneButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C669904-FEBD-434F-9ED7-B9EAA2E8FCA0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "processingReturnedData(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4C669904-FEBD-434F-9ED7-B9EAA2E8FCA0 - d3c5aecceb0eb2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeadlinesManager.AddProjectViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "6530">
+               </Location>
+               <Location
+                  uuid = "4C669904-FEBD-434F-9ED7-B9EAA2E8FCA0 - 2c1944c43f1cc384"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 () -&gt; () in DeadlinesManager.AddProjectViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8CE2A09-D1AC-4D5D-840D-9DAD02599C0F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "processingReturnedData(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C8CE2A09-D1AC-4D5D-840D-9DAD02599C0F - d3c5aecceb0eb2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeadlinesManager.AddProjectViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "177"
+                  endingLineNumber = "177"
+                  offsetFromSymbolStart = "8103">
+               </Location>
+               <Location
+                  uuid = "C8CE2A09-D1AC-4D5D-840D-9DAD02599C0F - 4c9ae6c7dd556983"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #7 () -&gt; () in DeadlinesManager.AddProjectViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC4A40B5-B6B5-482E-94ED-E3234193A94A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/MenuViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "postAndGetData(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3042FA59-8368-4E55-849F-D331BCF6E744"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/CoreDataFuncs.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "updateCoreData(data:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A7E9790-25DB-4F37-AAE9-E62BAB3275FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/CoreDataFuncs.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "fetchingCoreData()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

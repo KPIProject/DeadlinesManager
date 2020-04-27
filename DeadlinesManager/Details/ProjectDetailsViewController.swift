@@ -31,6 +31,8 @@ class ProjectDetailsViewController: UIViewController {
         guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectViewController else { return }
             
         DispatchQueue.main.async {
+            addVC.isAddProject = false
+            addVC.projectID = String(self.project?.projectID ?? 0)
             self.navigationController?.pushViewController(addVC, animated: true)
         }
     }

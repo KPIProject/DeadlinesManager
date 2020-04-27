@@ -28,6 +28,8 @@
 		5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */; };
 		5DA4B1FB2433C1BE00C4262B /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FA2433C1BE00C4262B /* ProjectDetailsViewController.swift */; };
 		5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */; };
+		5DEB1FD224571F5100934933 /* ProjectAndDeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */; };
+		5DEB1FD324571F5100934933 /* ProjectAndDeadlineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		5DA4B1FA2433C1BE00C4262B /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectDetails.storyboard; sourceTree = "<group>"; };
+		5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAndDeadlineTableViewCell.swift; sourceTree = "<group>"; };
+		5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectAndDeadlineTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 				5D616B12241D53E400A72E33 /* Login */,
 				5D33CD8D24293EB100E7454B /* Main */,
 				5D127815243A4E9100A82918 /* Details */,
+				5DEB1FD424571F7600934933 /* ProjectAndDeadlineCell */,
 				5D616B162422D9BB00A72E33 /* Funcs.swift */,
 				5D095A222417CA3400E5D6D4 /* Extensions.swift */,
 				5D616B10241C513600A72E33 /* Struct.swift */,
@@ -150,6 +155,15 @@
 				5D6B04332410F87D00AA7D3B /* Info.plist */,
 			);
 			path = DeadlinesManager;
+			sourceTree = "<group>";
+		};
+		5DEB1FD424571F7600934933 /* ProjectAndDeadlineCell */ = {
+			isa = PBXGroup;
+			children = (
+				5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */,
+				5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */,
+			);
+			path = ProjectAndDeadlineCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +229,7 @@
 				5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */,
 				5D6B042D2410F87800AA7D3B /* Login.storyboard in Resources */,
 				5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */,
+				5DEB1FD324571F5100934933 /* ProjectAndDeadlineTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +256,7 @@
 				5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */,
 				5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */,
 				5D616B172422D9BB00A72E33 /* Funcs.swift in Sources */,
+				5DEB1FD224571F5100934933 /* ProjectAndDeadlineTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
