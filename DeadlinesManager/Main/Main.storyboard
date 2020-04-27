@@ -228,34 +228,6 @@
                                         <constraint firstAttribute="bottom" secondItem="ZOL-Lv-YLE" secondAttribute="bottom" constant="60" id="yxJ-Qu-umx"/>
                                     </constraints>
                                 </view>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" editingAccessoryType="disclosureIndicator" textLabel="6U3-ss-ByC" detailTextLabel="JFT-GB-DXO" style="IBUITableViewCellStyleSubtitle" id="E7D-BM-gtz">
-                                        <rect key="frame" x="20" y="295.5" width="374" height="55.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E7D-BM-gtz" id="aaO-ND-DVA">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="55.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6U3-ss-ByC">
-                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JFT-GB-DXO">
-                                                    <rect key="frame" x="20" y="31.5" width="33" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="Cell"/>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="uPl-ki-NML" id="FQK-DP-8qK"/>
                                     <outlet property="delegate" destination="uPl-ki-NML" id="fCJ-BN-zpf"/>
@@ -304,7 +276,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MJJ-fw-mUH">
                                 <rect key="frame" x="8" y="88" width="398" height="676"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назва:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -385,7 +357,7 @@
                                                     <constraint firstAttribute="height" constant="46.5" id="vIu-fT-e5e"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                <state key="normal" title="Готово">
+                                                <state key="normal" title="Додати">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" red="0.91818153859999996" green="0.86957782510000003" blue="0.8188254237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -402,6 +374,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="SNF-pA-Aaj" firstAttribute="height" secondItem="CVx-XN-xbM" secondAttribute="height" multiplier="0.530864" id="1gC-Am-1aH"/>
                                     <constraint firstItem="GoF-gK-emf" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.23" id="BlC-g0-QX2"/>
                                     <constraint firstItem="vjr-vM-Slg" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.06" id="J8g-AO-8kL"/>
                                     <constraint firstItem="CVx-XN-xbM" firstAttribute="height" secondItem="MJJ-fw-mUH" secondAttribute="height" multiplier="0.06" id="RjP-z7-Kae"/>

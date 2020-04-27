@@ -30,6 +30,14 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = { () -> String in
+            if isAddProject {
+                return "Новий проект"
+            } else {
+                return "Нова задача"
+            }
+        }()
+        addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
         deadlineDateTextField.inputView = datePicker
         datePicker.datePickerMode = .date
         let toolbar = UIToolbar()

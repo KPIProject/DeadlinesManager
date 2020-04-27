@@ -27,6 +27,8 @@ class MenuViewController: UIViewController {
         
         tableView.backgroundColor = #colorLiteral(red: 0.9497330785, green: 0.964420855, blue: 0.9139826894, alpha: 1)
         
+        tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
+        
         button1.layer.cornerRadius = CGFloat((Double(button1.frame.height) ) / 3.5)
         button2.layer.cornerRadius = CGFloat((Double(button2.frame.height) ) / 3.5)
         button3.layer.cornerRadius = CGFloat((Double(button3.frame.height) ) / 3.5)
@@ -96,11 +98,17 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-        cell.textLabel?.text = projectArray[indexPath.row].projectName
-        let owner = projectArray[indexPath.row].projectOwner
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let project = projectArray[indexPath.row]
+        let owner = project.projectOwner
         let ownerName = (owner?.userFirstName ?? "") + " " + (owner?.userSecondName ?? "")
-        cell.detailTextLabel?.text = "Власник: " + ownerName
+//        let deadlinesNumber =
+        cell.nameLabel.text = project.projectName
+        cell.detailLabel.text = "Власник: " + ownerName
+        cell.numberRightLabel.text = String(project.deadlines.count)
+        cell.numberView.isHidden = false
+        
         return cell
     }
     

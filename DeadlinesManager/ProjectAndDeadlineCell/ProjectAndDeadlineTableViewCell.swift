@@ -12,9 +12,12 @@ class ProjectAndDeadlineTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var numberRightLabel: UILabel!
+    @IBOutlet weak var numberView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        numberRightLabel.layer.cornerRadius = CGFloat((Double(numberRightLabel.frame.height) ) / 3.5)
+        numberView.layer.cornerRadius = CGFloat((Double(numberView.frame.height) ) / 1.5)
         // Initialization code
     }
 
@@ -24,9 +27,11 @@ class ProjectAndDeadlineTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+//        numberRightLabel.layer.cornerRadius = CGFloat((Double(numberRightLabel.frame.height) ) / 3.5)
         nameLabel.text = nil
         detailLabel.text = nil
         numberRightLabel.text = nil
+//        numberView.
     }
     
 }

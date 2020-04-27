@@ -14,9 +14,15 @@ class ProjectDetailsViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
         
         title = project?.projectName
         nameLabel.text = project?.projectName
@@ -37,5 +43,43 @@ class ProjectDetailsViewController: UIViewController {
         }
     }
     
-
 }
+
+extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return project?.deadlines.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
+        let deadline = project?.deadlines[indexPath.row]
+        let deadlineDate = Date(timeIntervalSince1970: TimeInterval(deadline?.deadlineExecutionTime ?? 0))
+//        var executorsString: String = ""
+//        if let executors = deadline?.deadlineExecutors {
+//            executorsString = "Виконавці: "
+//            for executor in executors {
+//                executorsString = executorsString + executor.username + " "
+//            }
+//        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        
+        cell.nameLabel.text = deadline?.deadlineName
+        cell.detailLabel.text = formatter.string(from: deadlineDate)
+        cell.numberView.isHidden = true
+        
+        return cell
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath.row)
+////        ViewManager.shared.toDetailVC()
+//        guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+//        DispatchQueue.main.async {
+//            detailVC.project = self.projectArray[indexPath.row]
+//            self.navigationController?.pushViewController(detailVC, animated: true)
+//        }
+//    }
+    
+}
+
