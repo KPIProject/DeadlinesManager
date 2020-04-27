@@ -202,6 +202,9 @@
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
+                                            <connections>
+                                                <action selector="didPressTodayButton:" destination="uPl-ki-NML" eventType="touchUpInside" id="cgJ-E2-ghW"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pav-5C-X2J">
                                             <rect key="frame" x="215" y="8" width="183" height="80"/>
@@ -220,6 +223,9 @@
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
+                                            <connections>
+                                                <action selector="didPressForYouButton:" destination="uPl-ki-NML" eventType="touchUpInside" id="v1Y-ng-Jhb"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOL-Lv-YLE">
                                             <rect key="frame" x="215" y="100" width="183" height="80"/>

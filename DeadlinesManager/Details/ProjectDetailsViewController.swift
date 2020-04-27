@@ -31,7 +31,7 @@ class ProjectDetailsViewController: UIViewController {
 
     }
     
-    
+    // MARK: - use SortingVC
     @IBAction func didPressMembers(_ sender: UIButton) {
         
         
@@ -59,13 +59,6 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         let deadline = project?.deadlines[indexPath.row]
         let deadlineDate = Date(timeIntervalSince1970: TimeInterval(deadline?.deadlineExecutionTime ?? 0))
-//        var executorsString: String = ""
-//        if let executors = deadline?.deadlineExecutors {
-//            executorsString = "Виконавці: "
-//            for executor in executors {
-//                executorsString = executorsString + executor.username + " "
-//            }
-//        }
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         

@@ -89,7 +89,19 @@ class MenuViewController: UIViewController {
         task.resume()
     }
     
-
+    @IBAction func didPressTodayButton(_ sender: UIButton) {
+        guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
+        DispatchQueue.main.async {
+            todayVC.allProjects = self.projectArray
+            self.navigationController?.pushViewController(todayVC, animated: true)
+        }
+        
+    }
+    
+    @IBAction func didPressForYouButton(_ sender: UIButton) {
+        
+    }
+    
 }
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {

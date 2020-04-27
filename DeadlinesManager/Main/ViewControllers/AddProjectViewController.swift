@@ -183,7 +183,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
             } else if !isAddProject && ((try? JSONDecoder().decode(Deadline.self, from: data)) != nil) {
                 isAddProject = true
                 DispatchQueue.main.async {
-                    ViewManager.shared.toMainVC()
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
