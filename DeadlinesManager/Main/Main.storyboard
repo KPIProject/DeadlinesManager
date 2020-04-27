@@ -25,7 +25,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlk-wX-vMH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-225" y="-706"/>
+            <point key="canvasLocation" x="-371" y="-700"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kml-OW-tua">
@@ -146,7 +146,37 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xl-ld-Ptw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475" y="25"/>
+            <point key="canvasLocation" x="103" y="25"/>
+        </scene>
+        <!--Sorted Deadlines View Controller-->
+        <scene sceneID="P4e-K8-AMZ">
+            <objects>
+                <viewController storyboardIdentifier="SortedDeadlinesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GD6-dw-5Zh" customClass="SortedDeadlinesViewController" customModule="DeadlinesManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bP-QT-RQI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ozL-bc-epP">
+                                <rect key="frame" x="8" y="44" width="398" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dy7-Qp-uOn" firstAttribute="trailing" secondItem="ozL-bc-epP" secondAttribute="trailing" constant="8" id="3iB-MX-4F7"/>
+                            <constraint firstItem="dy7-Qp-uOn" firstAttribute="bottom" secondItem="ozL-bc-epP" secondAttribute="bottom" id="C7v-Lh-0vI"/>
+                            <constraint firstItem="ozL-bc-epP" firstAttribute="leading" secondItem="dy7-Qp-uOn" secondAttribute="leading" constant="8" id="eyA-FD-J4R"/>
+                            <constraint firstItem="ozL-bc-epP" firstAttribute="top" secondItem="dy7-Qp-uOn" secondAttribute="top" id="myu-Xz-8lm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dy7-Qp-uOn"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ozL-bc-epP" id="TjG-dy-eCk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjL-oG-CQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="1489"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="BGv-bf-3RG">
@@ -168,7 +198,7 @@
                                             <rect key="frame" x="16" y="8" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.68045765160000005" green="0.40023863320000003" blue="0.51260614400000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Сьогодні" image="sun.max" catalog="system">
+                                            <state key="normal" title=" Сьогодні" image="sun.max" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
@@ -186,7 +216,7 @@
                                             <rect key="frame" x="16" y="100" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.15821889040000001" green="0.26385146380000002" blue="0.32568314669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Призначено вам" image="person" catalog="system">
+                                            <state key="normal" title="   Для вас" image="person" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
@@ -263,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNe-b8-a1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1313.0434782608697" y="754.6875"/>
+            <point key="canvasLocation" x="-1220" y="755"/>
         </scene>
         <!--Title-->
         <scene sceneID="TiM-aQ-qVI">

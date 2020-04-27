@@ -28,6 +28,7 @@
 		5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */; };
 		5DA4B1FB2433C1BE00C4262B /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FA2433C1BE00C4262B /* ProjectDetailsViewController.swift */; };
 		5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */; };
+		5DA69BBB24577E65004C0575 /* SortedDeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */; };
 		5DEB1FD224571F5100934933 /* ProjectAndDeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */; };
 		5DEB1FD324571F5100934933 /* ProjectAndDeadlineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		5DA4B1FA2433C1BE00C4262B /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectDetails.storyboard; sourceTree = "<group>"; };
+		5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedDeadlinesViewController.swift; sourceTree = "<group>"; };
 		5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAndDeadlineTableViewCell.swift; sourceTree = "<group>"; };
 		5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectAndDeadlineTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				5D616B142422BE6800A72E33 /* AddProjectViewController.swift */,
 				5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */,
 				5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */,
+				5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */,
 				5D0B9DD124379FF300980A41 /* SearchTableViewController.swift in Sources */,
 				5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */,
+				5DA69BBB24577E65004C0575 /* SortedDeadlinesViewController.swift in Sources */,
 				5D616B11241C513600A72E33 /* Struct.swift in Sources */,
 				5DA4B1FB2433C1BE00C4262B /* ProjectDetailsViewController.swift in Sources */,
 				5D6B04282410F87800AA7D3B /* SceneDelegate.swift in Sources */,
