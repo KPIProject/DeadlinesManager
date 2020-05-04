@@ -11,7 +11,8 @@ import Foundation
 // MARK: - User
 struct User: Codable {
     let userID: Int
-    let userFirstName, userSecondName, username, uuid: String
+    let userFirstName, userSecondName, username: String
+    let uuid: String?
     let projectsCreated: [Project]?
     let projectsAppended: [Project]?
     let userCreationTime: Int
@@ -27,7 +28,7 @@ struct Deadline: Codable {
     let deadlineID: Int
     let deadlineName, deadlineDescription: String
     let deadlineProjectID: Int
-    let deadlineExecutorsUUID: [String]?
+//    let deadlineExecutorsUUID: [String]?
     let deadlineExecutors: [User]?
     let deadlineCreatedTime: Int
     let deadlineExecutionTime: Int
@@ -36,7 +37,7 @@ struct Deadline: Codable {
         case deadlineID = "deadlineId"
         case deadlineName, deadlineDescription, deadlineCreatedTime, deadlineExecutionTime, deadlineExecutors
         case deadlineProjectID = "deadlineProjectId"
-        case deadlineExecutorsUUID = "deadlineExecutorsUuid"
+//        case deadlineExecutorsUUID = "deadlineExecutorsUuid"
     }
 }
 
@@ -47,26 +48,25 @@ struct Project: Codable {
     let deadlines: [Deadline]
     let projectOwner: User?
     let projectUsers: [User]?
-    let projectOwnerUuid: String?
-    let projectUsersUuid: [String]?
+    let projectUsersInvited: [User]?
+//    let projectOwnerUuid: String?
+//    let projectUsersUuid: [String]?
     let projectCreationTime: Int
     let projectExecutionTime: Int
 
     enum CodingKeys: String, CodingKey {
         case projectID = "projectId"
-        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectOwnerUuid, projectUsersUuid, projectCreationTime, projectExecutionTime
+        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectCreationTime, projectExecutionTime, projectUsersInvited
     }
 }
 
 // MARK: - Error
 struct Error: Codable {
-    let errorType: String
+    let type: String
     let code: Int
-    let errorMessage: String
+    let message: String
 
     enum CodingKeys: String, CodingKey {
-        case errorType = "error_type"
-        case code
-        case errorMessage = "error_message"
+        case type, code, message
     }
 }

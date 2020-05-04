@@ -93,7 +93,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
                 if let data = data {
 
                     if let error = try? JSONDecoder().decode(Error.self, from: data) {
-                        if (error.errorMessage == "Users not found") && (self.searchBarButtonWasTaped) {
+                        if (error.message == "Users not found") && (self.searchBarButtonWasTaped) {
                             DispatchQueue.main.async {
                                 self.present(self.noticeAlert(message: "Юзерів з даним логіном немає"), animated: true, completion: nil)
                                 self.searchBarButtonWasTaped = false
@@ -171,7 +171,7 @@ extension SearchTableViewController {
         if searchController.isActive {
             usersToAdd.append(filtredUsers[indexPath.row])
             usersToAddName.append(filtredUsers[indexPath.row].username)
-            usersToAddUuID.append(filtredUsers[indexPath.row].uuid)
+            usersToAddUuID.append(filtredUsers[indexPath.row].uuid ?? "")
             searchController.isActive = false
             tableView.reloadData()
         }

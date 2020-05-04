@@ -248,7 +248,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
 //        let decoder = JSONDecoder()
         
         if let error = try? JSONDecoder().decode(Error.self, from: data) {
-            switch error.errorMessage {
+            switch error.message {
             case "User is already exist":
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Користувач з таким іменем уже існує. Введіть, будь ласка, інший логін"), animated: true, completion: nil)
@@ -284,7 +284,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
             print(dataString)
             guard let signInUser = try? JSONDecoder().decode(User.self, from: data) else { return }
             /// Transmits the user`s uuID to the settings
-            Settings.shared.uuID = signInUser.uuid
+            Settings.shared.uuID = signInUser.uuid ?? ""
             Settings.shared.firstName = signInUser.userFirstName
             Settings.shared.secondName = signInUser.userSecondName
             Settings.shared.login = signInUser.username

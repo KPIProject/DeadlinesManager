@@ -150,7 +150,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
 //        let decoder = JSONDecoder()
         
         if let error = try? JSONDecoder().decode(Error.self, from: data){
-            switch error.errorMessage {
+            switch error.message {
  
             case "Invalid projectName":
                 DispatchQueue.main.async {

@@ -4,7 +4,6 @@
         <attribute name="deadlineCreationTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deadlineDescription" optional="YES" attributeType="String"/>
         <attribute name="deadlineExecutionTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="deadlineExecutorsUuid" optional="YES" attributeType="String"/>
         <attribute name="deadlineId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deadlineName" optional="YES" attributeType="String"/>
         <attribute name="deadlineProjectId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -33,7 +32,7 @@
         <relationship name="projectsCreated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectOwner" inverseEntity="ProjectData"/>
     </entity>
     <elements>
-        <element name="DeadlineData" positionX="-36" positionY="9" width="128" height="178"/>
+        <element name="DeadlineData" positionX="-36" positionY="9" width="128" height="163"/>
         <element name="ProjectData" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="UserData" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
