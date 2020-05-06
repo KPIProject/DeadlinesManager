@@ -25,6 +25,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -72,35 +76,57 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    func deleteDeadline(_ answer: Error) {
-        switch answer.message {
-        case "User not found":
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+    func processingReturnedData(_ data: Data, indexPathRow: Int) {
+        if let answer = try? JSONDecoder().decode(Error.self, from: data){
+            switch answer.message {
+            case "User not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+                }
+            case "Project not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+                }
+            case "Invalid project owner":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "У вас немає прав на дану дію."), animated: true, completion: nil)
+                }
+            case "Deadline not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
             }
-        case "Project not found":
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+            case "Deadline is not in this project":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Дедлайн знаходиться не в цьому проекті."), animated: true, completion: nil)
             }
-        case "Invalid project owner":
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "У вас немає прав на видалення цього проекту."), animated: true, completion: nil)
+            case "User to add not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувача, якого ви збираєтесь додати, не існує."), animated: true, completion: nil)
             }
-        case "Deadline not found":
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
-        }
-        case "Deadline is not in this project":
-            DispatchQueue.main.async {
-                self.present(self.noticeAlert(message: "Дедлайн знаходиться не в цьому проекті."), animated: true, completion: nil)
-        }
-        case "Deleted":
-            DispatchQueue.main.async {
-                print("Deleted")
+            case "User owner not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувача, який керує цим проектом, не існує."), animated: true, completion: nil)
             }
-            
-        default:
-            break
+            case "User is already in this project":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Юзер, якого ви хочете додати, вже в цьому проекті."), animated: true, completion: nil)
+            }
+            case "User owner cant be invited to project":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Неможливо запросити у проект самого себе."), animated: true, completion: nil)
+            }
+            case "Deleted":
+                DispatchQueue.main.async {
+                    print("Deleted")
+                    self.deadlines.remove(at: indexPathRow)
+                    self.tableView.reloadData()
+            }
+            default:
+                break
+            }
+        
+        } else if let answer = try? JSONDecoder().decode(Project.self, from: data) {
+            print(answer)
         }
     }
     
@@ -108,28 +134,53 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
 }
 
+// MARK: - зробить reload data для VC (щоб обновлять після редагування)
+
 extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
     func fillTextFieldWithUsers(names: [String], usernames: [String]) {
         if usernames != usersToAddUsernames {
-            
+            let (usersToAdd, usersToDelete) = addDeleteUsers(usernames)
             let projectID = String(describing: self.project?.projectID ?? 0)
-            // create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
             
-            self.deadlines.remove(at: indexPath.row)
-            tableView.reloadData()
-            
-            postAndGetData(url, httpMethod: "DELETE") { data in
-                if let answer = try? JSONDecoder().decode(Error.self, from: data) {
-                    self.deleteDeadline(answer)
+            for user in usersToAdd {
+                // create the url with URL
+                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
+                postAndGetData(url, httpMethod: "POST") { data in
+                    self.processingReturnedData(data, indexPathRow: 0)
                 }
             }
+            for user in usersToDelete {
+                // create the url with URL
+                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/deleteUserFromProject/\(user)")!
+                postAndGetData(url, httpMethod: "DELETE") { data in
+                    self.processingReturnedData(data, indexPathRow: 0)
+                }
+            }
+            
             
             usersToAddUsernames = usernames
             usersToAddNames = names
         }
     }
+    
+    func addDeleteUsers(_ users: [String]) -> (usersToAdd: [String], usersToDelete: [String]) {
+        var usersToAdd: [String] = []
+        var usersToDelete: [String] = []
+        
+        for userName in users {
+            if !usersToAddUsernames.contains(userName) {
+                usersToAdd.append(userName)
+            }
+        }
+        for userName in usersToAddUsernames {
+            if !users.contains(userName) {
+                usersToDelete.append(userName)
+            }
+        }
+        return (usersToAdd: usersToAdd, usersToDelete: usersToDelete)
+    }
 }
+
 
 extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -159,13 +210,14 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
             // create the url with URL
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
             
-            self.deadlines.remove(at: indexPath.row)
+//            self.deadlines.remove(at: indexPath.row)
             tableView.reloadData()
             
             postAndGetData(url, httpMethod: "DELETE") { data in
-                if let answer = try? JSONDecoder().decode(Error.self, from: data) {
-                    self.deleteDeadline(answer)
-                }
+//                if let answer = try? JSONDecoder().decode(Error.self, from: data) {
+//
+//                }
+                self.processingReturnedData(data, indexPathRow: indexPath.row)
             }
             tableView.isEditing = false
         }

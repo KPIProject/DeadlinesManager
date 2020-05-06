@@ -336,54 +336,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MJJ-fw-mUH">
-                                <rect key="frame" x="8" y="88" width="398" height="676"/>
+                                <rect key="frame" x="8" y="140" width="398" height="624"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть назву" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-XN-xbM">
-                                        <rect key="frame" x="0.0" y="36.5" width="398" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="35" width="398" height="37.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опис:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipT-sO-s3J">
-                                        <rect key="frame" x="0.0" y="92" width="398" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="87.5" width="398" height="0.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-gK-emf">
-                                        <rect key="frame" x="0.0" y="128.5" width="398" height="155.5"/>
+                                        <rect key="frame" x="0.0" y="103" width="398" height="143.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата дедлайна:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-AQ-wVA">
-                                        <rect key="frame" x="0.0" y="299" width="398" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="261.5" width="398" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjr-vM-Slg">
-                                        <rect key="frame" x="0.0" y="335.5" width="398" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="298" width="398" height="37.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pox-x5-bFe">
-                                        <rect key="frame" x="0.0" y="391" width="398" height="26"/>
+                                        <rect key="frame" x="0.0" y="350.5" width="398" height="21.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Учасники:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Y-zB-ywm">
-                                                <rect key="frame" x="0.0" y="0.0" width="198" height="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="198" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roA-4A-y51">
-                                                <rect key="frame" x="198" y="0.0" width="200" height="26"/>
+                                                <rect key="frame" x="198" y="0.0" width="200" height="21.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="9q0-tP-Sax"/>
                                                 </constraints>
@@ -402,14 +402,14 @@
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ви ще не додали учасників" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YpS-yB-zpD">
-                                        <rect key="frame" x="0.0" y="432" width="398" height="94.5"/>
+                                        <rect key="frame" x="0.0" y="387" width="398" height="87.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="0.51163321167883213" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHl-Kd-ca4">
-                                        <rect key="frame" x="0.0" y="541.5" width="398" height="134.5"/>
+                                        <rect key="frame" x="0.0" y="489.5" width="398" height="134.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-gz-u6p">
                                                 <rect key="frame" x="99" y="44" width="200" height="46.5"/>
@@ -508,8 +508,8 @@
             <objects>
                 <navigationController id="hZQ-JE-gqu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Проекти" image="square.stack.3d.down.right" catalog="system" selectedImage="square.stack.3d.down.right.fill" id="E2D-4o-2yC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="prq-QL-Ec8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="prq-QL-Ec8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

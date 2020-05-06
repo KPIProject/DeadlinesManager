@@ -20,6 +20,9 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -157,10 +160,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         print(indexPath.row)
 //        ViewManager.shared.toDetailVC()
         guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
-        DispatchQueue.main.async {
-            detailVC.project = self.projectArray[indexPath.row]
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
+//        DispatchQueue.main.async {
+        detailVC.project = self.projectArray[indexPath.row]
+        detailVC.navigationItem.largeTitleDisplayMode = .always
+        detailVC.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.pushViewController(detailVC, animated: true)
+//        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
