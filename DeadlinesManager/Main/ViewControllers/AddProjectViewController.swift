@@ -22,11 +22,14 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     /// adding deadline if false
     var isAddProject = true
     var projectID: String = ""
+    
     /// information from SearchTableViewController
-    private var usersToAddUuid: [String] = []
+    private var usersToAddUsernames: [String] = []
+    private var usersToAddNames: [String] = []
+    
     private let datePicker = UIDatePicker()
     /// date of the deadline
-    private var timeIntervslFromDatePicker: Int = 0
+    private var timeIntervalFromDatePicker: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +40,10 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
                 return "Нова задача"
             }
         }()
+        
         addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
-        deadlineDateTextField.inputView = datePicker
+        
+        
         datePicker.datePickerMode = .date
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -48,15 +53,19 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         
         let localeID = Locale.preferredLanguages.first
         datePicker.locale = Locale(identifier: localeID!)
-        deadlineDateTextField.inputAccessoryView = toolbar
-        
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
+        
+        deadlineDateTextField.inputView = datePicker
+        deadlineDateTextField.inputAccessoryView = toolbar
+        deadlineDateTextField.text = (Int(Date().timeIntervalSince1970)).toDateString()
+
     }
     
     
     // MARK: - date Picker funcs
     @objc func doneAction() {
-        timeIntervslFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
+        timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
         view.endEditing(true)
     }
     
@@ -74,7 +83,19 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         return true
     }
     
+    
     // MARK: - IBActions
+    
+    @IBAction func didPressAddMember(_ sender: UIButton) {
+        guard let serchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
+        serchVC.delegate = self
+        DispatchQueue.main.async {
+            serchVC.usersToAddName = self.usersToAddNames
+            serchVC.usersToAddUsername = self.usersToAddUsernames
+            self.navigationController?.pushViewController(serchVC, animated: true)
+        }
+    }
+    
     @IBAction func tapOnScreen(_ sender: UITapGestureRecognizer) {
         projectNameTextField.resignFirstResponder()
         projectDescriptionTextView.resignFirstResponder()
@@ -92,16 +113,16 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         } else if isAddProject {
             
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervslFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUuid] as [String : Any]
+            let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervalFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUsernames] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProject")! //change the url
+            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProjectDebug")! //change the url
 
             postAndGetData(url, parameters)
             
         } else {
             //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-            let parameters = ["deadline": ["deadlineName" : projectNameTextField.text ?? "", "deadlineDescription" : projectDescriptionTextView.text ?? "", "deadlineExecutionTime" : timeIntervslFromDatePicker , "deadlineCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUuid] as [String : Any]
+            let parameters = ["deadline": ["deadlineName" : projectNameTextField.text ?? "", "deadlineDescription" : projectDescriptionTextView.text ?? "", "deadlineExecutionTime" : timeIntervalFromDatePicker , "deadlineCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUsernames] as [String : Any]
 
             //create the url with URL
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
@@ -110,7 +131,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
 //            isAddProject = true
         }
     }
-    
+    // MARK: - ВИНЕСТИ
     /// Sends data to serser using URL and get returned data from server
     func postAndGetData(_ url: URL, _ parameters: [String : Any]) {
         //create the session object
@@ -172,6 +193,10 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Немає опису задачі!"), animated: true, completion: nil)
                 }
+            case "User to add not found":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувач з таким ім'ям не існує!"), animated: true, completion: nil)
+                }
             default:
                 break
             }
@@ -191,16 +216,17 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
     
     // MARK: - SearchTableViewControllerDelegate
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSearchVC" {
-            let destinationVC = segue.destination as! SearchTableViewController
-            destinationVC.delegate = self
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toSearchVC" {
+//            let destinationVC = segue.destination as! SearchTableViewController
+//            destinationVC.delegate = self
+//        }
+//    }
     
-    func fillTextFieldWithUsers(usersNames: [String], usersUuid: [String]) {
-        membersTextView.text = usersNames.joined(separator: ", ")
-        usersToAddUuid = usersUuid
+    func fillTextFieldWithUsers(names: [String], usernames: [String]) {
+        membersTextView.text = usernames.joined(separator: ", ")
+        usersToAddUsernames = usernames
+        usersToAddNames = names
     }
 
 }

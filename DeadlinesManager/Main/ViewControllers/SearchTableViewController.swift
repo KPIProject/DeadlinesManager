@@ -9,38 +9,34 @@
 import UIKit
 
 protocol SearchTableViewControllerDelegate {
-    func fillTextFieldWithUsers(usersNames: [String], usersUuid: [String])
+    func fillTextFieldWithUsers(names: [String], usernames: [String])
 }
 
 class SearchTableViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate {
 
     var delegate: SearchTableViewControllerDelegate?
     
-//    public var isAddingUser: Bool = true
-    
+    /// User`s first and second names (all list)
     public var usersToAddName: [String] = []
-    public var usersToAddUuID: [String] = []
-    public var usersToAdd: [User] = []
+    /// User`s usernames (all list)
+    public var usersToAddUsername: [String] = []
+    /// User`s usernames deleted (last time)
+//    public var usernamesToDelete: [String] = []
+    /// User`s usernames to add (last time)
+//    public var usernamesToAdd: [String] = []
+    
+//    public var usersToAdd: [User] = []
     private let searchController = UISearchController(searchResultsController: nil)
     private var filtredUsers: [User] = []
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
-    private var isFilterering: Bool {
-        return searchController.isActive && !searchBarIsEmpty
-    }
     private var searchBarButtonWasTaped: Bool = false
     
-//    @IBOutlet weak var doneButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         tableView.delegate = self
@@ -52,10 +48,10 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         searchController.searchBar.placeholder = "Почніть вводити логін"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+//        searchController.isActive = false
+        tableView.reloadData()
     }
-
-
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBarButtonWasTaped = true
@@ -114,7 +110,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     }
     
     @IBAction func didPressDone(_ sender: UIBarButtonItem) {
-        delegate?.fillTextFieldWithUsers(usersNames: usersToAddName, usersUuid: usersToAddUuID)
+        delegate?.fillTextFieldWithUsers(names: usersToAddName, usernames: usersToAddUsername)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -124,7 +120,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
 extension SearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filtredUsers = []
-//        guard let url = URL(string: "http://localhost:8080/findByUsername/\(searchController.searchBar.text ?? "")") else { return }
+
         getDataFromServer()
         tableView.reloadData()
     }
@@ -142,7 +138,7 @@ extension SearchTableViewController {
         if searchController.isActive {
             return filtredUsers.count
         } else {
-            return usersToAdd.count
+            return usersToAddName.count
         }
         
     }
@@ -154,27 +150,47 @@ extension SearchTableViewController {
         if searchController.isActive {
             print("isFilterering")
             user = filtredUsers[indexPath.row]
+            cell.textLabel?.text = user.username
+            cell.detailTextLabel?.text = user.userFirstName + " " + user.userSecondName
         } else {
-            
             print("NOT isFilterering")
-            user = usersToAdd[indexPath.row]
+            cell.textLabel?.text = usersToAddUsername[indexPath.row]
+            cell.detailTextLabel?.text = usersToAddName[indexPath.row]
         }
         
-        cell.textLabel?.text = user.username
-        cell.detailTextLabel?.text = user.userFirstName + " " + user.userSecondName
-//        print(cell.textLabel?.text)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         if searchController.isActive {
-            usersToAdd.append(filtredUsers[indexPath.row])
-            usersToAddName.append(filtredUsers[indexPath.row].username)
-            usersToAddUuID.append(filtredUsers[indexPath.row].uuid ?? "")
+            let user = filtredUsers[indexPath.row]
+//            usersToAdd.append(user)
+            usersToAddName.append(user.userFirstName + " " + user.userSecondName)
+            usersToAddUsername.append(user.username )
             searchController.isActive = false
             tableView.reloadData()
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        if searchController.isActive {
+            tableView.isEditing = false
+            return nil
+        } else {
+            let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
+                self.usersToAddUsername.remove(at: indexPath.row)
+                self.usersToAddName.remove(at: indexPath.row)
+//                self.usersToAdd.remove(at: indexPath.row)
+                tableView.reloadData()
+                tableView.isEditing = false
+            
+            }
+            let config = UISwipeActionsConfiguration(actions: [delete])
+            return config
+        }
+    }
+    
 }

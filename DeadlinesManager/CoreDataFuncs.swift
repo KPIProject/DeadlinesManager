@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-func updateCoreData(data:  [Project]) {
+func updateCoreData(data: [Project], complition: @escaping () -> ()) {
     DispatchQueue.main.async {
         /// Delete all
         deleteAllFromCoreData()
@@ -55,6 +55,9 @@ func updateCoreData(data:  [Project]) {
             }
             
         }
+        
+        complition()
+        
     }
 }
 
@@ -78,13 +81,13 @@ func deadlineToDeadlineData (_ deadline: Deadline?, _ managedContext: NSManagedO
     deadlineData.deadlineCreationTime = Int64(deadline?.deadlineCreatedTime ?? 0)
     deadlineData.deadlineExecutionTime = Int64(deadline?.deadlineExecutionTime ?? 0)
     
-    var deadlineUsersArray: [UserData]?
+    var deadlineUsersArray: [UserData] = []
     
     for deadlineUser in deadline?.deadlineExecutors ?? [] {
-        deadlineUsersArray?.append(userToUserData(deadlineUser, managedContext))
+        deadlineUsersArray.append(userToUserData(deadlineUser, managedContext))
     }
     
-    deadlineData.addToUser(NSSet(array: deadlineUsersArray ?? []))
+    deadlineData.addToUser(NSSet(array: deadlineUsersArray ))
     return deadlineData
 }
 
@@ -123,14 +126,14 @@ func fetchingCoreData() -> [Project] {
                 /// For each project deadline
                 for projectDataDeadline in projectDataDeadlineArray {
                    
-                    var deadlineUsersArray: [User]?
+                    var deadlineUsersArray: [User] = []
                     
                     /// All deadline users
                     if let deadlineDataUserArray = projectDataDeadline.user?.allObjects as? [UserData] {
                         /// For each deadline user
                         for deadlineDataUser in deadlineDataUserArray {
                             let user = fetchOneUser(deadlineDataUser)
-                            deadlineUsersArray?.append(user)
+                            deadlineUsersArray.append(user)
                         }
                     }
                     /// Fetch one deadline

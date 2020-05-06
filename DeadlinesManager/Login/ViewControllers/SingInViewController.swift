@@ -292,7 +292,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 ViewManager.shared.toMainVC()
             }
-            print(signInUser.uuid)
+            print(signInUser.uuid ?? "")
         }
     }
 }

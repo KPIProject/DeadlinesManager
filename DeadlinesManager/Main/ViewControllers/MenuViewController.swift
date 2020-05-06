@@ -33,6 +33,7 @@ class MenuViewController: UIViewController {
         button3.layer.cornerRadius = CGFloat(Double(button3.frame.height) / 3.5)
         button4.layer.cornerRadius = CGFloat(Double(button4.frame.height) / 3.5)
 
+        projectArray = fetchingCoreData()
         update()
     }
 
@@ -58,20 +59,20 @@ class MenuViewController: UIViewController {
         // create the url with URL
         let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/allProjects")!
 
-        postAndGetData(url)
+        postAndGetData(url, httpMethod: "GET")
 
-        projectArray = fetchingCoreData()
-        tableView.reloadData()
+//        projectArray = fetchingCoreData()
+//        tableView.reloadData()
     }
 
     /// Sends data to serser using URL and get returned data from server
-    func postAndGetData(_ url: URL) {
+    func postAndGetData(_ url: URL, httpMethod: String) {
         // create the session object
         let session = URLSession.shared
 
         // now create the URLRequest object using the url object
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = httpMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // create dataTask using the session object to send data to the server
@@ -81,11 +82,43 @@ class MenuViewController: UIViewController {
                 return
             }
             if let data = data {
-                guard let projects = try? JSONDecoder().decode([Project].self, from: data) else { return }
-                updateCoreData(data: projects)
+                if let projects = try? JSONDecoder().decode([Project].self, from: data){
+                    updateCoreData(data: projects){
+                        self.projectArray = fetchingCoreData()
+                        
+                        self.tableView.reloadData()
+                    }
+                }
+                if let answer = try? JSONDecoder().decode(Error.self, from: data) {
+                    self.deleteProject(answer)
+                }
             }
         })
         task.resume()
+    }
+    
+    func deleteProject(_ answer: Error) {
+        switch answer.message {
+        case "User not found":
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+            }
+        case "Project not found":
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+            }
+        case "Invalid project owner":
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "У вас немає прав на видалення цього проекту."), animated: true, completion: nil)
+            }
+        case "Deleted":
+            DispatchQueue.main.async {
+                self.update()
+            }
+            
+        default:
+            break
+        }
     }
 
     @IBAction func didPressTodayButton(_ sender: UIButton) {
@@ -100,18 +133,18 @@ class MenuViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projectArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         let project = projectArray[indexPath.row]
         let owner = project.projectOwner
         let ownerName = (owner?.userFirstName ?? "") + " " + (owner?.userSecondName ?? "")
-//        let deadlinesNumber =
         cell.nameLabel.text = project.projectName
         cell.detailLabel.text = "Власник: " + ownerName
         cell.numberRightLabel.text = String(project.deadlines.count)
@@ -129,4 +162,20 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
+            
+            // create the url with URL
+            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(self.projectArray[indexPath.row].projectID)/deleteProject")!
+            self.projectArray.remove(at: indexPath.row)
+            tableView.reloadData()
+            self.postAndGetData(url, httpMethod: "DELETE")
+            tableView.isEditing = false
+        }
+        let config = UISwipeActionsConfiguration(actions: [delete])
+        return config
+    }
 }
+

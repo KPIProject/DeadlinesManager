@@ -113,6 +113,32 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lyL-Q9-HVy">
+                                        <rect key="frame" x="0.0" y="186" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lyL-Q9-HVy" id="5oO-9T-FiV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RzM-WV-XEb">
+                                                    <rect key="frame" x="41.5" y="7" width="331" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Видати обліковий запис">
+                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didPressDeleteButton:" destination="XlX-sI-eeu" eventType="touchUpInside" id="99P-Ak-jhj"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RzM-WV-XEb" firstAttribute="width" secondItem="5oO-9T-FiV" secondAttribute="width" multiplier="0.8" id="Vp1-RU-oWN"/>
+                                                <constraint firstItem="RzM-WV-XEb" firstAttribute="height" secondItem="5oO-9T-FiV" secondAttribute="height" multiplier="0.689655" id="Wcp-vh-cTr"/>
+                                                <constraint firstItem="RzM-WV-XEb" firstAttribute="centerY" secondItem="5oO-9T-FiV" secondAttribute="centerY" id="XgV-Dn-gAC"/>
+                                                <constraint firstItem="RzM-WV-XEb" firstAttribute="centerX" secondItem="5oO-9T-FiV" secondAttribute="centerX" id="fvC-BQ-eaz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -367,7 +393,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="aSt-Ng-I1r" kind="show" identifier="toSearchVC" id="0J2-0D-mAw"/>
+                                                    <action selector="didPressAddMember:" destination="m6Y-Dz-fVm" eventType="touchUpInside" id="Ab6-wE-JEK"/>
                                                 </connections>
                                             </button>
                                         </subviews>
