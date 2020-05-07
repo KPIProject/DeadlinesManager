@@ -18,21 +18,17 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     private var usersToAddUsernames: [String] = []
     private var usersToAddNames: [String] = []
     
+    private let textView = UITextView(frame: CGRect.zero)
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setLargeTitleDisplayMode(.always)
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         
-//        self.navigationController?.navigationBar.sizeToFit()
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
-//                let cc = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
-//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        setLargeTitleDisplayMode(.always)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -47,26 +43,9 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         }
         
         formUsersArrays()
-//        configureNavigator()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setLargeTitleDisplayMode(.always)
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        DispatchQueue.main.async { [weak self] in
-//            self?.navigationController?.navigationBar.sizeToFit()
-//        }
-//    }
-    
-//    private func configureNavigator() {
-//        guard let navigationController = navigationController else { return }
-//        navigationController.navigationBar.prefersLargeTitles = true
-//        navigationItem.largeTitleDisplayMode = .always
-//        navigationController.navigationBar.sizeToFit()
-//    }
+
     
     func formUsersArrays() {
         guard let users = project?.projectUsers else { return }
@@ -77,13 +56,18 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didPressMembers(_ sender: UIButton) {
-        guard let serchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
-        serchVC.delegate = self
-        DispatchQueue.main.async {
-            serchVC.usersToAddName = self.usersToAddNames
-            serchVC.usersToAddUsername = self.usersToAddUsernames
-            self.navigationController?.pushViewController(serchVC, animated: true)
-        }
+        guard let searchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
+        searchVC.delegate = self
+        searchVC.usersToAddName = self.usersToAddNames
+        searchVC.usersToAddUsername = self.usersToAddUsernames
+        searchVC.titleToShow = "Учасники проекта"
+        
+        let navigationC = UINavigationController()
+        
+        navigationC.viewControllers = [searchVC]
+        
+        present(navigationC, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(serchVC, animated: true)
     }
     
     
@@ -100,20 +84,18 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didPressEditButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "Змінити", message: nil, preferredStyle: .actionSheet)
         let editProjectName = UIAlertAction(title: "Назву", style: .default) { (_) in
-            
+            self.changeProjectName()
         }
         let editProjectDeadlineData = UIAlertAction(title: "Дату дедлайну", style: .default) { (_) in
             
         }
         let editProjectDescription = UIAlertAction(title: "Редагувати опис", style: .default) { (_) in
-            
+            self.changeProjectDescription()
         }
         let deleteProject =  UIAlertAction(title: "Видалити проект", style: .destructive) { (_) in
             
         }
-        let cansel =  UIAlertAction(title: "Скасувати", style: .cancel) { (_) in
-            
-        }
+        let cansel =  UIAlertAction(title: "Скасувати", style: .cancel)
         alert.addAction(editProjectName)
         alert.addAction(editProjectDeadlineData)
         alert.addAction(editProjectDescription)
@@ -121,7 +103,56 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(cansel)
         present(alert, animated: true, completion: nil)
     }
+    func changeProjectDescription() {
+        let alertController = UIAlertController(title: "Feedback \n\n\n\n\n", message: nil, preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default) { (action) in
+            alertController.view.removeObserver(self, forKeyPath: "bounds")
+        }
+        alertController.addAction(cancelAction)
+
+        let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+            let enteredText = self.textView.text
+            alertController.view.removeObserver(self, forKeyPath: "bounds")
+        }
+        alertController.addAction(saveAction)
+
+        alertController.view.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
+        textView.backgroundColor = UIColor.white
+        textView.textContainerInset = UIEdgeInsets.init(top: 8, left: 5, bottom: 8, right: 5)
+        alertController.view.addSubview(self.textView)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "bounds"{
+            if let rect = (change?[NSKeyValueChangeKey.newKey] as? NSValue)?.cgRectValue {
+                let margin: CGFloat = 8
+                let xPos = rect.origin.x + margin
+                let yPos = rect.origin.y + 54
+                let width = rect.width - 2 * margin
+                let height: CGFloat = 90
+
+                textView.frame = CGRect.init(x: xPos, y: yPos, width: width, height: height)
+            }
+        }
+    }
+    
+    func changeProjectName() {
+        let alert = UIAlertController(title: "Змінити назву", message: nil, preferredStyle: .alert)
+        alert.addTextField { (_ textField: UITextField) -> () in
+            textField.text = self.project?.projectName
+            textField.textAlignment = .center
+        }
+        let save = UIAlertAction(title: "Зберегти", style: .default) { (_) in
+            
+        }
+        let cansel = UIAlertAction(title: "Скасувати", style: .cancel)
+        alert.addAction(save)
+        alert.addAction(cansel)
+        present(alert, animated: true, completion: nil)
+    }
     
     func processingReturnedData(_ data: Data, indexPathRow: Int) {
         if let answer = try? JSONDecoder().decode(Error.self, from: data){
@@ -261,13 +292,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
             // create the url with URL
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
             
-//            self.deadlines.remove(at: indexPath.row)
             tableView.reloadData()
             
             postAndGetData(url, httpMethod: "DELETE") { data in
-//                if let answer = try? JSONDecoder().decode(Error.self, from: data) {
-//
-//                }
                 self.processingReturnedData(data, indexPathRow: indexPath.row)
             }
             tableView.isEditing = false
@@ -281,10 +308,10 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         print(indexPath.row)
 //        ViewManager.shared.toDetailVC()
         guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "DeadlineDetailsViewController") as? DeadlineDetailsViewController else { return }
-        DispatchQueue.main.async {
-            detailVC.deadline = self.deadlines[indexPath.row]
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
+        detailVC.deadline = self.deadlines[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
 }

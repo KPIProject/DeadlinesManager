@@ -20,10 +20,8 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     public var usersToAddName: [String] = []
     /// User`s usernames (all list)
     public var usersToAddUsername: [String] = []
-    /// User`s usernames deleted (last time)
-//    public var usernamesToDelete: [String] = []
-    /// User`s usernames to add (last time)
-//    public var usernamesToAdd: [String] = []
+    
+    public var titleToShow = ""
     
 //    public var usersToAdd: [User] = []
     private let searchController = UISearchController(searchResultsController: nil)
@@ -36,21 +34,29 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        setupTableView()
+        setupSearch()
+//        searchController.isActive = false
+        
+        self.title = titleToShow
+//        tableView.reloadData()
+    }
+    
+    private func setupTableView() {
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.delegate = self
         tableView.dataSource = self
-        
+    }
+    
+    private func setupSearch() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Почніть вводити логін"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-//        searchController.isActive = false
-        tableView.reloadData()
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -111,7 +117,9 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     
     @IBAction func didPressDone(_ sender: UIBarButtonItem) {
         delegate?.fillTextFieldWithUsers(names: usersToAddName, usernames: usersToAddUsername)
-        self.navigationController?.popViewController(animated: true)
+        // MARK: - uncomment for PUSH
+//        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
