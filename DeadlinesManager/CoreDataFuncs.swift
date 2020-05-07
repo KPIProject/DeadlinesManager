@@ -137,7 +137,7 @@ func fetchingCoreData() -> [Project] {
                         }
                     }
                     /// Fetch one deadline
-                    let deadline = Deadline(deadlineID: Int(projectDataDeadline.deadlineId), deadlineName: projectDataDeadline.deadlineName ?? "", deadlineDescription: projectDataDeadline.deadlineDescription ?? "", deadlineProjectID: Int(projectDataDeadline.deadlineProjectId), deadlineExecutors: deadlineUsersArray, deadlineCreatedTime: Int(projectDataDeadline.deadlineCreationTime), deadlineExecutionTime: Int(projectDataDeadline.deadlineExecutionTime))
+                    let deadline = Deadline(deadlineID: Int(projectDataDeadline.deadlineId), deadlineName: projectDataDeadline.deadlineName ?? "", deadlineDescription: projectDataDeadline.deadlineDescription ?? "", deadlineProjectID: Int(projectDataDeadline.deadlineProjectId), deadlineExecutors: deadlineUsersArray, deadlineCreatedTime: Int(projectDataDeadline.deadlineCreationTime), deadlineExecutionTime: Int(projectDataDeadline.deadlineExecutionTime), completeMark: false, completedBy: "")
                     
                     projectDeadlineArray.append(deadline)
                 }
@@ -146,7 +146,7 @@ func fetchingCoreData() -> [Project] {
             if let projectDataOwner = projectData.projectOwner {
                 let projectOwner = fetchOneUser(projectDataOwner)
             
-                let project = Project(projectID: Int(projectData.projectId), projectName: projectData.projectName ?? "", projectDescription: projectData.projectDescription ?? "", deadlines: projectDeadlineArray , projectOwner: projectOwner, projectUsers: projectUsersArray, projectUsersInvited: [], projectCreationTime: Int(projectData.projectCreationTime), projectExecutionTime: Int(projectData.projectExecutionTime))
+                let project = Project(projectID: Int(projectData.projectId), projectName: projectData.projectName ?? "", projectDescription: projectData.projectDescription ?? "", deadlines: projectDeadlineArray , projectOwner: projectOwner, projectUsers: projectUsersArray, projectUsersInvited: [], projectCreationTime: Int(projectData.projectCreationTime), projectExecutionTime: Int(projectData.projectExecutionTime), completeMark: false)
                 
                 projectsArray.append(project)
             }

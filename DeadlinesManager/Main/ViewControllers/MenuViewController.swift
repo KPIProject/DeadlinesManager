@@ -21,13 +21,20 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-
+//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationController?.navigationBar.backgroundColor = UIColor(displayP3Red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
+//        let cc = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.backgroundColor = #colorLiteral(red: 0.9497330785, green: 0.964420855, blue: 0.9139826894, alpha: 1)
+        tableView.backgroundColor = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
 
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
 
@@ -38,6 +45,11 @@ class MenuViewController: UIViewController {
 
         projectArray = fetchingCoreData()
         update()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setLargeTitleDisplayMode(.never)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -160,12 +172,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         print(indexPath.row)
 //        ViewManager.shared.toDetailVC()
         guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
-//        DispatchQueue.main.async {
         detailVC.project = self.projectArray[indexPath.row]
         detailVC.navigationItem.largeTitleDisplayMode = .always
         detailVC.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.pushViewController(detailVC, animated: true)
-//        }
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

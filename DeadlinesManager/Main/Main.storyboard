@@ -34,7 +34,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fXX-GB-ezh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Обліковий запис" id="7l5-yY-8W7">
                                 <cells>
@@ -84,6 +84,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9zO-Kg-qhK" id="FHP-5Z-yXr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
@@ -215,7 +216,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-T3-E1E">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="sectionIndexBackgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="fSZ-vA-l7b">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -267,7 +268,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="XIL-da-PRj" firstAttribute="leading" secondItem="fSZ-vA-l7b" secondAttribute="leading" constant="16" id="3lO-Ah-OOk"/>
                                         <constraint firstItem="ry3-2l-hRA" firstAttribute="top" secondItem="fSZ-vA-l7b" secondAttribute="top" constant="8" id="8y0-5Z-FxX"/>
@@ -306,9 +307,9 @@
                         <viewLayoutGuide key="safeArea" id="ePa-Jt-SnP"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="gmx-y8-X6J">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" landscapeImage="plus" style="done" id="uHz-vo-AxG">
-                            <color key="tintColor" red="0.4182890058" green="0.33524447680000002" blue="0.43398258090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="gmx-y8-X6J">
+                        <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" landscapeImage="plus.app.fill" style="done" id="uHz-vo-AxG">
+                            <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="m6Y-Dz-fVm" kind="show" id="Zis-jY-Vae"/>
                             </connections>
@@ -336,54 +337,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MJJ-fw-mUH">
-                                <rect key="frame" x="8" y="140" width="398" height="624"/>
+                                <rect key="frame" x="8" y="88" width="398" height="676"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-pA-Aaj">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть назву" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-XN-xbM">
-                                        <rect key="frame" x="0.0" y="35" width="398" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="398" height="40.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опис:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipT-sO-s3J">
-                                        <rect key="frame" x="0.0" y="87.5" width="398" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="92" width="398" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-gK-emf">
-                                        <rect key="frame" x="0.0" y="103" width="398" height="143.5"/>
+                                        <rect key="frame" x="0.0" y="128.5" width="398" height="155.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата дедлайна:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-AQ-wVA">
-                                        <rect key="frame" x="0.0" y="261.5" width="398" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="299" width="398" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjr-vM-Slg">
-                                        <rect key="frame" x="0.0" y="298" width="398" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="335.5" width="398" height="40.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pox-x5-bFe">
-                                        <rect key="frame" x="0.0" y="350.5" width="398" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="391" width="398" height="26"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Учасники:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Y-zB-ywm">
-                                                <rect key="frame" x="0.0" y="0.0" width="198" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="198" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roA-4A-y51">
-                                                <rect key="frame" x="198" y="0.0" width="200" height="21.5"/>
+                                                <rect key="frame" x="198" y="0.0" width="200" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="9q0-tP-Sax"/>
                                                 </constraints>
@@ -402,14 +403,14 @@
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ви ще не додали учасників" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YpS-yB-zpD">
-                                        <rect key="frame" x="0.0" y="387" width="398" height="87.5"/>
+                                        <rect key="frame" x="0.0" y="432" width="398" height="94.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="0.51163321167883213" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHl-Kd-ca4">
-                                        <rect key="frame" x="0.0" y="489.5" width="398" height="134.5"/>
+                                        <rect key="frame" x="0.0" y="541.5" width="398" height="134.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqA-gz-u6p">
                                                 <rect key="frame" x="99" y="44" width="200" height="46.5"/>
@@ -428,7 +429,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="rqA-gz-u6p" firstAttribute="centerX" secondItem="BHl-Kd-ca4" secondAttribute="centerX" id="SHp-1w-tHb"/>
                                             <constraint firstItem="rqA-gz-u6p" firstAttribute="centerY" secondItem="BHl-Kd-ca4" secondAttribute="centerY" id="sFa-eq-bHm"/>
@@ -444,7 +445,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -458,7 +459,7 @@
                             <outletCollection property="gestureRecognizers" destination="4SS-uC-EfG" appends="YES" id="iJu-FO-yU8"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="f40-rd-uv2"/>
+                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="f40-rd-uv2"/>
                     <connections>
                         <outlet property="addProjectButton" destination="rqA-gz-u6p" id="c0v-iJ-rjB"/>
                         <outlet property="deadlineDateTextField" destination="vjr-vM-Slg" id="Ta4-cC-xoq"/>
@@ -508,9 +509,10 @@
             <objects>
                 <navigationController id="hZQ-JE-gqu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Проекти" image="square.stack.3d.down.right" catalog="system" selectedImage="square.stack.3d.down.right.fill" id="E2D-4o-2yC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="prq-QL-Ec8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="prq-QL-Ec8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="uPl-ki-NML" kind="relationship" relationship="rootViewController" id="W4D-jY-lgK"/>
@@ -526,7 +528,8 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="settings" width="30" height="30"/>
         <image name="square.stack.3d.down.right" catalog="system" width="124" height="128"/>
         <image name="square.stack.3d.down.right.fill" catalog="system" width="124" height="128"/>

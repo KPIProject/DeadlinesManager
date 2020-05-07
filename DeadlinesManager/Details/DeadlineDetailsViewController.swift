@@ -22,6 +22,7 @@ class DeadlineDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .never
         
         doneButton.layer.cornerRadius = CGFloat(Double(doneButton.frame.height) / 3.5)
         deleteButton.layer.cornerRadius = CGFloat(Double(deleteButton.frame.height) / 3.5)

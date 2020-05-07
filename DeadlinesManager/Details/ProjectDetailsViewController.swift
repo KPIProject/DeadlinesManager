@@ -18,16 +18,16 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     private var usersToAddUsernames: [String] = []
     private var usersToAddNames: [String] = []
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.largeTitleDisplayMode = .always
+//        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+//        self.navigationController?.navigationBar.sizeToFit()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,7 +35,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
         
         title = project?.projectName
-        nameLabel.text = project?.projectName
+        dateLabel.text = project?.projectExecutionTime.toDateString()
         descriptionTextView.text = project?.projectDescription
         
         if let project = project {
@@ -43,7 +43,26 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         }
         
         formUsersArrays()
+//        configureNavigator()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setLargeTitleDisplayMode(.always)
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        DispatchQueue.main.async { [weak self] in
+//            self?.navigationController?.navigationBar.sizeToFit()
+//        }
+//    }
+    
+//    private func configureNavigator() {
+//        guard let navigationController = navigationController else { return }
+//        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationController.navigationBar.sizeToFit()
+//    }
     
     func formUsersArrays() {
         guard let users = project?.projectUsers else { return }
@@ -127,6 +146,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         
         } else if let answer = try? JSONDecoder().decode(Project.self, from: data) {
             print(answer)
+            project = answer
+//        } else {
+//            let dataString = String(data: data, encoding: .utf8)
+//            print(dataString)
         }
     }
     
@@ -237,4 +260,5 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
 }
+
 

@@ -32,11 +32,15 @@ struct Deadline: Codable {
     let deadlineExecutors: [User]?
     let deadlineCreatedTime: Int
     let deadlineExecutionTime: Int
+    let completeMark: Bool
+    let completedBy: String
+    
 
     enum CodingKeys: String, CodingKey {
         case deadlineID = "deadlineId"
-        case deadlineName, deadlineDescription, deadlineCreatedTime, deadlineExecutionTime, deadlineExecutors
         case deadlineProjectID = "deadlineProjectId"
+        case deadlineName, deadlineDescription, deadlineCreatedTime, deadlineExecutionTime, deadlineExecutors, completeMark, completedBy
+        
 //        case deadlineExecutorsUUID = "deadlineExecutorsUuid"
     }
 }
@@ -53,10 +57,11 @@ struct Project: Codable {
 //    let projectUsersUuid: [String]?
     let projectCreationTime: Int
     let projectExecutionTime: Int
+    let completeMark: Bool
 
     enum CodingKeys: String, CodingKey {
         case projectID = "projectId"
-        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectCreationTime, projectExecutionTime, projectUsersInvited
+        case projectName, projectDescription, deadlines, projectOwner, projectUsers, projectCreationTime, projectExecutionTime, projectUsersInvited, completeMark
     }
 }
 
