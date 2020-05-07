@@ -24,7 +24,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setLargeTitleDisplayMode(.always)
 //        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
 //        self.navigationController?.navigationBar.sizeToFit()
@@ -48,7 +48,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLargeTitleDisplayMode(.always)
+        
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +93,30 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func didPressEditButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Змінити", message: nil, preferredStyle: .actionSheet)
+        let editProjectName = UIAlertAction(title: "Назву", style: .default) { (_) in
+            
+        }
+        let editProjectDeadlineData = UIAlertAction(title: "Дату дедлайну", style: .default) { (_) in
+            
+        }
+        let editProjectDescription = UIAlertAction(title: "Редагувати опис", style: .default) { (_) in
+            
+        }
+        let deleteProject =  UIAlertAction(title: "Видалити проект", style: .destructive) { (_) in
+            
+        }
+        let cansel =  UIAlertAction(title: "Скасувати", style: .cancel) { (_) in
+            
+        }
+        alert.addAction(editProjectName)
+        alert.addAction(editProjectDeadlineData)
+        alert.addAction(editProjectDescription)
+        alert.addAction(deleteProject)
+        alert.addAction(cansel)
+        present(alert, animated: true, completion: nil)
+    }
     
     
     func processingReturnedData(_ data: Data, indexPathRow: Int) {

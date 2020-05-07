@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
         
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
-        
+        setLargeTitleDisplayMode(.never)
         navigationController?.navigationBar.backgroundColor = UIColor(displayP3Red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
 //        let cc = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
@@ -49,7 +49,7 @@ class MenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLargeTitleDisplayMode(.never)
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -171,11 +171,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
 //        ViewManager.shared.toDetailVC()
-        guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+        // guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+        guard let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
         detailVC.project = self.projectArray[indexPath.row]
-        detailVC.navigationItem.largeTitleDisplayMode = .always
-        detailVC.navigationController?.navigationBar.prefersLargeTitles = true
+        // detailVC.navigationItem.largeTitleDisplayMode = .always
+        // detailVC.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        
         
     }
     
