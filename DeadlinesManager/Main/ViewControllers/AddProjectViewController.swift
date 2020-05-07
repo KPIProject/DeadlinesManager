@@ -33,6 +33,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        navigationController?.navigationBar.shadowImage = UIImage()
         self.title = { () -> String in
             if isAddProject {
                 return "Новий проект"

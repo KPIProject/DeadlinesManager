@@ -24,11 +24,15 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLargeTitleDisplayMode(.always)
-//        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+//        setLargeTitleDisplayMode(.always)
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.sizeToFit()
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         
+//        self.navigationController?.navigationBar.sizeToFit()
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
+//                let cc = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
+//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -48,7 +52,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setLargeTitleDisplayMode(.always)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {

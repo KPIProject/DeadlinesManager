@@ -21,15 +21,15 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.largeTitleDisplayMode = .never
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
         
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
-        setLargeTitleDisplayMode(.never)
-        navigationController?.navigationBar.backgroundColor = UIColor(displayP3Red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
+//        setLargeTitleDisplayMode(.never)
+//        navigationController?.navigationBar.backgroundColor = UIColor(displayP3Red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
 //        let cc = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -171,7 +171,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
 //        ViewManager.shared.toDetailVC()
-        // guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+//         guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
         guard let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
         detailVC.project = self.projectArray[indexPath.row]
         // detailVC.navigationItem.largeTitleDisplayMode = .always
