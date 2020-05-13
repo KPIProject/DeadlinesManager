@@ -27,7 +27,7 @@ class MenuViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.backgroundColor = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
-
+        
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
 
         button1.layer.cornerRadius = CGFloat(Double(button1.frame.height) / 3.5)
@@ -163,8 +163,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.project = self.projectArray[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(detailVC, animated: true)
-        
-        
         
     }
     

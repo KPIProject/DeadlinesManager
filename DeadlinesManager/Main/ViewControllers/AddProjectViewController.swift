@@ -10,14 +10,15 @@ import UIKit
 
 class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var projectNameTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
     @IBOutlet weak var addProjectButton: UIButton!
-    @IBOutlet weak var membersTextView: UITextView!
+//    @IBOutlet weak var membersTextView: UITextView!
     @IBOutlet weak var deadlineDateTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     /// adding deadline if false
     var isAddProject = true
@@ -33,18 +34,28 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setLargeTitleDisplayMode(.always)
         self.title = { () -> String in
-            if isAddProject {
-                return "Новий проект"
-            } else {
-                return "Нова задача"
-            }
-        }()
+            if isAddProject { return "Новий проект" }
+            else { return "Нова задача" } }()
         
         addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
         
-        
+        setupTableView()
+        setupDatePicker()
+    }
+    
+    private func setupTableView() {
+        tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    
+    // MARK: - date Picker funcs
+    
+    private func setupDatePicker() {
         datePicker.datePickerMode = .date
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -60,11 +71,8 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         deadlineDateTextField.inputView = datePicker
         deadlineDateTextField.inputAccessoryView = toolbar
         deadlineDateTextField.text = (Int(Date().timeIntervalSince1970)).toDateString()
-
     }
     
-    
-    // MARK: - date Picker funcs
     @objc func doneAction() {
         timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
         view.endEditing(true)
@@ -76,7 +84,6 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
         deadlineDateTextField.text = formatter.string(from: datePicker.date)
         
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         projectNameTextField.resignFirstResponder()
@@ -225,9 +232,38 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
 //    }
     
     func fillTextFieldWithUsers(names: [String], usernames: [String]) {
-        membersTextView.text = usernames.joined(separator: ", ")
+//        membersTextView.text = usernames.joined(separator: ", ")
         usersToAddUsernames = usernames
         usersToAddNames = names
     }
 
+}
+
+
+extension AddProjectViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if usersToAddUsernames.count == 0 {
+            return 1
+        } else {
+            return usersToAddUsernames.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
+        
+        if usersToAddUsernames.count == 0 {
+            cell.nameLabel.text = "У цьому проекті ще немає учасників"
+            cell.detailLabel.text = "Натисніть ⨁ ➕, щоб додати"
+        } else {
+            cell.nameLabel.text = usersToAddUsernames[indexPath.row]
+            cell.detailLabel.text = usersToAddNames[indexPath.row]
+        }
+        cell.numberView.isHidden = true
+        cell.arrowView.isHidden = true
+        return cell
+    }
+    
+    
 }

@@ -23,7 +23,6 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     
     public var titleToShow = ""
     
-//    public var usersToAdd: [User] = []
     private let searchController = UISearchController(searchResultsController: nil)
     private var filtredUsers: [User] = []
     private var searchBarIsEmpty: Bool {
@@ -32,12 +31,12 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     }
     private var searchBarButtonWasTaped: Bool = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupSearch()
-//        searchController.isActive = false
         
         self.title = titleToShow
 //        tableView.reloadData()
