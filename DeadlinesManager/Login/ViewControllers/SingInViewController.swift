@@ -10,9 +10,9 @@ import UIKit
 
 class SingInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrolView: UIScrollView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var confirmPasswordLabel: UILabel!
-    @IBOutlet weak var secondNameLabel: UILabel!
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var confirmPasswordLabel: UILabel!
+//    @IBOutlet weak var secondNameLabel: UILabel!
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -23,8 +23,6 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
-    //    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
-    //    @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     
     
     var isLogin = false
@@ -34,49 +32,83 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
     var distance : CGFloat = 0
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        setUpTextFieldDelegate()
+        setUpCorrespondingFields()
         
+        
+//            print(stackViewHeightConstraint!)
+//            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.3)
+//            view.removeConstraint(stackViewHeightConstraint)
+//            view.addConstraint(newConstraint)
+//            view.layoutIfNeeded()
+//            stackViewHeightConstraint = newConstraint
+ 
+        confirmButton.layer.cornerRadius = CGFloat((Double(confirmButton.frame.height) ) / 3.5)
+    }
+    
+    
+    func setUpTextFieldDelegate() {
         nameTextField.delegate = self
         loginTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         secondNameTextField.delegate = self
+    }
+    
+    
+    /// Func adds or removes registration and login fields
+    func setUpCorrespondingFields() {
+        passwordTextField.layer.borderWidth = 2.0
+        passwordTextField.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+        passwordTextField.layer.cornerRadius = CGFloat((Double(passwordTextField.frame.height) ) / 3.5)
+        loginTextField.layer.borderWidth = 2.0
+        loginTextField.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+        loginTextField.layer.cornerRadius = CGFloat((Double(loginTextField.frame.height) ) / 3.5)
         
-        super.viewDidLoad()
         /// User pressed Login
         if isLogin {
-            nameLabel.isHidden = true
-            secondNameLabel.isHidden = true
-            confirmPasswordLabel.isHidden = true
-            nameTextField.isHidden = true
-            secondNameTextField.isHidden = true
-            confirmPasswordTextField.isHidden = true
-            confirmButton.setTitle("Увійти", for: .normal)
-            
-//            print(stackViewHeightConstraint!)
-            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.3)
+            self.title = "УВІЙТИ"
+            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.25)
             view.removeConstraint(stackViewHeightConstraint)
             view.addConstraint(newConstraint)
             view.layoutIfNeeded()
             stackViewHeightConstraint = newConstraint
+            loginTextField.placeholder = "  Введіть логін"
+            passwordTextField.placeholder = "  Введіть пароль"
+//            nameLabel.isHidden = true
+//            secondNameLabel.isHidden = true
+//            confirmPasswordLabel.isHidden = true
+            nameTextField.isHidden = true
+            secondNameTextField.isHidden = true
+            confirmPasswordTextField.isHidden = true
+            confirmButton.setTitle("УВІЙТИ", for: .normal)
         }
         /// User pressed Register
         if isRegister {
-            nameLabel.isHidden = false
-            secondNameLabel.isHidden = false
-            confirmPasswordLabel.isHighlighted = false
+            self.title = "РЕЄСТРАЦІЯ"
+//           nameLabel.isHidden = false
+//           secondNameLabel.isHidden = false
+//           confirmPasswordLabel.isHighlighted = false
             nameTextField.isHidden = false
             secondNameTextField.isHidden = false
             confirmPasswordTextField.isHidden = false
-            confirmButton.setTitle("Зареєструватися", for: .normal)
-        }
+            confirmButton.setTitle("ЗАРЕЄСТРУВАТИСЯ", for: .normal)
+            
+            nameTextField.layer.borderWidth = 2.0
+            nameTextField.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+            nameTextField.layer.cornerRadius = CGFloat((Double(nameTextField.frame.height) ) / 3.5)
+            secondNameTextField.layer.borderWidth = 2.0
+            secondNameTextField.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+            secondNameTextField.layer.cornerRadius = CGFloat((Double(secondNameTextField.frame.height) ) / 3.5)
+            confirmPasswordTextField.layer.borderWidth = 2.0
+            confirmPasswordTextField.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+            confirmPasswordTextField.layer.cornerRadius = CGFloat((Double(confirmPasswordTextField.frame.height) ) / 3.5)
+       }
         
-        confirmButton.layer.cornerRadius = CGFloat((Double(confirmButton.frame.height) ) / 3.5)
-        registerForKeybourdNotofications()
     }
     
-    deinit {
-        removeKeybourdNotofications()
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
@@ -88,71 +120,9 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
-
-
-    func registerForKeybourdNotofications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func removeKeybourdNotofications() {
-        NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-//            scrolView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            scrolView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
-
-        }
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//
-//            var safeArea = self.view.frame
-//            safeArea.size.height += scrolView.contentOffset.y
-//            safeArea.size.height -= keyboardSize.height + (UIScreen.main.bounds.height*0.04) // Adjust buffer to your liking
-//
-//            // determine which UIView was selected and if it is covered by keyboard
-//
-//            let activeField: UIView? = [nameTextField, loginTextField, passwordTextField, confirmPasswordTextField, secondNameTextField].first { $0.isFirstResponder }
-//            if let activeField = activeField {
-//                if safeArea.contains(CGPoint(x: 0, y: activeField.frame.maxY)) {
-//                    print("No need to Scroll")
-//                    return
-//                } else {
-//                    distance = activeField.frame.maxY - safeArea.size.height
-//                    scrollOffset = scrolView.contentOffset.y
-//                    self.scrolView.setContentOffset(CGPoint(x: 0, y: scrollOffset + distance), animated: true)
-//                }
-//            }
-//            // prevent scrolling while typing
-//
-//            scrolView.isScrollEnabled = false
-//        }
-    }
     
     @objc func keyboardWillHide() {
         scrolView.contentOffset = CGPoint.zero
-//        if distance == 0 {
-//            return
-//        }
-//        // return to origin scrollOffset
-//        self.scrolView.setContentOffset(CGPoint(x: 0, y: scrollOffset), animated: true)
-//        scrollOffset = 0
-//        distance = 0
-//        scrollView.isScrollEnabled = true
     }
     
     @IBAction func didPressSignInButton(_ sender: UIButton) {
@@ -200,13 +170,6 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         let numbersRange = str?.rangeOfCharacter(from: .decimalDigits)
         return (numbersRange != nil)
     }
-    
-//    public func noticeAlert(message: String) -> UIAlertController {
-//        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-//        let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//        alert.addAction(okBtn)
-//        return alert
-//    }
 
     
     /// Sends data to serser using URL and get returned data from server

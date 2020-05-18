@@ -14,8 +14,12 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpBetton.layer.cornerRadius = CGFloat((Double(signUpBetton.frame.height) ) / 2.5)
-        singInButton.layer.cornerRadius = CGFloat((Double(singInButton.frame.height) ) / 2.5)
+        signUpBetton.layer.cornerRadius = CGFloat((Double(signUpBetton.frame.height) ) / 3.5)
+        singInButton.layer.cornerRadius = CGFloat((Double(singInButton.frame.height) ) / 3.5)
+        signUpBetton.layer.borderWidth = 2.0
+        singInButton.layer.borderWidth = 2.0
+        signUpBetton.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
+        singInButton.layer.borderColor = #colorLiteral(red: 0.0536134094, green: 0.1874043941, blue: 0.2290870845, alpha: 1)
         
     }
     
