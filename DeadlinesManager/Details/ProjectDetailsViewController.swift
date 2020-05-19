@@ -33,7 +33,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         super.viewDidLoad()
         setLargeTitleDisplayMode(.always)
         setupTableView()
-        formDeadlinesArras()
+        formDeadlinesArrays()
         formUsersArrays()
         reloadData()
         
@@ -59,7 +59,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
      - array with completed deadlines
      - array with uncompleted deadlines
      */
-    func formDeadlinesArras()  {
+    func formDeadlinesArrays()  {
         if let deadlines = project?.deadlines {
             for deadline in deadlines{
                 if deadline.completeMark {
@@ -138,61 +138,42 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
     }
     
     @IBAction func didPressEditButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Змінити", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         let editProject = UIAlertAction(title: "Редагувати проект", style: .default) { (_) in
             self.changeProjectDescription()
+        }
+        let completeProject = UIAlertAction(title: "Помітити як виконаний", style: .default) { (_) in
+            self.setCompleteMack()
         }
         let deleteProject =  UIAlertAction(title: "Видалити проект", style: .destructive) { (_) in
             
         }
         let cansel =  UIAlertAction(title: "Скасувати", style: .cancel)
         alert.addAction(editProject)
+        alert.addAction(completeProject)
         alert.addAction(deleteProject)
         alert.addAction(cansel)
         present(alert, animated: true, completion: nil)
     }
     
+    func setCompleteMack() {
+        let projectID = String(describing: self.project?.projectID ?? 0)
+        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/setProjectComplete")!
+        postAndGetData(url, httpMethod: "POST") { data in
+            self.processingReturnedData(data, indexPath: nil)
+        }
+    }
+    
     func changeProjectDescription() {
-        
         guard let editVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController else { return }
         editVC.project = project
         editVC.delegate = self
         
-        
         let navigationC = UINavigationController()
         navigationC.viewControllers = [editVC]
         present(navigationC, animated: true, completion: nil)
-        
     }
     
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "bounds"{
-//            if let rect = (change?[NSKeyValueChangeKey.newKey] as? NSValue)?.cgRectValue {
-//                let margin: CGFloat = 8
-//                let xPos = rect.origin.x + margin
-//                let yPos = rect.origin.y + 54
-//                let width = rect.width - 2 * margin
-//                let height: CGFloat = 90
-//
-//                textView.frame = CGRect.init(x: xPos, y: yPos, width: width, height: height)
-//            }
-//        }
-//    }
-    
-//    func changeProjectName() {
-//        let alert = UIAlertController(title: "Змінити назву", message: nil, preferredStyle: .alert)
-//        alert.addTextField { (_ textField: UITextField) -> () in
-//            textField.text = self.project?.projectName
-//            textField.textAlignment = .center
-//        }
-//        let save = UIAlertAction(title: "Зберегти", style: .default) { (_) in
-//
-//        }
-//        let cansel = UIAlertAction(title: "Скасувати", style: .cancel)
-//        alert.addAction(save)
-//        alert.addAction(cansel)
-//        present(alert, animated: true, completion: nil)
-//    }
     
     func processingReturnedData(_ data: Data, indexPath: IndexPath?) {
         if let answer = try? JSONDecoder().decode(Error.self, from: data){
@@ -251,7 +232,11 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
             print(answer)
             project = answer
             DispatchQueue.main.async {
-                self.reloadData()
+                if self.project?.completeMark ?? false {
+                    self.present(self.noticeAlert(message: "Проект відмічений як виконаний"), animated: true, completion: nil)
+                } else {
+                    self.reloadData()
+                }
             }
         } else if let answer = try? JSONDecoder().decode(Deadline.self, from: data) {
             DispatchQueue.main.async {
@@ -322,7 +307,7 @@ extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
     }
 }
 
-
+// MARK: - UITableViewDataSource
 extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
