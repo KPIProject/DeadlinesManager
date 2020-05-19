@@ -24,32 +24,39 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLargeTitleDisplayMode(.always)
+        setupTableView()
+        reloadData()
+        formUsersArrays()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
-        
+    }
+    
+    /// Reload information in ProjectDetailsViewController
+    func reloadData() {
         title = project?.projectName
         dateLabel.text = project?.projectExecutionTime.toDateString()
         descriptionTextView.text = project?.projectDescription
-        
         if let project = project {
             deadlines = project.deadlines
         }
-        
-        formUsersArrays()
     }
     
-
-    /// Form arrays with project users
-    ///
-    ///     - array with Usernames
-    ///     - array with Names
+    /// Table View settings
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
+    }
+    
+    /**
+    Form arrays with project users.
+     - array with Usernames
+     - array with Names
+     */
     func formUsersArrays() {
         guard let users = project?.projectUsers else { return }
         for user in users {
@@ -59,13 +66,11 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     /**
-        Presents SearchTableViewController with list of users after press Members Button
-     
-            Transmits information:
-                - usersToAddName (user`s names)
-                - usersToAddUsername (user`s usernames)
-                - titleToShow (title)
-     
+    Presents SearchTableViewController with list of users after press Members Button.
+    Transmits information:
+    - usersToAddName (user`s names)
+    - usersToAddUsername (user`s usernames)
+    - titleToShow (title)
      */
     @IBAction func didPressMembers(_ sender: UIButton) {
         guard let searchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
@@ -90,7 +95,6 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
        - usersToAddName (user`s names)
        - usersToAddUsername (user`s usernames)
        - titleToShow (title)
-    
     */
     @IBAction func didPressAddTask(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectAndDeadlineViewController else { return }
@@ -102,15 +106,6 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func didPressEditButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "Змінити", message: nil, preferredStyle: .actionSheet)
-//        let editProjectName = UIAlertAction(title: "Назву", style: .default) { (_) in
-//            self.changeProjectName()
-//        }
-//        let editProjectDeadlineData = UIAlertAction(title: "Дату дедлайну", style: .default) { (_) in
-//
-//        }
-//        let editProjectDescription = UIAlertAction(title: "Редагувати опис", style: .default) { (_) in
-//            self.changeProjectDescription()
-//        }
         let editProject = UIAlertAction(title: "Редагувати проект", style: .default) { (_) in
             self.changeProjectDescription()
         }
@@ -118,9 +113,6 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
             
         }
         let cansel =  UIAlertAction(title: "Скасувати", style: .cancel)
-//        alert.addAction(editProjectName)
-//        alert.addAction(editProjectDeadlineData)
-//        alert.addAction(editProjectDescription)
         alert.addAction(editProject)
         alert.addAction(deleteProject)
         alert.addAction(cansel)
@@ -128,25 +120,6 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changeProjectDescription() {
-//        let alertController = UIAlertController(title: "Feedback \n\n\n\n\n", message: nil, preferredStyle: .alert)
-//
-//        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default) { (action) in
-//            alertController.view.removeObserver(self, forKeyPath: "bounds")
-//        }
-//        alertController.addAction(cancelAction)
-//
-//        let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
-//            let enteredText = self.textView.text
-//            alertController.view.removeObserver(self, forKeyPath: "bounds")
-//        }
-//        alertController.addAction(saveAction)
-//
-//        alertController.view.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
-//        textView.backgroundColor = UIColor.white
-//        textView.textContainerInset = UIEdgeInsets.init(top: 8, left: 5, bottom: 8, right: 5)
-//        alertController.view.addSubview(self.textView)
-//
-//        self.present(alertController, animated: true, completion: nil)
         
         guard let editVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController else { return }
         editVC.project = project
@@ -240,9 +213,9 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         } else if let answer = try? JSONDecoder().decode(Project.self, from: data) {
             print(answer)
             project = answer
-//        } else {
-//            let dataString = String(data: data, encoding: .utf8)
-//            print(dataString)
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
     }
     

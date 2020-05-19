@@ -40,6 +40,10 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             if isAddProject { return "Новий проект" }
             else { return "Нова задача" } }()
         
+        addProjectButton.titleLabel?.text = { () -> String in
+        if isAddProject { return "Додати проект" }
+        else { return "Додати задачу" } }()
+        
         addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
         
         setupTableView()
@@ -97,11 +101,13 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
     @IBAction func didPressAddMember(_ sender: UIButton) {
         guard let serchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
         serchVC.delegate = self
-        DispatchQueue.main.async {
-            serchVC.usersToAddName = self.usersToAddNames
-            serchVC.usersToAddUsername = self.usersToAddUsernames
-            self.navigationController?.pushViewController(serchVC, animated: true)
-        }
+        serchVC.usersToAddName = self.usersToAddNames
+        serchVC.usersToAddUsername = self.usersToAddUsernames
+        let navigationC = UINavigationController()
+        navigationC.viewControllers = [serchVC]
+        present(navigationC, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(serchVC, animated: true)
+        
     }
     
     @IBAction func tapOnScreen(_ sender: UITapGestureRecognizer) {
@@ -205,6 +211,10 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Користувач з таким ім'ям не існує!"), animated: true, completion: nil)
                 }
+            case "User to add is not in this project":
+                DispatchQueue.main.async {
+                    self.present(self.noticeAlert(message: "Користувача, якого ви хочете додати нема в цьому проекті"), animated: true, completion: nil)
+                }
             default:
                 break
             }
@@ -235,6 +245,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
 //        membersTextView.text = usernames.joined(separator: ", ")
         usersToAddUsernames = usernames
         usersToAddNames = names
+        tableView.reloadData()
     }
 
 }
@@ -254,8 +265,8 @@ extension AddProjectAndDeadlineViewController: UITableViewDataSource,UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         
         if usersToAddUsernames.count == 0 {
-            cell.nameLabel.text = "У цьому проекті ще немає учасників"
-            cell.detailLabel.text = "Натисніть ⨁ ➕, щоб додати"
+            cell.nameLabel.text = "Тут ще немає учасників"
+            cell.detailLabel.text = "Натисніть ➕, щоб додати"
         } else {
             cell.nameLabel.text = usersToAddUsernames[indexPath.row]
             cell.detailLabel.text = usersToAddNames[indexPath.row]
@@ -264,6 +275,19 @@ extension AddProjectAndDeadlineViewController: UITableViewDataSource,UITableView
         cell.arrowView.isHidden = true
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
+            self.usersToAddUsernames.remove(at: indexPath.row)
+            self.usersToAddNames.remove(at: indexPath.row)
+            tableView.reloadData()
+            tableView.isEditing = false
+        }
+        let config = UISwipeActionsConfiguration(actions: [delete])
+        return config
+    }
+
     
     
 }

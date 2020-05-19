@@ -60,7 +60,7 @@ class EditProjectViewController: UIViewController, UITextFieldDelegate {
         
         deadlineDateTextField.inputView = datePicker
         deadlineDateTextField.inputAccessoryView = toolbar
-        deadlineDateTextField.text = (Int(Date().timeIntervalSince1970)).toDateString()
+//        deadlineDateTextField.text = (Int(Date().timeIntervalSince1970)).toDateString()
     }
     
     @objc func doneAction() {
@@ -80,12 +80,18 @@ class EditProjectViewController: UIViewController, UITextFieldDelegate {
         descriptionTextView.resignFirstResponder()
         return true
     }
-    
-    @IBAction func didPressDoneButton(_ sender: UIBarButtonItem) {
+    @IBAction func didPressDoneButton(_ sender: UIButton) {
         let parameters = ["projectName" : nameTextField.text ?? "", "projectDescription" : descriptionTextView.text ?? "", "projectExecutionTime" : timeIntervalFromDatePicker] as [String : Any]
         delegate?.transmitEditDeadlineInformation(parameters: parameters)
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+//    @IBAction func didPressDoneButton(_ sender: UIBarButtonItem) {
+//        let parameters = ["projectName" : nameTextField.text ?? "", "projectDescription" : descriptionTextView.text ?? "", "projectExecutionTime" : timeIntervalFromDatePicker] as [String : Any]
+//        delegate?.transmitEditDeadlineInformation(parameters: parameters)
+//        
+//        self.dismiss(animated: true, completion: nil)
+//    }
     
 }
