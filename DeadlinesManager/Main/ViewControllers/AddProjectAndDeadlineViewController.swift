@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
+class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
     
 //    @IBOutlet weak var nameLabel: UILabel!
 //    @IBOutlet weak var descriptionLabel: UILabel!
@@ -240,7 +240,7 @@ class AddProjectViewController: UIViewController, UITextFieldDelegate, SearchTab
 }
 
 
-extension AddProjectViewController: UITableViewDataSource,UITableViewDelegate {
+extension AddProjectAndDeadlineViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if usersToAddUsernames.count == 0 {

@@ -46,7 +46,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    
+    /// Form arrays with project users
+    ///
+    ///     - array with Usernames
+    ///     - array with Names
     func formUsersArrays() {
         guard let users = project?.projectUsers else { return }
         for user in users {
@@ -55,6 +58,15 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    /**
+        Presents SearchTableViewController with list of users after press Members Button
+     
+            Transmits information:
+                - usersToAddName (user`s names)
+                - usersToAddUsername (user`s usernames)
+                - titleToShow (title)
+     
+     */
     @IBAction func didPressMembers(_ sender: UIButton) {
         guard let searchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
         searchVC.delegate = self
@@ -67,62 +79,84 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         navigationC.viewControllers = [searchVC]
         
         present(navigationC, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(serchVC, animated: true)
     }
     
+    /**
+    Push DeadlineDetailsViewController  press Add Task Button
+    - Parameters:
+        - sender: Add Task Button
+
+   Transmits information:
+       - usersToAddName (user`s names)
+       - usersToAddUsername (user`s usernames)
+       - titleToShow (title)
     
+    */
     @IBAction func didPressAddTask(_ sender: UIButton) {
-        guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectViewController else { return }
+        guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectAndDeadlineViewController else { return }
             
-        DispatchQueue.main.async {
-            addVC.isAddProject = false
-            addVC.projectID = String(self.project?.projectID ?? 0)
-            self.navigationController?.pushViewController(addVC, animated: true)
-        }
+        addVC.isAddProject = false
+        addVC.projectID = String(self.project?.projectID ?? 0)
+        self.navigationController?.pushViewController(addVC, animated: true)
     }
     
     @IBAction func didPressEditButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "Змінити", message: nil, preferredStyle: .actionSheet)
-        let editProjectName = UIAlertAction(title: "Назву", style: .default) { (_) in
-            self.changeProjectName()
-        }
-        let editProjectDeadlineData = UIAlertAction(title: "Дату дедлайну", style: .default) { (_) in
-            
-        }
-        let editProjectDescription = UIAlertAction(title: "Редагувати опис", style: .default) { (_) in
+//        let editProjectName = UIAlertAction(title: "Назву", style: .default) { (_) in
+//            self.changeProjectName()
+//        }
+//        let editProjectDeadlineData = UIAlertAction(title: "Дату дедлайну", style: .default) { (_) in
+//
+//        }
+//        let editProjectDescription = UIAlertAction(title: "Редагувати опис", style: .default) { (_) in
+//            self.changeProjectDescription()
+//        }
+        let editProject = UIAlertAction(title: "Редагувати проект", style: .default) { (_) in
             self.changeProjectDescription()
         }
         let deleteProject =  UIAlertAction(title: "Видалити проект", style: .destructive) { (_) in
             
         }
         let cansel =  UIAlertAction(title: "Скасувати", style: .cancel)
-        alert.addAction(editProjectName)
-        alert.addAction(editProjectDeadlineData)
-        alert.addAction(editProjectDescription)
+//        alert.addAction(editProjectName)
+//        alert.addAction(editProjectDeadlineData)
+//        alert.addAction(editProjectDescription)
+        alert.addAction(editProject)
         alert.addAction(deleteProject)
         alert.addAction(cansel)
         present(alert, animated: true, completion: nil)
     }
+    
     func changeProjectDescription() {
-        let alertController = UIAlertController(title: "Feedback \n\n\n\n\n", message: nil, preferredStyle: .alert)
-
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default) { (action) in
-            alertController.view.removeObserver(self, forKeyPath: "bounds")
-        }
-        alertController.addAction(cancelAction)
-
-        let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
-            let enteredText = self.textView.text
-            alertController.view.removeObserver(self, forKeyPath: "bounds")
-        }
-        alertController.addAction(saveAction)
-
-        alertController.view.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
-        textView.backgroundColor = UIColor.white
-        textView.textContainerInset = UIEdgeInsets.init(top: 8, left: 5, bottom: 8, right: 5)
-        alertController.view.addSubview(self.textView)
-
-        self.present(alertController, animated: true, completion: nil)
+//        let alertController = UIAlertController(title: "Feedback \n\n\n\n\n", message: nil, preferredStyle: .alert)
+//
+//        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default) { (action) in
+//            alertController.view.removeObserver(self, forKeyPath: "bounds")
+//        }
+//        alertController.addAction(cancelAction)
+//
+//        let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+//            let enteredText = self.textView.text
+//            alertController.view.removeObserver(self, forKeyPath: "bounds")
+//        }
+//        alertController.addAction(saveAction)
+//
+//        alertController.view.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
+//        textView.backgroundColor = UIColor.white
+//        textView.textContainerInset = UIEdgeInsets.init(top: 8, left: 5, bottom: 8, right: 5)
+//        alertController.view.addSubview(self.textView)
+//
+//        self.present(alertController, animated: true, completion: nil)
+        
+        guard let editVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController else { return }
+        editVC.project = project
+        editVC.delegate = self
+        
+        
+        let navigationC = UINavigationController()
+        navigationC.viewControllers = [editVC]
+        present(navigationC, animated: true, completion: nil)
+        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -154,12 +188,12 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func processingReturnedData(_ data: Data, indexPathRow: Int) {
+    func processingReturnedData(_ data: Data, indexPathRow: Int?) {
         if let answer = try? JSONDecoder().decode(Error.self, from: data){
             switch answer.message {
             case "User not found":
                 DispatchQueue.main.async {
-                    self.present(self.noticeAlert(message: "Сталася помилка при видалені."), animated: true, completion: nil)
+                    self.present(self.noticeAlert(message: "Помилка прав доступу."), animated: true, completion: nil)
                 }
             case "Project not found":
                 DispatchQueue.main.async {
@@ -196,7 +230,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
             case "Deleted":
                 DispatchQueue.main.async {
                     print("Deleted")
-                    self.deadlines.remove(at: indexPathRow)
+                    self.deadlines.remove(at: indexPathRow ?? 0)
                     self.tableView.reloadData()
             }
             default:
@@ -213,7 +247,6 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
 }
 
 // MARK: - зробить reload data для VC (щоб обновлять після редагування)
@@ -228,14 +261,14 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
                 // create the url with URL
                 let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
                 postAndGetData(url, httpMethod: "POST") { data in
-                    self.processingReturnedData(data, indexPathRow: 0)
+                    self.processingReturnedData(data, indexPathRow: nil)
                 }
             }
             for user in usersToDelete {
                 // create the url with URL
                 let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/deleteUserFromProject/\(user)")!
                 postAndGetData(url, httpMethod: "DELETE") { data in
-                    self.processingReturnedData(data, indexPathRow: 0)
+                    self.processingReturnedData(data, indexPathRow: nil)
                 }
             }
             
@@ -261,6 +294,17 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
         }
         return (usersToAdd: usersToAdd, usersToDelete: usersToDelete)
     }
+}
+
+extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
+    func transmitEditDeadlineInformation(parameters: [String : Any]) {
+        let projectID = String(describing: self.project?.projectID ?? 0)
+        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
+        postDataWithParameters(url, parameters) { data in
+            self.processingReturnedData(data, indexPathRow: nil)
+        }
+    }
+    
 }
 
 
