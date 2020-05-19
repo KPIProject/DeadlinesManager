@@ -8,41 +8,43 @@
 
 import UIKit
 
-class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
+class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddProjectAndDeadlineViewControllerDelegate{
     
 
     public var project: Project?
-    private var deadlines: [Deadline] = []
+    private var completedDeadlines: [Deadline] = []
+    private var unCompletedDeadlines: [Deadline] = []
     
     /// information for SearchTableViewController
     private var usersToAddUsernames: [String] = []
     private var usersToAddNames: [String] = []
-    
+    private var invitedUsersUserames: [String] = []
+    private var invitedUsersNames: [String] = []
+    private var isShowCompletedDeadlines: Bool = false
     private let textView = UITextView(frame: CGRect.zero)
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var membersButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLargeTitleDisplayMode(.always)
         setupTableView()
-        reloadData()
+        formDeadlinesArras()
         formUsersArrays()
+        reloadData()
         
     }
     
-    /// Reload information in ProjectDetailsViewController
+    /// Reload Project information in ProjectDetailsViewController
     func reloadData() {
         title = project?.projectName
         dateLabel.text = project?.projectExecutionTime.toDateString()
         descriptionTextView.text = project?.projectDescription
-        if let project = project {
-            deadlines = project.deadlines
-        }
+        membersButton.setTitle(String(usersToAddNames.count), for: .normal)
     }
     
     /// Table View settings
@@ -53,15 +55,39 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     /**
+    Form arrays with project deadlines.
+     - array with completed deadlines
+     - array with uncompleted deadlines
+     */
+    func formDeadlinesArras()  {
+        if let deadlines = project?.deadlines {
+            for deadline in deadlines{
+                if deadline.completeMark {
+                    completedDeadlines.append(deadline)
+                } else {
+                    unCompletedDeadlines.append(deadline)
+                }
+            }
+        }
+    }
+    
+    /**
     Form arrays with project users.
      - array with Usernames
      - array with Names
      */
     func formUsersArrays() {
-        guard let users = project?.projectUsers else { return }
-        for user in users {
-            usersToAddUsernames.append(user.username)
-            usersToAddNames.append(user.userFirstName + " " + user.userSecondName)
+        if let users = project?.projectUsers {
+            for user in users {
+                usersToAddUsernames.append(user.username)
+                usersToAddNames.append(user.userFirstName + " " + user.userSecondName)
+            }
+        }
+        if let usersInvited = project?.projectUsersInvited {
+            for user in usersInvited {
+                invitedUsersUserames.append(user.username)
+                invitedUsersNames.append(user.userFirstName + " " + user.userSecondName)
+            }
         }
     }
     
@@ -77,8 +103,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         searchVC.delegate = self
         searchVC.usersToAddName = self.usersToAddNames
         searchVC.usersToAddUsername = self.usersToAddUsernames
-        searchVC.titleToShow = "Учасники проекта"
-        
+        searchVC.invitedName = self.invitedUsersNames
+        searchVC.invitedUsername = self.invitedUsersUserames
+        searchVC.titleToShow = ""
+        searchVC.isHideSegmentControl = false
         let navigationC = UINavigationController()
         
         navigationC.viewControllers = [searchVC]
@@ -98,10 +126,15 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
     */
     @IBAction func didPressAddTask(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectAndDeadlineViewController else { return }
-            
+        addVC.delegate = self
         addVC.isAddProject = false
         addVC.projectID = String(self.project?.projectID ?? 0)
         self.navigationController?.pushViewController(addVC, animated: true)
+    }
+    
+    func addDeadline(_ deadline: Deadline) {
+        self.unCompletedDeadlines.append(deadline)
+        tableView.reloadData()
     }
     
     @IBAction func didPressEditButton(_ sender: UIButton) {
@@ -132,36 +165,36 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "bounds"{
-            if let rect = (change?[NSKeyValueChangeKey.newKey] as? NSValue)?.cgRectValue {
-                let margin: CGFloat = 8
-                let xPos = rect.origin.x + margin
-                let yPos = rect.origin.y + 54
-                let width = rect.width - 2 * margin
-                let height: CGFloat = 90
-
-                textView.frame = CGRect.init(x: xPos, y: yPos, width: width, height: height)
-            }
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "bounds"{
+//            if let rect = (change?[NSKeyValueChangeKey.newKey] as? NSValue)?.cgRectValue {
+//                let margin: CGFloat = 8
+//                let xPos = rect.origin.x + margin
+//                let yPos = rect.origin.y + 54
+//                let width = rect.width - 2 * margin
+//                let height: CGFloat = 90
+//
+//                textView.frame = CGRect.init(x: xPos, y: yPos, width: width, height: height)
+//            }
+//        }
+//    }
     
-    func changeProjectName() {
-        let alert = UIAlertController(title: "Змінити назву", message: nil, preferredStyle: .alert)
-        alert.addTextField { (_ textField: UITextField) -> () in
-            textField.text = self.project?.projectName
-            textField.textAlignment = .center
-        }
-        let save = UIAlertAction(title: "Зберегти", style: .default) { (_) in
-            
-        }
-        let cansel = UIAlertAction(title: "Скасувати", style: .cancel)
-        alert.addAction(save)
-        alert.addAction(cansel)
-        present(alert, animated: true, completion: nil)
-    }
+//    func changeProjectName() {
+//        let alert = UIAlertController(title: "Змінити назву", message: nil, preferredStyle: .alert)
+//        alert.addTextField { (_ textField: UITextField) -> () in
+//            textField.text = self.project?.projectName
+//            textField.textAlignment = .center
+//        }
+//        let save = UIAlertAction(title: "Зберегти", style: .default) { (_) in
+//
+//        }
+//        let cansel = UIAlertAction(title: "Скасувати", style: .cancel)
+//        alert.addAction(save)
+//        alert.addAction(cansel)
+//        present(alert, animated: true, completion: nil)
+//    }
     
-    func processingReturnedData(_ data: Data, indexPathRow: Int?) {
+    func processingReturnedData(_ data: Data, indexPath: IndexPath?) {
         if let answer = try? JSONDecoder().decode(Error.self, from: data){
             switch answer.message {
             case "User not found":
@@ -203,7 +236,11 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
             case "Deleted":
                 DispatchQueue.main.async {
                     print("Deleted")
-                    self.deadlines.remove(at: indexPathRow ?? 0)
+                    if indexPath?.section == 0 {
+                        self.unCompletedDeadlines.remove(at: indexPath?.row ?? 0)
+                    } else {
+                        self.completedDeadlines.remove(at: indexPath?.row ?? 0)
+                    }
                     self.tableView.reloadData()
             }
             default:
@@ -216,15 +253,21 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 self.reloadData()
             }
+        } else if let answer = try? JSONDecoder().decode(Deadline.self, from: data) {
+            DispatchQueue.main.async {
+                self.completedDeadlines.append(answer)
+                self.unCompletedDeadlines.remove(at: indexPath?.row ?? 0)
+                self.tableView.reloadData()
+            }
         }
     }
     
     
 }
 
-// MARK: - зробить reload data для VC (щоб обновлять після редагування)
 
 extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
+    
     func fillTextFieldWithUsers(names: [String], usernames: [String]) {
         if usernames != usersToAddUsernames {
             let (usersToAdd, usersToDelete) = addDeleteUsers(usernames)
@@ -234,20 +277,19 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
                 // create the url with URL
                 let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
                 postAndGetData(url, httpMethod: "POST") { data in
-                    self.processingReturnedData(data, indexPathRow: nil)
+                    self.processingReturnedData(data, indexPath: nil)
                 }
             }
             for user in usersToDelete {
                 // create the url with URL
                 let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/deleteUserFromProject/\(user)")!
                 postAndGetData(url, httpMethod: "DELETE") { data in
-                    self.processingReturnedData(data, indexPathRow: nil)
+                    self.processingReturnedData(data, indexPath: nil)
                 }
             }
-            
-            
             usersToAddUsernames = usernames
             usersToAddNames = names
+            reloadData()
         }
     }
     
@@ -270,66 +312,156 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
 }
 
 extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
+    
     func transmitEditDeadlineInformation(parameters: [String : Any]) {
         let projectID = String(describing: self.project?.projectID ?? 0)
         let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
         postDataWithParameters(url, parameters) { data in
-            self.processingReturnedData(data, indexPathRow: nil)
+            self.processingReturnedData(data, indexPath: nil)
         }
     }
-    
 }
 
 
 extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Невиконані"
+        case 1:
+            return "Виконані"
+        default:
+            return nil
+        }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if isShowCompletedDeadlines {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deadlines.count
+        if isShowCompletedDeadlines {
+            switch section {
+            case 0:
+                return unCompletedDeadlines.count
+            case 1:
+                return completedDeadlines.count + 1
+            default:
+                return 0
+            }
+        } else {
+            return unCompletedDeadlines.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
-        let deadline = deadlines[indexPath.row]
-        let deadlineDate = Date(timeIntervalSince1970: TimeInterval(deadline.deadlineExecutionTime))
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
         
-        cell.nameLabel.text = deadline.deadlineName
-        cell.detailLabel.text = formatter.string(from: deadlineDate)
+        if !isShowCompletedDeadlines && indexPath.section == 0 && indexPath.row == unCompletedDeadlines.count {
+            cell.nameLabel.text = "Показати виконані"
+            cell.detailLabel.text = ""
+            cell.arrowView.isHidden = true
+            cell.nameLabel.textAlignment = .center
+        } else if isShowCompletedDeadlines && indexPath.section == 1 && indexPath.row == completedDeadlines.count{
+            cell.nameLabel.text = "Сховати виконані"
+            cell.detailLabel.text = ""
+            cell.arrowView.isHidden = true
+            cell.nameLabel.textAlignment = .center
+        } else {
+            if indexPath.section == 0 {
+                let deadline = unCompletedDeadlines[indexPath.row]
+                cell.nameLabel.text = deadline.deadlineName
+                cell.detailLabel.text = deadline.deadlineExecutionTime.toDateString()
+            } else if indexPath.section == 1 {
+                let deadline = completedDeadlines[indexPath.row]
+                cell.nameLabel.text = deadline.deadlineName
+                cell.detailLabel.text = deadline.deadlineExecutionTime.toDateString()
+            }
+            cell.nameLabel.textAlignment = .left
+            cell.arrowView.isHidden = false
+        }
         cell.numberView.isHidden = true
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
+        if (indexPath.section == 0 && indexPath.row != unCompletedDeadlines.count) || (indexPath.section == 1 && indexPath.row != completedDeadlines.count) {
+            let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
+                let projectID = String(describing: self.project?.projectID ?? 0)
+                var deadlineID: String {
+                    if indexPath.section == 0 {
+                        return String(describing: self.unCompletedDeadlines[indexPath.row].deadlineID)
+                    } else {
+                        return String(describing: self.completedDeadlines[indexPath.row].deadlineID)
+                    }
+                }
+                // create the url with URL
+                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
+                
+                tableView.reloadData()
+                
+                postAndGetData(url, httpMethod: "DELETE") { data in
+                    self.processingReturnedData(data, indexPath: indexPath)
+                }
+                tableView.isEditing = false
+            }
+            let config = UISwipeActionsConfiguration(actions: [delete])
+            return config
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 0 && indexPath.row != unCompletedDeadlines.count {
+            let setCompleteMark = UIContextualAction(style: .normal, title: "Виконано") { (action, view, completion) in
             let projectID = String(describing: self.project?.projectID ?? 0)
-            let deadlineID = String(describing: self.deadlines[indexPath.row].deadlineID)
+            let deadlineID = String(describing: self.unCompletedDeadlines[indexPath.row].deadlineID)
             // create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
+            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/setDeadlineComplete")!
             
             tableView.reloadData()
-            
-            postAndGetData(url, httpMethod: "DELETE") { data in
-                self.processingReturnedData(data, indexPathRow: indexPath.row)
+            postAndGetData(url, httpMethod: "POST") { data in
+                self.processingReturnedData(data, indexPath: indexPath)
             }
             tableView.isEditing = false
+            }
+            setCompleteMark.backgroundColor = #colorLiteral(red: 0.5589603608, green: 0.4478357141, blue: 0.5812303601, alpha: 1)
+            let config = UISwipeActionsConfiguration(actions: [setCompleteMark])
+            return config
+        } else {
+            return nil
         }
-        let config = UISwipeActionsConfiguration(actions: [delete])
-        return config
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-//        ViewManager.shared.toDetailVC()
-        guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "DeadlineDetailsViewController") as? DeadlineDetailsViewController else { return }
-        detailVC.deadline = self.deadlines[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        
+
+        if !isShowCompletedDeadlines && indexPath.row == unCompletedDeadlines.count {
+            isShowCompletedDeadlines = true
+            tableView.reloadData()
+        } else if isShowCompletedDeadlines && indexPath.row == completedDeadlines.count{
+            isShowCompletedDeadlines = false
+            tableView.reloadData()
+        } else {
+            guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "DeadlineDetailsViewController") as? DeadlineDetailsViewController else { return }
+            
+            if indexPath.section == 0 {
+                detailVC.deadline = self.unCompletedDeadlines[indexPath.row]
+            } else if indexPath.section == 1 {
+                detailVC.deadline = self.completedDeadlines[indexPath.row]
+            }
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
+    
     
 }
 

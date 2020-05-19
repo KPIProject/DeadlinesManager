@@ -28,6 +28,7 @@ func updateCoreData(data: [Project], complition: @escaping () -> ()) {
             projectData.projectDescription = project.projectDescription
             projectData.projectCreationTime = Int64(project.projectCreationTime)
             projectData.projectExecutionTime = Int64(project.projectExecutionTime)
+            projectData.completeMark = project.completeMark
             
             let userData = userToUserData(project.projectOwner, managedContext)
 //            let deadlineData = deadlineToDeadlineData(project.deadlines, managedContext)
@@ -80,6 +81,7 @@ func deadlineToDeadlineData (_ deadline: Deadline?, _ managedContext: NSManagedO
     deadlineData.deadlineProjectId = Int16(deadline?.deadlineProjectID ?? 0)
     deadlineData.deadlineCreationTime = Int64(deadline?.deadlineCreatedTime ?? 0)
     deadlineData.deadlineExecutionTime = Int64(deadline?.deadlineExecutionTime ?? 0)
+    deadlineData.completeMark = deadline?.completeMark ?? false
     
     var deadlineUsersArray: [UserData] = []
     
@@ -137,7 +139,14 @@ func fetchingCoreData() -> [Project] {
                         }
                     }
                     /// Fetch one deadline
-                    let deadline = Deadline(deadlineID: Int(projectDataDeadline.deadlineId), deadlineName: projectDataDeadline.deadlineName ?? "", deadlineDescription: projectDataDeadline.deadlineDescription ?? "", deadlineProjectID: Int(projectDataDeadline.deadlineProjectId), deadlineExecutors: deadlineUsersArray, deadlineCreatedTime: Int(projectDataDeadline.deadlineCreationTime), deadlineExecutionTime: Int(projectDataDeadline.deadlineExecutionTime), completeMark: false, completedBy: "")
+                    let deadline = Deadline(deadlineID: Int(projectDataDeadline.deadlineId),
+                                            deadlineName: projectDataDeadline.deadlineName ?? "",
+                                            deadlineDescription: projectDataDeadline.deadlineDescription ?? "",
+                                            deadlineProjectID: Int(projectDataDeadline.deadlineProjectId),
+                                            deadlineExecutors: deadlineUsersArray,
+                                            deadlineCreatedTime: Int(projectDataDeadline.deadlineCreationTime),
+                                            deadlineExecutionTime: Int(projectDataDeadline.deadlineExecutionTime),
+                                            completeMark: projectDataDeadline.completeMark, completedBy: "")
                     
                     projectDeadlineArray.append(deadline)
                 }
@@ -146,7 +155,16 @@ func fetchingCoreData() -> [Project] {
             if let projectDataOwner = projectData.projectOwner {
                 let projectOwner = fetchOneUser(projectDataOwner)
             
-                let project = Project(projectID: Int(projectData.projectId), projectName: projectData.projectName ?? "", projectDescription: projectData.projectDescription ?? "", deadlines: projectDeadlineArray , projectOwner: projectOwner, projectUsers: projectUsersArray, projectUsersInvited: [], projectCreationTime: Int(projectData.projectCreationTime), projectExecutionTime: Int(projectData.projectExecutionTime), completeMark: false)
+                let project = Project(projectID: Int(projectData.projectId),
+                                      projectName: projectData.projectName ?? "",
+                                      projectDescription: projectData.projectDescription ?? "",
+                                      deadlines: projectDeadlineArray ,
+                                      projectOwner: projectOwner,
+                                      projectUsers: projectUsersArray,
+                                      projectUsersInvited: [],
+                                      projectCreationTime: Int(projectData.projectCreationTime),
+                                      projectExecutionTime: Int(projectData.projectExecutionTime),
+                                      completeMark: projectData.completeMark)
                 
                 projectsArray.append(project)
             }

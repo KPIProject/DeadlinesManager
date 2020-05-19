@@ -183,9 +183,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ozL-bc-epP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ozL-bc-epP">
                                 <rect key="frame" x="8" y="44" width="398" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -223,7 +222,8 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry3-2l-hRA">
                                             <rect key="frame" x="16" y="8" width="183" height="80"/>
-                                            <color key="backgroundColor" red="0.68045765160000005" green="0.40023863320000003" blue="0.51260614400000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.82250434080798274" green="0.42214820514132206" blue="0.54759236135957501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title=" Сьогодні" image="sun.max" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -236,6 +236,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pav-5C-X2J">
                                             <rect key="frame" x="215" y="8" width="183" height="80"/>
                                             <color key="backgroundColor" red="0.53551053751780819" green="0.73541224988904119" blue="0.70825094970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Заплановано" image="calendar" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -244,7 +245,8 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-xJ-kGV">
                                             <rect key="frame" x="16" y="100" width="183" height="80"/>
-                                            <color key="backgroundColor" red="0.15821889040000001" green="0.26385146380000002" blue="0.32568314669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.15206977124637466" green="0.25537803676340581" blue="0.31606623680152279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="tintColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="   Для вас" image="person" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,11 +256,14 @@
                                                 <action selector="didPressForYouButton:" destination="uPl-ki-NML" eventType="touchUpInside" id="v1Y-ng-Jhb"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOL-Lv-YLE">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOL-Lv-YLE">
                                             <rect key="frame" x="215" y="100" width="183" height="80"/>
-                                            <color key="backgroundColor" red="0.4182890058" green="0.33524447680000002" blue="0.43398258090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Button4">
+                                            <color key="backgroundColor" red="0.46536189939988765" green="0.33565632731137052" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="tintColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Зaпрошення" image="plus.bubble" catalog="system">
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Проекти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIL-da-PRj">
@@ -590,16 +595,34 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="9kv-dM-9c4">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dY1-7g-84A">
+                            <rect key="frame" x="98.5" y="5.5" width="217" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.94857853650000001" green="0.95024508240000005" blue="0.96689516310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <segments>
+                                <segment title="Учасники"/>
+                                <segment title="Запрошені"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="selectedSegmentTintColor" red="0.26045626202947708" green="0.43739665230415575" blue="0.54133987258832483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didPressSegmentControl:" destination="aSt-Ng-I1r" eventType="valueChanged" id="5I9-uj-bNZ"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="vLp-Te-5EL">
                             <connections>
                                 <action selector="didPressDone:" destination="aSt-Ng-I1r" id="vRR-Zk-ucM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentControl" destination="dY1-7g-84A" id="MvQ-5E-DL2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VeC-L0-LFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-371" y="1489"/>
+            <point key="canvasLocation" x="-371.01449275362324" y="1488.6160714285713"/>
         </scene>
         <!--Проекти-->
         <scene sceneID="GbU-d1-Qh2">
@@ -798,8 +821,10 @@
                     <connections>
                         <outlet property="dateLabel" destination="I3G-9p-cKU" id="f4U-7F-XNP"/>
                         <outlet property="descriptionTextView" destination="ieK-Ee-CP6" id="3c9-c9-c4q"/>
+                        <outlet property="membersButton" destination="QUI-8M-SmK" id="Vrc-6N-zxU"/>
                         <outlet property="tableView" destination="HQY-9N-8Be" id="OQv-3B-PwD"/>
                         <segue destination="kHa-zj-dvF" kind="show" id="VUK-GX-uEg"/>
+                        <segue destination="aSt-Ng-I1r" kind="show" id="bFa-MX-i31"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIz-bv-Vli" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -814,6 +839,7 @@
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.bubble" catalog="system" width="128" height="110"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="settings" width="30" height="30"/>
         <image name="square.stack.3d.down.right" catalog="system" width="124" height="128"/>

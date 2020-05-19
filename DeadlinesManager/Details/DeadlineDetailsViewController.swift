@@ -54,7 +54,7 @@ class DeadlineDetailsViewController: UIViewController {
     @IBAction func didPressDeadlineExecutorsButton(_ sender: UIButton) {
     }
 
-    func deleteDeadline(_ answer: Error, indexPathRow: Int) {
+    func deleteExecutor(_ answer: Error, indexPathRow: Int) {
         switch answer.message {
         case "User not found":
             DispatchQueue.main.async {
@@ -127,7 +127,7 @@ extension DeadlineDetailsViewController: UITableViewDelegate, UITableViewDataSou
             tableView.reloadData()
             postAndGetData(url, httpMethod: "DELETE") { data in
                 if let answer = try? JSONDecoder().decode(Error.self, from: data) {
-                    self.deleteDeadline(answer, indexPathRow: indexPath.row)
+                    self.deleteExecutor(answer, indexPathRow: indexPath.row)
                 }
             }
             tableView.isEditing = false

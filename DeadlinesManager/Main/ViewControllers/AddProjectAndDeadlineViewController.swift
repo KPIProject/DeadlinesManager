@@ -8,10 +8,13 @@
 
 import UIKit
 
+protocol AddProjectAndDeadlineViewControllerDelegate {
+    func addDeadline(_ deadline: Deadline)
+}
+
 class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
-    
-//    @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var descriptionLabel: UILabel!
+
+    var delegate: AddProjectAndDeadlineViewControllerDelegate?
     
     @IBOutlet weak var projectNameTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
@@ -40,9 +43,9 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             if isAddProject { return "Новий проект" }
             else { return "Нова задача" } }()
         
-        addProjectButton.titleLabel?.text = { () -> String in
+        addProjectButton.setTitle({ () -> String in
         if isAddProject { return "Додати проект" }
-        else { return "Додати задачу" } }()
+        else { return "Додати задачу" } }(), for: .normal) 
         
         addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
         
@@ -103,6 +106,8 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
         serchVC.delegate = self
         serchVC.usersToAddName = self.usersToAddNames
         serchVC.usersToAddUsername = self.usersToAddUsernames
+        serchVC.titleToShow = "Додати учасників:"
+        serchVC.isHideSegmentControl = true
         let navigationC = UINavigationController()
         navigationC.viewControllers = [serchVC]
         present(navigationC, animated: true, completion: nil)
@@ -142,7 +147,6 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
 
             postAndGetData(url, parameters)
-//            isAddProject = true
         }
     }
     // MARK: - ВИНЕСТИ
@@ -223,9 +227,10 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
                 DispatchQueue.main.async {
                     ViewManager.shared.toMainVC()
                 }
-            } else if !isAddProject && ((try? JSONDecoder().decode(Deadline.self, from: data)) != nil) {
+            } else if !isAddProject, let deadline = try? JSONDecoder().decode(Deadline.self, from: data) {
                 isAddProject = true
                 DispatchQueue.main.async {
+                    self.delegate?.addDeadline(deadline)
                     self.navigationController?.popViewController(animated: true)
                 }
             }

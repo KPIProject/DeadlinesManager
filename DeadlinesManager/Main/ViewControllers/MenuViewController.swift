@@ -150,7 +150,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let ownerName = (owner?.userFirstName ?? "") + " " + (owner?.userSecondName ?? "")
         cell.nameLabel.text = project.projectName
         cell.detailLabel.text = "Власник: " + ownerName
-        cell.numberRightLabel.text = String(project.deadlines.count)
+        var deadlinesNumber = 0
+        for deadline in project.deadlines {
+            if !deadline.completeMark {
+                deadlinesNumber += 1
+            }
+        }
+        cell.numberRightLabel.text = String(deadlinesNumber)
         cell.numberView.isHidden = false
 
         return cell

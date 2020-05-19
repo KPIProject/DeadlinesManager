@@ -102,11 +102,11 @@
 		5D33CD8E24293EF600E7454B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */,
 				5D616B1824255C8A00A72E33 /* MenuViewController.swift */,
 				5D616B142422BE6800A72E33 /* AddProjectAndDeadlineViewController.swift */,
 				5DA4B1F82432818000C4262B /* SettingsTableViewController.swift */,
 				5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */,
-				5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -13,22 +13,29 @@ protocol SearchTableViewControllerDelegate {
 }
 
 class SearchTableViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate {
-
+    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     var delegate: SearchTableViewControllerDelegate?
     
     /// User`s first and second names (all list)
     public var usersToAddName: [String] = []
     /// User`s usernames (all list)
     public var usersToAddUsername: [String] = []
+    /// User`s first and second names (all list)
+    public var invitedName: [String] = []
+    /// User`s usernames (all list)
+    public var invitedUsername: [String] = []
     
     public var titleToShow = ""
+    public var isHideSegmentControl = true
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var filtredUsers: [User] = []
-    private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false }
-        return text.isEmpty
-    }
+//    private var searchBarIsEmpty: Bool {
+//        guard let text = searchController.searchBar.text else { return false }
+//        return text.isEmpty
+//    }
     private var searchBarButtonWasTaped: Bool = false
     
     
@@ -37,7 +44,9 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         
         setupTableView()
         setupSearch()
-        
+        if isHideSegmentControl {
+            segmentControl.isHidden = true
+        }
         self.title = titleToShow
 //        tableView.reloadData()
     }
@@ -52,7 +61,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Почніть вводити логін"
+        searchController.searchBar.placeholder = "Почніть вводити логін щоб додати"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -114,36 +123,34 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         
     }
     
-    @IBAction func didPressDone(_ sender: UIBarButtonItem) {
-        delegate?.fillTextFieldWithUsers(names: usersToAddName, usernames: usersToAddUsername)
-        // MARK: - uncomment for PUSH
-//        self.navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func didPressSegmentControl(_ sender: UISegmentedControl) {
+        tableView.reloadData()
     }
     
-    
+    @IBAction func didPressDone(_ sender: UIBarButtonItem) {
+        delegate?.fillTextFieldWithUsers(names: usersToAddName, usernames: usersToAddUsername)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filtredUsers = []
-
         getDataFromServer()
         tableView.reloadData()
     }
-    
-//    private func filterContentForSearchText(_ searchText)
     
 }
 
 extension SearchTableViewController {
     
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if searchController.isActive {
             return filtredUsers.count
+        } else if segmentControl.selectedSegmentIndex == 1 {
+            return invitedName.count
         } else {
             return usersToAddName.count
         }
@@ -161,8 +168,17 @@ extension SearchTableViewController {
             cell.detailTextLabel?.text = user.userFirstName + " " + user.userSecondName
         } else {
             print("NOT isFilterering")
-            cell.textLabel?.text = usersToAddUsername[indexPath.row]
-            cell.detailTextLabel?.text = usersToAddName[indexPath.row]
+            switch segmentControl.selectedSegmentIndex {
+            case 0:
+                cell.textLabel?.text = usersToAddUsername[indexPath.row]
+                cell.detailTextLabel?.text = usersToAddName[indexPath.row]
+            case 1:
+                cell.textLabel?.text = invitedUsername[indexPath.row]
+                cell.detailTextLabel?.text = invitedName[indexPath.row]
+            default:
+                print("Error")
+            }
+            
         }
         
         return cell
@@ -183,7 +199,7 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        if searchController.isActive {
+        if searchController.isActive || segmentControl.selectedSegmentIndex == 1 {
             tableView.isEditing = false
             return nil
         } else {
