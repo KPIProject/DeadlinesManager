@@ -9,43 +9,68 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    /// Table View
     @IBOutlet var tableView: UITableView!
+    
+    /// Today (Сьогодні) button
     @IBOutlet var button1: UIButton!
+    
+    /// Sheduled (Заплановано) button
     @IBOutlet var button2: UIButton!
+    
+    /// For you (Для вас) button
     @IBOutlet var button3: UIButton!
+    
+    /// Invited (Запрошення) button
     @IBOutlet var button4: UIButton!
 
+    /// Array with UNcompleted projects
     var unCompletedProjects: [Project] = []
+    
+    /// Array with completed projects
     var completedProjects: [Project] = []
     
+    /// False if completed not shown
     private var isShowCompletedProjects = false
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLargeTitleDisplayMode(.never)
-        setupTableView()
         
-        button1.layer.cornerRadius = CGFloat(Double(button1.frame.height) / 3.5)
-        button2.layer.cornerRadius = CGFloat(Double(button2.frame.height) / 3.5)
-        button3.layer.cornerRadius = CGFloat(Double(button3.frame.height) / 3.5)
-        button4.layer.cornerRadius = CGFloat(Double(button4.frame.height) / 3.5)
+        setupTableView()
+        setupButtons()
+        
         formProjectsArrays()
         update()
     }
     
-    /// Table View settings
-    func setupTableView() {
+    override func viewDidAppear(_ animated: Bool) {
+        update()
+    }
+    
+    /**
+     Make buttons rounded
+     */
+    private func setupButtons() {
+        button1.layer.cornerRadius = CGFloat(Double(button1.frame.height) / 3.5)
+        button2.layer.cornerRadius = CGFloat(Double(button2.frame.height) / 3.5)
+        button3.layer.cornerRadius = CGFloat(Double(button3.frame.height) / 3.5)
+        button4.layer.cornerRadius = CGFloat(Double(button4.frame.height) / 3.5)
+    }
+    
+    /**
+     Table View settings
+     */
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9485785365, green: 0.9502450824, blue: 0.9668951631, alpha: 1)
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        update()
-    }
-
     /**
     Form arrays with projects.
      - array with completed projects
@@ -63,14 +88,20 @@ class MenuViewController: UIViewController {
             }
         }
     }
-
+    
+    /**
+     Update projects from server when viewDidAppear
+    */
     func update() {
         // create the url with URL
         let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/allProjects")!
         postAndGetData(url, httpMethod: "GET")
     }
 
-    /// Sends data to serser using URL and get returned data from server
+    /**
+     Sends data to serser using URL and get returned data from server
+     Recieve array of projects, cast it  and form
+    */
     func postAndGetData(_ url: URL, httpMethod: String) {
         // create the session object
         let session = URLSession.shared
@@ -101,6 +132,11 @@ class MenuViewController: UIViewController {
         task.resume()
     }
     
+    /**
+     Function which calls when user need to delete project.
+     And if server return error, throw it.
+     - Parameter answer: answer from server
+    */
     func deleteProject(_ answer: Error) {
         switch answer.message {
         case "User not found":
@@ -124,12 +160,19 @@ class MenuViewController: UIViewController {
             break
         }
     }
+    
+    /**
+     Button which push `AddProjectAndDeadlineViewController` if needed
+     */
     @IBAction func didPressAddProjectButton(_ sender: UIBarButtonItem) {
         guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectAndDeadlineViewController else { return }
         addVC.isAddProject = true
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
+    /**
+     Button which push `SortedDeadlinesViewController` if needed
+    */
     @IBAction func didPressTodayButton(_ sender: UIButton) {
         guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
         DispatchQueue.main.async {
@@ -138,13 +181,20 @@ class MenuViewController: UIViewController {
         }
     }
 
+    /**
+     Button which push `` if needed
+    */
     @IBAction func didPressForYouButton(_ sender: UIButton) {
     }
 }
 
+
 // MARK: - UITableViewDataSource
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
+    /**
+     TableView func: titleForHeaderInSection
+     */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -156,6 +206,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    /**
+     TableView func: numberOfSections
+    */
     func numberOfSections(in tableView: UITableView) -> Int {
         if isShowCompletedProjects {
             return 2
@@ -164,6 +217,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    /**
+     TableView func: numberOfRowsInSection
+    */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isShowCompletedProjects {
             switch section {
@@ -179,6 +235,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    /**
+     TableView func: cellForRowAt
+    */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         
@@ -229,6 +288,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    /**
+     TableView func: didSelectRowAt
+    */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         if !isShowCompletedProjects && indexPath.row == unCompletedProjects.count {
@@ -251,6 +313,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    /**
+     TableView func: trailingSwipeActionsConfigurationForRowAt
+    */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if (indexPath.section == 0 && indexPath.row != unCompletedProjects.count) || (indexPath.section == 1 && indexPath.row != completedProjects.count) {
             let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
