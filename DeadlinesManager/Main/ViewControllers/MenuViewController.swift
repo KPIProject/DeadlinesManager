@@ -66,7 +66,7 @@ class MenuViewController: UIViewController {
 
     func update() {
         // create the url with URL
-        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/allProjects")!
+        let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/allProjects")!
         postAndGetData(url, httpMethod: "GET")
     }
 
@@ -124,7 +124,12 @@ class MenuViewController: UIViewController {
             break
         }
     }
-
+    @IBAction func didPressAddProjectButton(_ sender: UIBarButtonItem) {
+        guard let addVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddProjectViewController") as? AddProjectAndDeadlineViewController else { return }
+        addVC.isAddProject = true
+        self.navigationController?.pushViewController(addVC, animated: true)
+    }
+    
     @IBAction func didPressTodayButton(_ sender: UIButton) {
         guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
         DispatchQueue.main.async {
@@ -257,7 +262,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
                 // create the url with URL
-                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/deleteProject")!
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/deleteProject")!
                 self.unCompletedProjects.remove(at: indexPath.row)
                 tableView.reloadData()
                 self.postAndGetData(url, httpMethod: "DELETE")

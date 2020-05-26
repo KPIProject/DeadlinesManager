@@ -10,9 +10,6 @@ import UIKit
 
 class SingInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrolView: UIScrollView!
-//    @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var confirmPasswordLabel: UILabel!
-//    @IBOutlet weak var secondNameLabel: UILabel!
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -133,7 +130,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
             let parameters = ["username" : loginTextField.text ?? "", "password" : passwordTextField.text ?? ""] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://localhost:8080/login")! //change the url
+            let url = URL(string: "http://192.168.31.88:8080/login")! //change the url
 
             postAndGetData(url, parameters)
 
@@ -158,7 +155,7 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
                 let parameters = ["userFirstName": nameTextField.text ?? "", "userSecondName": secondNameTextField.text ?? "", "username" : loginTextField.text ?? "", "password" : passwordTextField.text ?? ""] as [String : Any]
 
                 //create the url with URL
-                let url = URL(string: "http://localhost:8080/registration")! //change the url
+                let url = URL(string: "http://192.168.31.88:8080/registration")! //change the url
                 
                 postAndGetData(url, parameters)
             }

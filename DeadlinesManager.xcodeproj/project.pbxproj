@@ -14,7 +14,6 @@
 		5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */; };
 		5D55CC1B2461C83000760257 /* DeadlineDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D55CC1A2461C83000760257 /* DeadlineDetailsViewController.swift */; };
 		5D55CC1D2461F18C00760257 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D55CC1C2461F18C00760257 /* ServerManager.swift */; };
-		5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D616B0A241BA0B300A72E33 /* Main.storyboard */; };
 		5D616B0D241BA30B00A72E33 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0C241BA30B00A72E33 /* Settings.swift */; };
 		5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0E241BA72500A72E33 /* ViewManager.swift */; };
 		5D616B11241C513600A72E33 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B10241C513600A72E33 /* Struct.swift */; };
@@ -31,6 +30,7 @@
 		5DA4B1FB2433C1BE00C4262B /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FA2433C1BE00C4262B /* ProjectDetailsViewController.swift */; };
 		5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4B1FC2433DEA100C4262B /* ProjectDetails.storyboard */; };
 		5DA69BBB24577E65004C0575 /* SortedDeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA69BBA24577E65004C0575 /* SortedDeadlinesViewController.swift */; };
+		5DE1E5FA247DAFD0003A6080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D616B0A241BA0B300A72E33 /* Main.storyboard */; };
 		5DEB1FD224571F5100934933 /* ProjectAndDeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD024571F5100934933 /* ProjectAndDeadlineTableViewCell.swift */; };
 		5DEB1FD324571F5100934933 /* ProjectAndDeadlineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB1FD124571F5100934933 /* ProjectAndDeadlineTableViewCell.xib */; };
 		5DF872C32473F3840023F03B /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF872C22473F3840023F03B /* EditProjectViewController.swift */; };
@@ -239,8 +239,8 @@
 				5D6B04322410F87D00AA7D3B /* LaunchScreen.storyboard in Resources */,
 				5D6B042F2410F87D00AA7D3B /* Assets.xcassets in Resources */,
 				5DA4B1FD2433DEA100C4262B /* ProjectDetails.storyboard in Resources */,
+				5DE1E5FA247DAFD0003A6080 /* Main.storyboard in Resources */,
 				5D6B042D2410F87800AA7D3B /* Login.storyboard in Resources */,
-				5D616B0B241BA0B300A72E33 /* Main.storyboard in Resources */,
 				5DEB1FD324571F5100934933 /* ProjectAndDeadlineTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

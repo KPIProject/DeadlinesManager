@@ -84,7 +84,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
             self.searchBarButtonWasTaped = false
             
         } else {
-            guard let url = URL(string: "http://localhost:8080/findByUsername/\(login)") else { return }
+            guard let url = URL(string: "http://192.168.31.88:8080/findByUsername/\(login)") else { return }
             //create the session object
             let session = URLSession.shared
 

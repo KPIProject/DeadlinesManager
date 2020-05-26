@@ -19,7 +19,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var projectNameTextField: UITextField!
     @IBOutlet weak var projectDescriptionTextView: UITextView!
     @IBOutlet weak var addProjectButton: UIButton!
-//    @IBOutlet weak var membersTextView: UITextView!
+    //    @IBOutlet weak var membersTextView: UITextView!
     @IBOutlet weak var deadlineDateTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -135,7 +135,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervalFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUsernames] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/createProjectDebug")! //change the url
+            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/createProjectDebug")! //change the url
 
             postAndGetData(url, parameters)
             
@@ -144,7 +144,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             let parameters = ["deadline": ["deadlineName" : projectNameTextField.text ?? "", "deadlineDescription" : projectDescriptionTextView.text ?? "", "deadlineExecutionTime" : timeIntervalFromDatePicker , "deadlineCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUsernames] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
+            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/addDeadline")! //change the url
 
             postAndGetData(url, parameters)
         }

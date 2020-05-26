@@ -158,7 +158,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
     
     func setCompleteMack() {
         let projectID = String(describing: self.project?.projectID ?? 0)
-        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/setProjectComplete")!
+        let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/setProjectComplete")!
         postAndGetData(url, httpMethod: "POST") { data in
             self.processingReturnedData(data, indexPath: nil)
         }
@@ -260,14 +260,14 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
             
             for user in usersToAdd {
                 // create the url with URL
-                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
                 postAndGetData(url, httpMethod: "POST") { data in
                     self.processingReturnedData(data, indexPath: nil)
                 }
             }
             for user in usersToDelete {
                 // create the url with URL
-                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/deleteUserFromProject/\(user)")!
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/deleteUserFromProject/\(user)")!
                 postAndGetData(url, httpMethod: "DELETE") { data in
                     self.processingReturnedData(data, indexPath: nil)
                 }
@@ -300,7 +300,7 @@ extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
     
     func transmitEditDeadlineInformation(parameters: [String : Any]) {
         let projectID = String(describing: self.project?.projectID ?? 0)
-        let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
+        let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
         postDataWithParameters(url, parameters) { data in
             self.processingReturnedData(data, indexPath: nil)
         }
@@ -387,7 +387,7 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 // create the url with URL
-                let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/deleteDeadline")!
                 
                 tableView.reloadData()
                 
@@ -409,7 +409,7 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
             let projectID = String(describing: self.project?.projectID ?? 0)
             let deadlineID = String(describing: self.unCompletedDeadlines[indexPath.row].deadlineID)
             // create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/setDeadlineComplete")!
+            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/\(deadlineID)/setDeadlineComplete")!
             
             tableView.reloadData()
             postAndGetData(url, httpMethod: "POST") { data in

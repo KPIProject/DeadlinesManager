@@ -51,7 +51,7 @@ class SettingsTableViewController: UITableViewController {
             // create the session object
             let session = URLSession.shared
             // create the url with URL
-            let url = URL(string: "http://localhost:8080/\(self.settings.uuID)/deleteUser")!
+            let url = URL(string: "http://192.168.31.88:8080/\(self.settings.uuID)/deleteUser")!
             // now create the URLRequest object using the url object
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"

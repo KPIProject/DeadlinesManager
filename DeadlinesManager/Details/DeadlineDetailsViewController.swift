@@ -122,7 +122,7 @@ extension DeadlineDetailsViewController: UITableViewDelegate, UITableViewDataSou
             let deadlineID = String(self.deadline?.deadlineID ?? 0)
             
             // create the url with URL
-            let url = URL(string: "http://localhost:8080/\(Settings.shared.uuID)/\(deadlineProjectID)/\(deadlineID)/deleteExecutorFromDeadline/\(self.executors[indexPath.row].username)")!
+            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(deadlineProjectID)/\(deadlineID)/deleteExecutorFromDeadline/\(self.executors[indexPath.row].username)")!
             
             tableView.reloadData()
             postAndGetData(url, httpMethod: "DELETE") { data in
