@@ -8,24 +8,44 @@
 
 import UIKit
 
-class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddProjectAndDeadlineViewControllerDelegate{
-    
+class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddProjectAndDeadlineViewControllerDelegate {
 
+    /// Project which shown
     public var project: Project?
+    
+    /// Deadlines which complete
     private var completedDeadlines: [Deadline] = []
+    
+    /// Deadlines which unComplete
     private var unCompletedDeadlines: [Deadline] = []
     
-    /// information for SearchTableViewController
+    // Information for SearchTableViewController
+    /// Usernames of users which actualy in project
     private var usersToAddUsernames: [String] = []
-    private var usersToAddNames: [String] = []
-    private var invitedUsersUserames: [String] = []
-    private var invitedUsersNames: [String] = []
-    private var isShowCompletedDeadlines: Bool = false
-    private let textView = UITextView(frame: CGRect.zero)
     
+    /// Names of users which actualy in project
+    private var usersToAddNames: [String] = []
+    
+    /// Usernames of users which invited
+    private var invitedUsersUserames: [String] = []
+    
+    /// Names of users which invited
+    private var invitedUsersNames: [String] = []
+    
+    /// False if not to show completed deadlines
+    private var isShowCompletedDeadlines: Bool = false
+    
+    
+    /// Label with date
     @IBOutlet weak var dateLabel: UILabel!
+    
+    /// Label with description
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    /// Table view
     @IBOutlet weak var tableView: UITableView!
+    
+    /// Member button in nav bar (with count off users)
     @IBOutlet weak var membersButton: UIButton!
     
     
@@ -39,7 +59,9 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         
     }
     
-    /// Reload Project information in ProjectDetailsViewController
+    /**
+     Reload Project information in ProjectDetailsViewController
+     */
     func reloadData() {
         title = project?.projectName
         dateLabel.text = project?.projectExecutionTime.toDateString()
@@ -47,8 +69,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         membersButton.setTitle(String(usersToAddNames.count), for: .normal)
     }
     
-    /// Table View settings
-    func setupTableView() {
+    /**
+     Table View settings
+     */
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
@@ -92,11 +116,12 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
     }
     
     /**
-    Presents SearchTableViewController with list of users after press Members Button.
-    Transmits information:
-    - usersToAddName (user`s names)
-    - usersToAddUsername (user`s usernames)
-    - titleToShow (title)
+     Presents SearchTableViewController with list of users after press Members Button.
+     
+     Transmits information:
+        - usersToAddName (user`s names)
+        - usersToAddUsername (user`s usernames)
+        - titleToShow (title)
      */
     @IBAction func didPressMembers(_ sender: UIButton) {
         guard let searchVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else { return }
@@ -119,7 +144,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
     - Parameters:
         - sender: Add Task Button
 
-   Transmits information:
+    Transmits information:
        - usersToAddName (user`s names)
        - usersToAddUsername (user`s usernames)
        - titleToShow (title)
@@ -132,18 +157,24 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
+    /**
+     Delegate function to adding deadline
+     */
     func addDeadline(_ deadline: Deadline) {
         self.unCompletedDeadlines.append(deadline)
         tableView.reloadData()
     }
     
+    /**
+     Present alert with editing
+    */
     @IBAction func didPressEditButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         let editProject = UIAlertAction(title: "Редагувати проект", style: .default) { (_) in
             self.changeProjectDescription()
         }
         let completeProject = UIAlertAction(title: "Помітити як виконаний", style: .default) { (_) in
-            self.setCompleteMack()
+            self.setCompleteMark()
         }
         let deleteProject =  UIAlertAction(title: "Видалити проект", style: .destructive) { (_) in
             
@@ -156,7 +187,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         present(alert, animated: true, completion: nil)
     }
     
-    func setCompleteMack() {
+    /**
+     Post to server that project is complete
+     */
+    func setCompleteMark() {
         let projectID = String(describing: self.project?.projectID ?? 0)
         let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/setProjectComplete")!
         postAndGetData(url, httpMethod: "POST") { data in
@@ -164,6 +198,9 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         }
     }
     
+    /**
+     Present `EditProjectViewController` which can edit ProjectName, ProjectDescription, ProjectExecutionTime
+     */
     func changeProjectDescription() {
         guard let editVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController else { return }
         editVC.project = project
@@ -174,9 +211,17 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         present(navigationC, animated: true, completion: nil)
     }
     
-    
+    /**
+     Processing data from server.
+     If server returned error, throw it with alert.
+     
+     Also can process:
+        - deleting deadline
+        - set project as completed
+        - set deadline as completed
+     */
     func processingReturnedData(_ data: Data, indexPath: IndexPath?) {
-        if let answer = try? JSONDecoder().decode(Error.self, from: data){
+        if let answer = try? JSONDecoder().decode(Error.self, from: data) {
             switch answer.message {
             case "User not found":
                 DispatchQueue.main.async {
@@ -251,9 +296,15 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
 }
 
 
-extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
+extension ProjectDetailsViewController: SearchTableViewControllerDelegate {
     
-    func fillTextFieldWithUsers(names: [String], usernames: [String]) {
+    /**
+     Function can edit users in project
+     - Parameters:
+        - names: array of users names to edit
+        - usernames: array of users usernames to edit
+     */
+    func editUsersInProject(names: [String], usernames: [String]) {
         if usernames != usersToAddUsernames {
             let (usersToAdd, usersToDelete) = addDeleteUsers(usernames)
             let projectID = String(describing: self.project?.projectID ?? 0)
@@ -278,6 +329,12 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
         }
     }
     
+    /**
+     Delegate from `SearchTableViewControllerDelegate`
+     - Returns:
+       - usersToAdd: array with usernames of users which this VC need to *ADD*
+       - usersToDelete: array with usernames of users which this VC need to *DELETE*
+     */
     func addDeleteUsers(_ users: [String]) -> (usersToAdd: [String], usersToDelete: [String]) {
         var usersToAdd: [String] = []
         var usersToDelete: [String] = []
@@ -296,8 +353,14 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate{
     }
 }
 
+
 extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
     
+    /**
+     Delegate from `EditProjectViewControllerDelegate`
+     - Parameters:
+        - parameters: array with json formated data (edited project) which this VC need to push on server
+     */
     func transmitEditDeadlineInformation(parameters: [String : Any]) {
         let projectID = String(describing: self.project?.projectID ?? 0)
         let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/editProject")!
@@ -307,9 +370,13 @@ extension ProjectDetailsViewController: EditProjectViewControllerDelegate {
     }
 }
 
+
 // MARK: - UITableViewDataSource
 extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    /**
+     TableView func: titleForHeaderInSection
+    */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -321,6 +388,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    /**
+     TableView func: numberOfSections
+    */
     func numberOfSections(in tableView: UITableView) -> Int {
         if isShowCompletedDeadlines {
             return 2
@@ -329,6 +399,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    /**
+     TableView func: numberOfRowsInSection
+    */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isShowCompletedDeadlines {
             switch section {
@@ -344,6 +417,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    /**
+     TableView func: cellForRowAt
+    */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         
@@ -375,6 +451,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    /**
+     TableView func: trailingSwipeActionsConfigurationForRowAt
+    */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if (indexPath.section == 0 && indexPath.row != unCompletedDeadlines.count) || (indexPath.section == 1 && indexPath.row != completedDeadlines.count) {
             let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
@@ -403,6 +482,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    /**
+     TableView func: leadingSwipeActionsConfigurationForRowAt
+    */
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 0 && indexPath.row != unCompletedDeadlines.count {
             let setCompleteMark = UIContextualAction(style: .normal, title: "Виконано") { (action, view, completion) in
@@ -425,7 +507,9 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
+    /**
+     TableView func: didSelectRowAt
+    */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if !isShowCompletedDeadlines && indexPath.row == unCompletedDeadlines.count {

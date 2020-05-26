@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchTableViewControllerDelegate {
-    func fillTextFieldWithUsers(names: [String], usernames: [String])
+    func editUsersInProject(names: [String], usernames: [String])
 }
 
 class SearchTableViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate {
@@ -128,7 +128,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     }
     
     @IBAction func didPressDone(_ sender: UIBarButtonItem) {
-        delegate?.fillTextFieldWithUsers(names: usersToAddName, usernames: usersToAddUsername)
+        delegate?.editUsersInProject(names: usersToAddName, usernames: usersToAddUsername)
         self.dismiss(animated: true, completion: nil)
     }
 }

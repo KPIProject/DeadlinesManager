@@ -248,7 +248,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
 //        }
 //    }
     
-    func fillTextFieldWithUsers(names: [String], usernames: [String]) {
+    func editUsersInProject(names: [String], usernames: [String]) {
 //        membersTextView.text = usernames.joined(separator: ", ")
         usersToAddUsernames = usernames
         usersToAddNames = names
