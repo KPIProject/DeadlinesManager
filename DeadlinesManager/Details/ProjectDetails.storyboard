@@ -199,88 +199,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="N7p-0V-x7I">
-                                <rect key="frame" x="8" y="44" width="359" height="734"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" maximumZoomScale="3" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGT-aX-iHc">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="205.66666666666666"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" link="YES" address="YES" calendarEvent="YES"/>
-                                    </textView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-EW-7oc">
-                                        <rect key="frame" x="0.0" y="219.66666666666669" width="359" height="36.666666666666686"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ro-7s-pKj">
-                                                <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="36.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="1ro-7s-pKj" secondAttribute="bottom" id="1pb-7e-Ph5"/>
-                                            <constraint firstItem="1ro-7s-pKj" firstAttribute="width" secondItem="8SC-EW-7oc" secondAttribute="width" multiplier="0.5" id="UdY-Cu-i3I"/>
-                                            <constraint firstItem="1ro-7s-pKj" firstAttribute="top" secondItem="8SC-EW-7oc" secondAttribute="top" id="yHO-19-0Ll"/>
-                                            <constraint firstItem="1ro-7s-pKj" firstAttribute="leading" secondItem="8SC-EW-7oc" secondAttribute="leading" id="zIW-tq-9Fl"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyi-kG-BFX">
-                                        <rect key="frame" x="0.0" y="270.33333333333331" width="359" height="36.666666666666686"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nU8-Sa-at3">
-                                                <rect key="frame" x="215" y="-3" width="143.66666666666663" height="39.666666666666664"/>
-                                                <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="plus.circle.fill" catalog="system">
-                                                    <color key="titleColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="titleShadowColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="didPressDeadlineExecutorsButton:" destination="yEq-4o-ewx" eventType="touchUpInside" id="ydu-QJ-5iF"/>
-                                                    <action selector="didPressMembers:" destination="yLW-Lg-VSH" eventType="touchUpInside" id="ro9-VC-g99"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Учасники:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYC-gA-STp">
-                                                <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="36.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="fYC-gA-STp" firstAttribute="top" secondItem="vyi-kG-BFX" secondAttribute="top" id="BAq-Nt-HJt"/>
-                                            <constraint firstItem="nU8-Sa-at3" firstAttribute="height" secondItem="vyi-kG-BFX" secondAttribute="height" constant="3" id="BvH-4s-dZW"/>
-                                            <constraint firstItem="nU8-Sa-at3" firstAttribute="width" secondItem="vyi-kG-BFX" secondAttribute="width" multiplier="0.4" id="MJx-6u-nb0"/>
-                                            <constraint firstItem="nU8-Sa-at3" firstAttribute="centerX" secondItem="vyi-kG-BFX" secondAttribute="centerX" multiplier="1.65" constant="-9.341666666666697" id="XP7-IC-lBC"/>
-                                            <constraint firstAttribute="bottom" secondItem="fYC-gA-STp" secondAttribute="bottom" id="aRP-Bd-2iQ"/>
-                                            <constraint firstItem="fYC-gA-STp" firstAttribute="width" secondItem="vyi-kG-BFX" secondAttribute="width" multiplier="0.5" id="d6O-eb-oFh"/>
-                                            <constraint firstItem="nU8-Sa-at3" firstAttribute="centerY" secondItem="vyi-kG-BFX" secondAttribute="centerY" constant="-1.5" id="oyq-LB-B0U"/>
-                                            <constraint firstItem="fYC-gA-STp" firstAttribute="leading" secondItem="vyi-kG-BFX" secondAttribute="leading" id="uaQ-sE-bcb"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0mT-hV-G8T">
-                                        <rect key="frame" x="0.0" y="321" width="359" height="413"/>
-                                    </tableView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="gGT-aX-iHc" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.28" id="c3N-Mi-TjB"/>
-                                    <constraint firstItem="vyi-kG-BFX" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.05" id="emc-5L-4Ix"/>
-                                    <constraint firstItem="8SC-EW-7oc" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.05" id="mgF-Oj-ggd"/>
-                                </constraints>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0mT-hV-G8T">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="aJZ-Ow-lW7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="361"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="N7p-0V-x7I">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="361"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" maximumZoomScale="3" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGT-aX-iHc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="216.66666666666666"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES" address="YES" calendarEvent="YES"/>
+                                                </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-EW-7oc">
+                                                    <rect key="frame" x="0.0" y="230.66666666666663" width="359" height="72"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Deadline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ro-7s-pKj">
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="72"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                            <color key="textColor" red="0.4653618994" green="0.3356563273" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="1ro-7s-pKj" secondAttribute="bottom" id="1pb-7e-Ph5"/>
+                                                        <constraint firstItem="1ro-7s-pKj" firstAttribute="width" secondItem="8SC-EW-7oc" secondAttribute="width" id="UdY-Cu-i3I"/>
+                                                        <constraint firstItem="1ro-7s-pKj" firstAttribute="top" secondItem="8SC-EW-7oc" secondAttribute="top" id="yHO-19-0Ll"/>
+                                                        <constraint firstItem="1ro-7s-pKj" firstAttribute="leading" secondItem="8SC-EW-7oc" secondAttribute="leading" id="zIW-tq-9Fl"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyi-kG-BFX">
+                                                    <rect key="frame" x="0.0" y="307" width="359" height="54"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nU8-Sa-at3">
+                                                            <rect key="frame" x="299.33333333333331" y="11.999999999999996" width="28.666666666666686" height="27.333333333333343"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="nU8-Sa-at3" secondAttribute="height" multiplier="1:1" id="cv0-RG-zTP"/>
+                                                            </constraints>
+                                                            <color key="tintColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
+                                                                <color key="titleColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleShadowColor" red="0.053613409399999999" green="0.18740439410000001" blue="0.22908708450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didPressDeadlineExecutorsButton:" destination="yEq-4o-ewx" eventType="touchUpInside" id="ydu-QJ-5iF"/>
+                                                                <action selector="didPressMembers:" destination="yLW-Lg-VSH" eventType="touchUpInside" id="ro9-VC-g99"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Учасники:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYC-gA-STp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="54"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="fYC-gA-STp" firstAttribute="top" secondItem="vyi-kG-BFX" secondAttribute="top" id="BAq-Nt-HJt"/>
+                                                        <constraint firstItem="nU8-Sa-at3" firstAttribute="width" secondItem="vyi-kG-BFX" secondAttribute="width" multiplier="0.08" id="MJx-6u-nb0"/>
+                                                        <constraint firstItem="nU8-Sa-at3" firstAttribute="centerX" secondItem="vyi-kG-BFX" secondAttribute="centerX" multiplier="1.8" constant="-9.341666666666697" id="XP7-IC-lBC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="fYC-gA-STp" secondAttribute="bottom" id="aRP-Bd-2iQ"/>
+                                                        <constraint firstItem="fYC-gA-STp" firstAttribute="width" secondItem="vyi-kG-BFX" secondAttribute="width" multiplier="0.5" id="d6O-eb-oFh"/>
+                                                        <constraint firstItem="nU8-Sa-at3" firstAttribute="centerY" secondItem="vyi-kG-BFX" secondAttribute="centerY" constant="-1.5" id="oyq-LB-B0U"/>
+                                                        <constraint firstItem="fYC-gA-STp" firstAttribute="leading" secondItem="vyi-kG-BFX" secondAttribute="leading" id="uaQ-sE-bcb"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gGT-aX-iHc" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.6" id="c3N-Mi-TjB"/>
+                                                <constraint firstItem="vyi-kG-BFX" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.15" id="emc-5L-4Ix"/>
+                                                <constraint firstItem="8SC-EW-7oc" firstAttribute="height" secondItem="N7p-0V-x7I" secondAttribute="height" multiplier="0.2" id="mgF-Oj-ggd"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="N7p-0V-x7I" firstAttribute="top" secondItem="aJZ-Ow-lW7" secondAttribute="top" id="04D-bw-z8p"/>
+                                        <constraint firstAttribute="trailing" secondItem="N7p-0V-x7I" secondAttribute="trailing" constant="8" id="GRg-gJ-Edp"/>
+                                        <constraint firstItem="N7p-0V-x7I" firstAttribute="leading" secondItem="aJZ-Ow-lW7" secondAttribute="leading" constant="8" id="TQ0-Kp-Qw4"/>
+                                        <constraint firstAttribute="bottom" secondItem="N7p-0V-x7I" secondAttribute="bottom" id="oiB-Ls-bmo"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="X0l-uq-bbg" firstAttribute="trailing" secondItem="N7p-0V-x7I" secondAttribute="trailing" constant="8" id="6KT-ys-WNj"/>
-                            <constraint firstItem="N7p-0V-x7I" firstAttribute="leading" secondItem="grt-1A-a4r" secondAttribute="leading" constant="8" id="GbI-yO-iqW"/>
-                            <constraint firstItem="N7p-0V-x7I" firstAttribute="top" secondItem="X0l-uq-bbg" secondAttribute="top" id="bqj-bc-QUu"/>
-                            <constraint firstItem="X0l-uq-bbg" firstAttribute="bottom" secondItem="N7p-0V-x7I" secondAttribute="bottom" id="qNb-j2-PXZ"/>
+                            <constraint firstItem="X0l-uq-bbg" firstAttribute="trailing" secondItem="0mT-hV-G8T" secondAttribute="trailing" id="H3X-Pi-YNb"/>
+                            <constraint firstItem="0mT-hV-G8T" firstAttribute="top" secondItem="X0l-uq-bbg" secondAttribute="top" id="MNJ-ff-vjd"/>
+                            <constraint firstItem="0mT-hV-G8T" firstAttribute="leading" secondItem="X0l-uq-bbg" secondAttribute="leading" id="OyF-cZ-Qcq"/>
+                            <constraint firstItem="X0l-uq-bbg" firstAttribute="bottom" secondItem="0mT-hV-G8T" secondAttribute="bottom" id="nue-iB-jEg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X0l-uq-bbg"/>
                     </view>
@@ -292,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIV-HY-C4s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="1456"/>
+            <point key="canvasLocation" x="400.80000000000001" y="1455.6650246305419"/>
         </scene>
     </scenes>
     <resources>

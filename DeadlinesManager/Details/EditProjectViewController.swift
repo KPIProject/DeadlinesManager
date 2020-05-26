@@ -33,7 +33,7 @@ class EditProjectViewController: UIViewController, UITextFieldDelegate {
         if let project = project {
             nameTextField.text  = project.projectName
             descriptionTextView.text = project.projectDescription
-            deadlineDateTextField.text = project.projectExecutionTime.toDateString()
+//            deadlineDateTextField.text = project.projectExecutionTime.toDateString()
         }
         
         setupDatePicker()
@@ -60,7 +60,7 @@ class EditProjectViewController: UIViewController, UITextFieldDelegate {
         
         deadlineDateTextField.inputView = datePicker
         deadlineDateTextField.inputAccessoryView = toolbar
-//        deadlineDateTextField.text = (Int(Date().timeIntervalSince1970)).toDateString()
+        deadlineDateTextField.text = project?.projectExecutionTime.toDateString()
     }
     
     @objc func doneAction() {

@@ -81,7 +81,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
     }
     
     @objc func doneAction() {
-        timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
+//        timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
         view.endEditing(true)
     }
     
@@ -89,6 +89,8 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         deadlineDateTextField.text = formatter.string(from: datePicker.date)
+        timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
+
         
     }
     

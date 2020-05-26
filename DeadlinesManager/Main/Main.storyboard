@@ -626,7 +626,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vjx-Qz-kGe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="jLg-Rm-Yde">
+                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="always" id="jLg-Rm-Yde">
                         <rightBarButtonItems>
                             <barButtonItem id="n6g-Lw-LQQ">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xLk-Ob-js9">

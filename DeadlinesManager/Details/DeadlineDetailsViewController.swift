@@ -11,10 +11,7 @@ import UIKit
 class DeadlineDetailsViewController: UIViewController {
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var deadlineNameLabel: UILabel!
     
     
     public var deadline: Deadline?
@@ -24,21 +21,15 @@ class DeadlineDetailsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .never
         
-        doneButton.layer.cornerRadius = CGFloat(Double(doneButton.frame.height) / 3.5)
-        deleteButton.layer.cornerRadius = CGFloat(Double(deleteButton.frame.height) / 3.5)
-        
         tableView.delegate = self
         tableView.dataSource = self
-
-        tableView.backgroundColor = #colorLiteral(red: 0.9497330785, green: 0.964420855, blue: 0.9139826894, alpha: 1)
 
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
         
         if let deadline = deadline {
-            deadlineNameLabel.text = deadline.deadlineName
-            deadlineLabel.text = deadline.deadlineExecutionTime.toDateString()
+            self.title = deadline.deadlineName
+            deadlineLabel.text = "   Дата дедлайну: \(deadline.deadlineExecutionTime.toDateString())"
             detailTextView.text = deadline.deadlineDescription
-//            var usernamesString: [String] = []
             for user in deadline.deadlineExecutors ?? [] {
                 executors.append(user)
             }
@@ -47,10 +38,6 @@ class DeadlineDetailsViewController: UIViewController {
         
     }
     
-    @IBAction func didPressDoneButton(_ sender: UIButton) {
-    }
-    @IBAction func didPressDeleteButton(_ sender: UIButton) {
-    }
     @IBAction func didPressDeadlineExecutorsButton(_ sender: UIButton) {
     }
 
@@ -99,6 +86,10 @@ extension DeadlineDetailsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return executors.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

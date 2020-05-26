@@ -17,7 +17,6 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.backgroundColor = #colorLiteral(red: 0.9497330785, green: 0.964420855, blue: 0.9139826894, alpha: 1)
         self.clearsSelectionOnViewWillAppear = false
         
         loginLabel.text = Settings.shared.login
