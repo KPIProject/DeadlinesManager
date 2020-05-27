@@ -121,7 +121,9 @@ class MenuViewController: UIViewController {
                 if let projects = try? JSONDecoder().decode([Project].self, from: data){
                     updateCoreData(data: projects){
                         self.formProjectsArrays()
-                        self.tableView.reloadData()
+                        if self.tableView != nil {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
                 if let answer = try? JSONDecoder().decode(Error.self, from: data) {

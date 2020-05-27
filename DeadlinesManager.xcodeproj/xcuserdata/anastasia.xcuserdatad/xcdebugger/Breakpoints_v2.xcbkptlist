@@ -608,8 +608,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
             endingLineNumber = "291"
-            landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
-            landmarkType = "7">
+            landmarkName = "AddProjectAndDeadlineViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "537C623C-7CB6-4A7E-B000-82AE54939B55 - 24513d6252081702"
@@ -656,8 +656,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "256"
             endingLineNumber = "256"
-            landmarkName = "editUsersInProject(names:usernames:)"
+            landmarkName = "processingReturnedData(_:_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "41E844FD-35F5-4F0D-A8CF-D45B270BCE62 - 31ab7cec180bdbd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeadlinesManager.AddProjectAndDeadlineViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectAndDeadlineViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "4260">
+               </Location>
+               <Location
+                  uuid = "41E844FD-35F5-4F0D-A8CF-D45B270BCE62 - 89c2818cb9a7d6c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 () -&gt; () in DeadlinesManager.AddProjectAndDeadlineViewController.processingReturnedData(Swift.String, Foundation.Data) -&gt; ()"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/AddProjectAndDeadlineViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -672,7 +704,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "276"
             endingLineNumber = "276"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "processingReturnedData(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -704,8 +736,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
-            landmarkName = "didPressDoneButton(_:)"
-            landmarkType = "7">
+            landmarkName = "AddProjectAndDeadlineViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -720,7 +752,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "setupDatePicker()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -736,7 +768,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "dateChanged()"
+            landmarkName = "textViewDidEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -752,7 +784,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
-            landmarkName = "doneAction()"
+            landmarkName = "textViewDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,16 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A202417C96B00E5D6D4 /* FirstViewController.swift */; };
-		5D095A232417CA3400E5D6D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D095A222417CA3400E5D6D4 /* Extensions.swift */; };
 		5D0B9DD124379FF300980A41 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */; };
 		5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */; };
 		5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */; };
+		5D372F6C247F0EDC00FA87D8 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F67247F0EDC00FA87D8 /* Int+Extensions.swift */; };
+		5D372F6D247F0EDC00FA87D8 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F68247F0EDC00FA87D8 /* NSLayoutConstraint+Extensions.swift */; };
+		5D372F6E247F0EDC00FA87D8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F69247F0EDC00FA87D8 /* Date+Extensions.swift */; };
+		5D372F6F247F0EDC00FA87D8 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F6A247F0EDC00FA87D8 /* UIView+Extensions.swift */; };
+		5D372F70247F0EDC00FA87D8 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F6B247F0EDC00FA87D8 /* UIViewController+Extensions.swift */; };
+		5D372F75247F0EEB00FA87D8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F71247F0EEB00FA87D8 /* Project.swift */; };
+		5D372F76247F0EEB00FA87D8 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F72247F0EEB00FA87D8 /* Deadline.swift */; };
+		5D372F77247F0EEB00FA87D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F73247F0EEB00FA87D8 /* User.swift */; };
+		5D372F78247F0EEB00FA87D8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F74247F0EEB00FA87D8 /* Error.swift */; };
+		5D372F80247F0FB700FA87D8 /* DeadlinesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D372F7F247F0FB700FA87D8 /* DeadlinesManagerTests.swift */; };
 		5D4E9E54247E9CA400EA8FC2 /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E9E53247E9CA400EA8FC2 /* InvitationViewController.swift */; };
 		5D55CC1B2461C83000760257 /* DeadlineDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D55CC1A2461C83000760257 /* DeadlineDetailsViewController.swift */; };
 		5D55CC1D2461F18C00760257 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D55CC1C2461F18C00760257 /* ServerManager.swift */; };
 		5D616B0D241BA30B00A72E33 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0C241BA30B00A72E33 /* Settings.swift */; };
 		5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B0E241BA72500A72E33 /* ViewManager.swift */; };
-		5D616B11241C513600A72E33 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B10241C513600A72E33 /* Struct.swift */; };
 		5D616B152422BE6800A72E33 /* AddProjectAndDeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B142422BE6800A72E33 /* AddProjectAndDeadlineViewController.swift */; };
 		5D616B172422D9BB00A72E33 /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B162422D9BB00A72E33 /* Funcs.swift */; };
 		5D616B1924255C8A00A72E33 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616B1824255C8A00A72E33 /* MenuViewController.swift */; };
@@ -37,19 +45,39 @@
 		5DF872C32473F3840023F03B /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF872C22473F3840023F03B /* EditProjectViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5D372F82247F0FB700FA87D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D6B041A2410F87800AA7D3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D6B04212410F87800AA7D3B;
+			remoteInfo = DeadlinesManager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5D095A202417C96B00E5D6D4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5D095A222417CA3400E5D6D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D0B9DD024379FF300980A41 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5D33CD8B2429399000E7454B /* DeadlinesManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeadlinesManager.xcdatamodel; sourceTree = "<group>"; };
 		5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFuncs.swift; sourceTree = "<group>"; };
+		5D372F67247F0EDC00FA87D8 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		5D372F68247F0EDC00FA87D8 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		5D372F69247F0EDC00FA87D8 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		5D372F6A247F0EDC00FA87D8 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		5D372F6B247F0EDC00FA87D8 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		5D372F71247F0EEB00FA87D8 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		5D372F72247F0EEB00FA87D8 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
+		5D372F73247F0EEB00FA87D8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D372F74247F0EEB00FA87D8 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		5D372F7D247F0FB700FA87D8 /* DeadlinesManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadlinesManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D372F7F247F0FB700FA87D8 /* DeadlinesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesManagerTests.swift; sourceTree = "<group>"; };
+		5D372F81247F0FB700FA87D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4E9E53247E9CA400EA8FC2 /* InvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		5D55CC1A2461C83000760257 /* DeadlineDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineDetailsViewController.swift; sourceTree = "<group>"; };
 		5D55CC1C2461F18C00760257 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		5D616B0A241BA0B300A72E33 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5D616B0C241BA30B00A72E33 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5D616B0E241BA72500A72E33 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
-		5D616B10241C513600A72E33 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		5D616B142422BE6800A72E33 /* AddProjectAndDeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectAndDeadlineViewController.swift; sourceTree = "<group>"; };
 		5D616B162422D9BB00A72E33 /* Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
 		5D616B1824255C8A00A72E33 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +99,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D372F7A247F0FB700FA87D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D6B041F2410F87800AA7D3B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,6 +149,38 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		5D372F65247F0E8900FA87D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5D372F69247F0EDC00FA87D8 /* Date+Extensions.swift */,
+				5D372F67247F0EDC00FA87D8 /* Int+Extensions.swift */,
+				5D372F68247F0EDC00FA87D8 /* NSLayoutConstraint+Extensions.swift */,
+				5D372F6A247F0EDC00FA87D8 /* UIView+Extensions.swift */,
+				5D372F6B247F0EDC00FA87D8 /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5D372F66247F0EB100FA87D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D372F72247F0EEB00FA87D8 /* Deadline.swift */,
+				5D372F74247F0EEB00FA87D8 /* Error.swift */,
+				5D372F71247F0EEB00FA87D8 /* Project.swift */,
+				5D372F73247F0EEB00FA87D8 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5D372F7E247F0FB700FA87D8 /* DeadlinesManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D372F7F247F0FB700FA87D8 /* DeadlinesManagerTests.swift */,
+				5D372F81247F0FB700FA87D8 /* Info.plist */,
+			);
+			path = DeadlinesManagerTests;
+			sourceTree = "<group>";
+		};
 		5D616B12241D53E400A72E33 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				5D6B04242410F87800AA7D3B /* DeadlinesManager */,
+				5D372F7E247F0FB700FA87D8 /* DeadlinesManagerTests */,
 				5D6B04232410F87800AA7D3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				5D6B04222410F87800AA7D3B /* DeadlinesManager.app */,
+				5D372F7D247F0FB700FA87D8 /* DeadlinesManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,9 +229,9 @@
 				5D127815243A4E9100A82918 /* Details */,
 				5DEB1FD424571F7600934933 /* ProjectAndDeadlineCell */,
 				5D616B162422D9BB00A72E33 /* Funcs.swift */,
-				5D095A222417CA3400E5D6D4 /* Extensions.swift */,
-				5D616B10241C513600A72E33 /* Struct.swift */,
+				5D372F65247F0E8900FA87D8 /* Extensions */,
 				5D616B0C241BA30B00A72E33 /* Settings.swift */,
+				5D372F66247F0EB100FA87D8 /* Models */,
 				5D33CD8F242953CF00E7454B /* CoreDataFuncs.swift */,
 				5D33CD8A2429399000E7454B /* DeadlinesManager.xcdatamodeld */,
 				5D6B042E2410F87D00AA7D3B /* Assets.xcassets */,
@@ -184,6 +253,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D372F7C247F0FB700FA87D8 /* DeadlinesManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D372F84247F0FB700FA87D8 /* Build configuration list for PBXNativeTarget "DeadlinesManagerTests" */;
+			buildPhases = (
+				5D372F79247F0FB700FA87D8 /* Sources */,
+				5D372F7A247F0FB700FA87D8 /* Frameworks */,
+				5D372F7B247F0FB700FA87D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D372F83247F0FB700FA87D8 /* PBXTargetDependency */,
+			);
+			name = DeadlinesManagerTests;
+			productName = DeadlinesManagerTests;
+			productReference = 5D372F7D247F0FB700FA87D8 /* DeadlinesManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5D6B04212410F87800AA7D3B /* DeadlinesManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D6B04362410F87D00AA7D3B /* Build configuration list for PBXNativeTarget "DeadlinesManager" */;
@@ -207,10 +294,14 @@
 		5D6B041A2410F87800AA7D3B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = Anastasia;
 				TargetAttributes = {
+					5D372F7C247F0FB700FA87D8 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 5D6B04212410F87800AA7D3B;
+					};
 					5D6B04212410F87800AA7D3B = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -230,11 +321,19 @@
 			projectRoot = "";
 			targets = (
 				5D6B04212410F87800AA7D3B /* DeadlinesManager */,
+				5D372F7C247F0FB700FA87D8 /* DeadlinesManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D372F7B247F0FB700FA87D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D6B04202410F87800AA7D3B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,36 +350,59 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D372F79247F0FB700FA87D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D372F80247F0FB700FA87D8 /* DeadlinesManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D6B041E2410F87800AA7D3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5D55CC1D2461F18C00760257 /* ServerManager.swift in Sources */,
 				5D616B0D241BA30B00A72E33 /* Settings.swift in Sources */,
-				5D095A232417CA3400E5D6D4 /* Extensions.swift in Sources */,
 				5D6B042A2410F87800AA7D3B /* SingInViewController.swift in Sources */,
 				5D33CD90242953CF00E7454B /* CoreDataFuncs.swift in Sources */,
 				5D6B04262410F87800AA7D3B /* AppDelegate.swift in Sources */,
+				5D372F75247F0EEB00FA87D8 /* Project.swift in Sources */,
 				5D616B1924255C8A00A72E33 /* MenuViewController.swift in Sources */,
+				5D372F6F247F0EDC00FA87D8 /* UIView+Extensions.swift in Sources */,
 				5D4E9E54247E9CA400EA8FC2 /* InvitationViewController.swift in Sources */,
 				5DA4B1F92432818000C4262B /* SettingsTableViewController.swift in Sources */,
 				5D0B9DD124379FF300980A41 /* SearchTableViewController.swift in Sources */,
 				5D33CD8C2429399100E7454B /* DeadlinesManager.xcdatamodeld in Sources */,
+				5D372F6E247F0EDC00FA87D8 /* Date+Extensions.swift in Sources */,
+				5D372F70247F0EDC00FA87D8 /* UIViewController+Extensions.swift in Sources */,
 				5DA69BBB24577E65004C0575 /* SortedDeadlinesViewController.swift in Sources */,
-				5D616B11241C513600A72E33 /* Struct.swift in Sources */,
 				5DA4B1FB2433C1BE00C4262B /* ProjectDetailsViewController.swift in Sources */,
 				5D6B04282410F87800AA7D3B /* SceneDelegate.swift in Sources */,
 				5D616B152422BE6800A72E33 /* AddProjectAndDeadlineViewController.swift in Sources */,
 				5D616B0F241BA72500A72E33 /* ViewManager.swift in Sources */,
 				5D095A212417C96B00E5D6D4 /* FirstViewController.swift in Sources */,
+				5D372F77247F0EEB00FA87D8 /* User.swift in Sources */,
+				5D372F78247F0EEB00FA87D8 /* Error.swift in Sources */,
 				5D616B172422D9BB00A72E33 /* Funcs.swift in Sources */,
 				5DEB1FD224571F5100934933 /* ProjectAndDeadlineTableViewCell.swift in Sources */,
+				5D372F6C247F0EDC00FA87D8 /* Int+Extensions.swift in Sources */,
 				5DF872C32473F3840023F03B /* EditProjectViewController.swift in Sources */,
 				5D55CC1B2461C83000760257 /* DeadlineDetailsViewController.swift in Sources */,
+				5D372F76247F0EEB00FA87D8 /* Deadline.swift in Sources */,
+				5D372F6D247F0EDC00FA87D8 /* NSLayoutConstraint+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D372F83247F0FB700FA87D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D6B04212410F87800AA7D3B /* DeadlinesManager */;
+			targetProxy = 5D372F82247F0FB700FA87D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5D6B042B2410F87800AA7D3B /* Login.storyboard */ = {
@@ -302,6 +424,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5D372F85247F0FB700FA87D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KFHN9UQ5P;
+				INFOPLIST_FILE = DeadlinesManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Holovash.DeadlinesManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeadlinesManager.app/DeadlinesManager";
+			};
+			name = Debug;
+		};
+		5D372F86247F0FB700FA87D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KFHN9UQ5P;
+				INFOPLIST_FILE = DeadlinesManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Holovash.DeadlinesManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeadlinesManager.app/DeadlinesManager";
+			};
+			name = Release;
+		};
 		5D6B04342410F87D00AA7D3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -455,6 +619,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D372F84247F0FB700FA87D8 /* Build configuration list for PBXNativeTarget "DeadlinesManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D372F85247F0FB700FA87D8 /* Debug */,
+				5D372F86247F0FB700FA87D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5D6B041D2410F87800AA7D3B /* Build configuration list for PBXProject "DeadlinesManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
