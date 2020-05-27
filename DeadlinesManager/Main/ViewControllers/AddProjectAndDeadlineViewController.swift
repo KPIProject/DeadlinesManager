@@ -12,7 +12,7 @@ protocol AddProjectAndDeadlineViewControllerDelegate {
     func addDeadline(_ deadline: Deadline)
 }
 
-class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate {
+class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate, SearchTableViewControllerDelegate, UITextViewDelegate {
 
     var delegate: AddProjectAndDeadlineViewControllerDelegate?
     
@@ -45,12 +45,53 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
         
         addProjectButton.setTitle({ () -> String in
         if isAddProject { return "Додати проект" }
-        else { return "Додати задачу" } }(), for: .normal) 
+        else { return "Додати задачу" } }(), for: .normal)
+        
+        projectDescriptionTextView.delegate = self
         
         addProjectButton.layer.cornerRadius = CGFloat((Double(addProjectButton.frame.height) ) / 3.5)
         
+        timeIntervalFromDatePicker = Int(Date().timeIntervalSince1970)
+        
+        if isAddProject {
+            self.title = "Новий проект"
+            projectNameTextField.placeholder = "Назва проекту"
+        } else {
+            self.title = "Нова задача"
+            projectNameTextField.placeholder = "Назва задачі"
+        }
+        
+        setupTextView()
         setupTableView()
         setupDatePicker()
+    }
+    
+    private func setupTextView() {
+        if isAddProject {
+            projectDescriptionTextView.text = "Опис проекту"
+        } else {
+            projectDescriptionTextView.text = "Опис задачі"
+        }
+        
+        projectDescriptionTextView.textColor = UIColor.lightGray
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if projectDescriptionTextView.textColor == UIColor.lightGray {
+            projectDescriptionTextView.text = nil
+            projectDescriptionTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if projectDescriptionTextView.text.isEmpty {
+            if isAddProject {
+                projectDescriptionTextView.text = "Опис проекту"
+            } else {
+                projectDescriptionTextView.text = "Опис задачі"
+            }
+            projectDescriptionTextView.textColor = UIColor.lightGray
+        }
     }
     
     private func setupTableView() {
@@ -90,8 +131,6 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
         formatter.dateFormat = "dd.MM.yyyy"
         deadlineDateTextField.text = formatter.string(from: datePicker.date)
         timeIntervalFromDatePicker = Int(datePicker.date.timeIntervalSince1970)
-
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

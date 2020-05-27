@@ -19,9 +19,15 @@ class ProjectAndDeadlineTableViewCell: UITableViewCell {
         super.awakeFromNib()
         numberView.layer.cornerRadius = CGFloat((Double(numberView.frame.height) ) / 1.5)
     }
+    
+    override func layoutSubviews() {
+        numberRightLabel.highlightedTextColor = .white
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+
     }
     
     override func prepareForReuse() {

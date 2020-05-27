@@ -17,7 +17,7 @@ func updateCoreData(data: [Project], complition: @escaping () -> ()) {
 
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
-// MARK:- managedContext
+        // MARK:- managedContext
         let managedContext = appDelegate.persistentContainer.viewContext
         
         for project in data {
