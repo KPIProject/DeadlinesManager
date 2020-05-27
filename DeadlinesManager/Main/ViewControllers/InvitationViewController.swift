@@ -9,7 +9,6 @@
 import UIKit
 
 class InvitationViewController: UIViewController {
-    
 
     @IBOutlet weak var tableView: UITableView!
     private var projects: [Project] = []
@@ -31,6 +30,9 @@ class InvitationViewController: UIViewController {
         tableView.register(UINib(nibName: ProjectAndDeadlineTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: ProjectAndDeadlineTableViewCell.identifier)
     }
     
+    /**
+     Get projects in which the user was invited from server.
+     */
     func getInvitations() {
         let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/getInvitations")!
         postAndGetData(url, httpMethod: "GET") { data in

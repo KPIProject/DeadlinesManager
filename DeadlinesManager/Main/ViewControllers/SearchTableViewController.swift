@@ -9,6 +9,12 @@
 import UIKit
 
 protocol SearchTableViewControllerDelegate {
+    /**
+     Edit users in project (delete or add)
+     - Parameters:
+        - names: array with first and second name
+        - usernames: array with usernames
+     */
     func editUsersInProject(names: [String], usernames: [String])
 }
 
@@ -26,16 +32,15 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
     public var invitedName: [String] = []
     /// User`s usernames (all list)
     public var invitedUsername: [String] = []
-    
+    /// Title that shows in SearchTableViewController
     public var titleToShow = ""
+    /// Hide Segment Control if true
     public var isHideSegmentControl = true
-    
+    /// Search Controller for searching users by usernames
     private let searchController = UISearchController(searchResultsController: nil)
+    /// Array with filtered users
     private var filtredUsers: [User] = []
-//    private var searchBarIsEmpty: Bool {
-//        guard let text = searchController.searchBar.text else { return false }
-//        return text.isEmpty
-//    }
+    /// True if search bar button was taped
     private var searchBarButtonWasTaped: Bool = false
     
     
@@ -48,15 +53,20 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
             segmentControl.isHidden = true
         }
         self.title = titleToShow
-//        tableView.reloadData()
     }
     
+    /**
+    Table View settings
+    */
     private func setupTableView() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    /**
+    Search settings
+    */
     private func setupSearch() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -67,13 +77,17 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
+    /**
+     Gets data from server when search bar button was taped.
+     */
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBarButtonWasTaped = true
         getDataFromServer()
-//        if searchBar.isSearchResultsButtonSelected {}
     }
     
-    /// Sends data to serser using URL and get returned data from server
+    /**
+     Sends data to serser using URL and get returned data from server
+     */
     func getDataFromServer() {
         
         let login = searchController.searchBar.text ?? ""
@@ -123,17 +137,28 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate, UIS
         
     }
     
+    /**
+     Reload data when Segment Control was taped.
+     */
     @IBAction func didPressSegmentControl(_ sender: UISegmentedControl) {
         tableView.reloadData()
     }
     
+    /**
+    Share data by delegate and dismiss VC  when Done was taped.
+    */
     @IBAction func didPressDone(_ sender: UIBarButtonItem) {
         delegate?.editUsersInProject(names: usersToAddName, usernames: usersToAddUsername)
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
 
+
 extension SearchTableViewController: UISearchResultsUpdating {
+    /**
+     Search func: updateSearchResults
+    */
     func updateSearchResults(for searchController: UISearchController) {
         filtredUsers = []
         getDataFromServer()
@@ -145,8 +170,11 @@ extension SearchTableViewController: UISearchResultsUpdating {
 extension SearchTableViewController {
     
     // MARK: - Table view data source
+    
+    /**
+     TableView func: numberOfRowsInSection
+    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if searchController.isActive {
             return filtredUsers.count
         } else if segmentControl.selectedSegmentIndex == 1 {
@@ -157,10 +185,16 @@ extension SearchTableViewController {
         
     }
     
+    /**
+     TableView func: heightForRowAt
+    */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 57
     }
 
+    /**
+     TableView func: cellForRowAt
+    */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         var user: User
@@ -188,11 +222,13 @@ extension SearchTableViewController {
         return cell
     }
     
+    /**
+     TableView func: didSelectRowAt
+    */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         if searchController.isActive {
             let user = filtredUsers[indexPath.row]
-//            usersToAdd.append(user)
             usersToAddName.append(user.userFirstName + " " + user.userSecondName)
             usersToAddUsername.append(user.username )
             searchController.isActive = false
@@ -201,6 +237,9 @@ extension SearchTableViewController {
         
     }
     
+    /**
+     TableView func: trailingSwipeActionsConfigurationForRowAt
+    */
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         if searchController.isActive || segmentControl.selectedSegmentIndex == 1 {
@@ -210,7 +249,6 @@ extension SearchTableViewController {
             let delete = UIContextualAction(style: .destructive, title: "Видалити") { (action, view, completion ) in
                 self.usersToAddUsername.remove(at: indexPath.row)
                 self.usersToAddName.remove(at: indexPath.row)
-//                self.usersToAdd.remove(at: indexPath.row)
                 tableView.reloadData()
                 tableView.isEditing = false
             
