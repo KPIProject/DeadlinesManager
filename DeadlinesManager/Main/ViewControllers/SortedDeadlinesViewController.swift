@@ -55,6 +55,8 @@ class SortedDeadlinesViewController: UIViewController {
             break
         case .sheduled:
             self.title = "Заплановано"
+            sortDeadlineSheduled()
+            break
         case.forYou:
             self.title = "Для вас"
             sortDeadlinesForYou()
@@ -166,6 +168,16 @@ class SortedDeadlinesViewController: UIViewController {
         
     }
     
+    
+    func getProjectFromDeadline(_ deadline: Deadline?) -> Project? {
+        for project in allProjects {
+            if deadline?.deadlineProjectID == project.projectID {
+                return project
+            }
+        }
+        return nil
+    }
+    
 }
 
 // Table view delegate and data source
@@ -226,12 +238,12 @@ extension SortedDeadlinesViewController: UITableViewDelegate, UITableViewDataSou
         case .sheduled:
             deadline = sheduledArray[indexPath.section].deadlines[indexPath.row]
             cell.nameLabel.text = deadline?.deadlineName
-//            cell.detailLabel.text = deadline.pr
+            cell.detailLabel.text = getProjectFromDeadline(deadline)?.projectName
         }
-
-        
 
         cell.numberView.isHidden = true
         return cell
     }
+    
+    
 }

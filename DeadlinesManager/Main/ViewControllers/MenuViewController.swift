@@ -189,6 +189,14 @@ class MenuViewController: UIViewController {
         todayVC.sortedType = .forYou
         self.navigationController?.pushViewController(todayVC, animated: true)
     }
+    
+    @IBAction func didPressSheduledButton(_ sender: UIButton) {
+        guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
+        todayVC.allProjects = self.unCompletedProjects
+        todayVC.sortedType = .sheduled
+        self.navigationController?.pushViewController(todayVC, animated: true)
+    }
+    
 }
 
 

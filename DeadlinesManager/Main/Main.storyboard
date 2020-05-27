@@ -253,6 +253,9 @@
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                             </state>
+                                            <connections>
+                                                <action selector="didPressSheduledButton:" destination="uPl-ki-NML" eventType="touchUpInside" id="mPk-Zv-lXA"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-xJ-kGV">
                                             <rect key="frame" x="16" y="100" width="183" height="80"/>
