@@ -10,20 +10,43 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    /// Label with username
     @IBOutlet weak var loginLabel: UILabel!
+    
+    /// Label with firstName + secondName
     @IBOutlet weak var nameLabel: UILabel!
+    
+    /// Settings singleton
     let settings = Settings.shared
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = false
         
+        setupUser()
+    }
+    
+    /**
+     Setup username and userFi
+     */
+    private func setupUser() {
         loginLabel.text = Settings.shared.login
         nameLabel.text = Settings.shared.firstName + " " + Settings.shared.secondName
-        
+    }
+    
+    /**
+     TableView func: heightForHeaderInSection
+    */
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 
+    /**
+     When user tap to on exit from account.
+     Also call alert with options: accept ot deny.
+    */
     @IBAction func didPressExitButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "", message: "Ви дійсно хочете вийти?", preferredStyle: .alert)
         let okBtn = UIAlertAction(title: "Підтвердити", style: .destructive, handler: {(_) in
@@ -41,8 +64,12 @@ class SettingsTableViewController: UITableViewController {
         alert.addAction(okBtn)
         alert.addAction(cancelBtn)
         present(alert, animated: true, completion: nil)
-        
     }
+    
+    /**
+     When user tap to on DELETE from account.
+     Also call alert with options: accept ot deny.
+    */
     @IBAction func didPressDeleteButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "", message: "Ви дійсно хочете видалити обліковий запис?", preferredStyle: .alert)
         let okBtn = UIAlertAction(title: "Підтвердити", style: .destructive, handler: {(_) in
@@ -78,7 +105,6 @@ class SettingsTableViewController: UITableViewController {
                         deleteAllFromCoreData()
                         ViewManager.shared.toLoginVC()
                     }
-                    
                 }
             })
             task.resume()
