@@ -96,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,10 +110,10 @@
             filePath = "DeadlinesManager/Main/ViewControllers/SearchTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -238,8 +238,8 @@
             filePath = "DeadlinesManager/CoreDataFuncs.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "fetchingCoreData()"
             landmarkType = "9">
          </BreakpointContent>
@@ -274,6 +274,38 @@
             endingLineNumber = "32"
             landmarkName = "sortForToday()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3D088CEF-E92E-4F4D-A4BC-1FCC631EF600 - e34dbb742a70254f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeadlinesManager.SortedDeadlinesViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; DeadlinesManager.SortedDeadlinesViewController"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/SortedDeadlinesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "812">
+               </Location>
+               <Location
+                  uuid = "3D088CEF-E92E-4F4D-A4BC-1FCC631EF600 - db75bcc801d25f8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeadlinesManager.SortedDeadlinesViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;DeadlinesManager.SortedDeadlinesViewController&gt;"
+                  moduleName = "DeadlinesManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Main/ViewControllers/SortedDeadlinesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "753">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -398,10 +430,10 @@
             filePath = "DeadlinesManager/Main/ViewControllers/SearchTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -430,10 +462,10 @@
             filePath = "DeadlinesManager/Main/ViewControllers/SearchTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -446,8 +478,8 @@
             filePath = "DeadlinesManager/Details/ProjectDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "processingReturnedData(_:indexPath:)"
             landmarkType = "7">
             <Locations>
@@ -494,8 +526,8 @@
             filePath = "DeadlinesManager/Details/ProjectDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "processingReturnedData(_:indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +542,8 @@
             filePath = "DeadlinesManager/Details/ProjectDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "didPressEditButton(_:)"
             landmarkType = "7">
             <Locations>
@@ -526,8 +558,8 @@
                   urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Details/ProjectDetailsViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
                   offsetFromSymbolStart = "416">
                </Location>
                <Location
@@ -541,8 +573,8 @@
                   urlString = "file:///Users/anastasia/DeadlinesManager/DeadlinesManager/Details/ProjectDetailsViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
@@ -654,8 +686,8 @@
             filePath = "DeadlinesManager/Details/ProjectDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "addDeleteUsers(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -680,7 +712,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D45E9633-779E-416C-9BB7-B153787E67D9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DeadlinesManager/Main/ViewControllers/AddProjectAndDeadlineViewController.swift"
@@ -712,7 +744,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DAAF5043-8123-4E5B-BD5A-2CF28E478639"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DeadlinesManager/Main/ViewControllers/AddProjectAndDeadlineViewController.swift"
@@ -753,6 +785,38 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "checkingAccessRights()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8082332D-3A9D-45E5-B970-1A366EE816EF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Main/ViewControllers/SearchTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51C2691D-0312-4321-9BED-B1B25552A98B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeadlinesManager/Details/ProjectDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "didPressMembers(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -21,6 +21,7 @@
         <relationship name="projectDeadlines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineData" inverseName="project" inverseEntity="DeadlineData"/>
         <relationship name="projectOwner" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="projectsCreated" inverseEntity="UserData"/>
         <relationship name="projectUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="projectsAppended" inverseEntity="UserData"/>
+        <relationship name="projectUsersInvited" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="projectsInvited" inverseEntity="UserData"/>
     </entity>
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="userCreationTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -32,10 +33,11 @@
         <relationship name="deadline" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineData" inverseName="user" inverseEntity="DeadlineData"/>
         <relationship name="projectsAppended" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectUsers" inverseEntity="ProjectData"/>
         <relationship name="projectsCreated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectOwner" inverseEntity="ProjectData"/>
+        <relationship name="projectsInvited" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectData" inverseName="projectUsersInvited" inverseEntity="ProjectData"/>
     </entity>
     <elements>
         <element name="DeadlineData" positionX="-36" positionY="9" width="128" height="178"/>
-        <element name="ProjectData" positionX="-63" positionY="-18" width="128" height="178"/>
-        <element name="UserData" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="ProjectData" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="UserData" positionX="-54" positionY="-9" width="128" height="193"/>
     </elements>
 </model>

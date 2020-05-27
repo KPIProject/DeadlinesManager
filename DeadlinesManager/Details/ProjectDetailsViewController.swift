@@ -147,6 +147,8 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         
         navigationC.viewControllers = [searchVC]
         
+        print(project)
+        
         present(navigationC, animated: true, completion: nil)
     }
     

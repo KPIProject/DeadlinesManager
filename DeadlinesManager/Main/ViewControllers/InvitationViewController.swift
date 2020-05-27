@@ -88,30 +88,6 @@ class InvitationViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension InvitationViewController: UITableViewDelegate, UITableViewDataSource {
     
-    /**
-     TableView func: titleForHeaderInSection
-    */
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0:
-//            return "Невиконані"
-//        case 1:
-//            return "Виконані"
-//        default:
-//            return nil
-//        }
-//    }
-
-    /**
-     TableView func: numberOfSections
-    */
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        if isShowCompletedDeadlines {
-//            return 2
-//        } else {
-//            return 1
-//        }
-//    }
     
     /**
      TableView func: numberOfRowsInSection
@@ -154,30 +130,6 @@ extension InvitationViewController: UITableViewDelegate, UITableViewDataSource {
     */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if projects.count > 0 {
-            let reject = UIContextualAction(style: .destructive, title: "Відхилити") { (action, view, completion ) in
-                let projectID = String(describing: self.projects[indexPath.row].projectID)
-                // create the url with URL
-                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/rejectInvite/\(projectID)")!
-                
-                tableView.reloadData()
-                
-                postAndGetData(url, httpMethod: "POST") { data in
-                    self.processingReturnedData(data, indexPath: indexPath)
-                }
-                tableView.isEditing = false
-            }
-            let config = UISwipeActionsConfiguration(actions: [reject])
-            return config
-        } else {
-            return nil
-        }
-    }
-    
-    /**
-     TableView func: leadingSwipeActionsConfigurationForRowAt
-    */
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if projects.count > 0 {
             let accept = UIContextualAction(style: .normal, title: "Прийняти") { (action, view, completion) in
             let projectID = String(describing: self.projects[indexPath.row].projectID)
             // create the url with URL
@@ -198,28 +150,28 @@ extension InvitationViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     /**
-     TableView func: didSelectRowAt
+     TableView func: leadingSwipeActionsConfigurationForRowAt
     */
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        if !isShowCompletedDeadlines && indexPath.row == unCompletedDeadlines.count {
-//            isShowCompletedDeadlines = true
-//            tableView.reloadData()
-//        } else if isShowCompletedDeadlines && indexPath.row == completedDeadlines.count{
-//            isShowCompletedDeadlines = false
-//            tableView.reloadData()
-//        } else {
-//            guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "DeadlineDetailsViewController") as? DeadlineDetailsViewController else { return }
-//
-//            if indexPath.section == 0 {
-//                detailVC.deadline = self.unCompletedDeadlines[indexPath.row]
-//            } else if indexPath.section == 1 {
-//                detailVC.deadline = self.completedDeadlines[indexPath.row]
-//            }
-//            tableView.deselectRow(at: indexPath, animated: true)
-//            self.navigationController?.pushViewController(detailVC, animated: true)
-//        }
-//    }
-    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if projects.count > 0 {
+            let reject = UIContextualAction(style: .destructive, title: "Відхилити") { (action, view, completion ) in
+                let projectID = String(describing: self.projects[indexPath.row].projectID)
+                // create the url with URL
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/rejectInvite/\(projectID)")!
+                
+                tableView.reloadData()
+                
+                postAndGetData(url, httpMethod: "POST") { data in
+                    self.processingReturnedData(data, indexPath: indexPath)
+                }
+                tableView.isEditing = false
+            }
+            let config = UISwipeActionsConfiguration(actions: [reject])
+            return config
+        } else {
+            return nil
+        }
+    }
+        
     
 }
