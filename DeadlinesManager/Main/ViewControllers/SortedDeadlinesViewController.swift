@@ -81,19 +81,22 @@ class SortedDeadlinesViewController: UIViewController {
      */
     func sortDeadlinesForToday() {
         let todayDate = Date()
-        
         for project in allProjects {
-            var deadlinesForToday: [Deadline] = []
-            for deadline in project.deadlines {
-                let deadlineExecutionDate = Date(timeIntervalSince1970: TimeInterval(deadline.deadlineExecutionTime))
-                
-                let daysBetweenTodayAndExecution = deadlineExecutionDate.days(sinceDate: todayDate) ?? 0
-                if daysBetweenTodayAndExecution < 0 || (todayDate.hasSame(.day, as: deadlineExecutionDate) && todayDate.hasSame(.month, as: deadlineExecutionDate) && todayDate.hasSame(.year, as: deadlineExecutionDate)) {
-                    deadlinesForToday.append(deadline)
+            if project.completeMark == false {
+                var deadlinesForToday: [Deadline] = []
+                for deadline in project.deadlines {
+                    if deadline.completeMark == false {
+                        let deadlineExecutionDate = Date(timeIntervalSince1970: TimeInterval(deadline.deadlineExecutionTime))
+
+                        let daysBetweenTodayAndExecution = deadlineExecutionDate.days(sinceDate: todayDate) ?? 0
+                        if daysBetweenTodayAndExecution < 0 || (todayDate.hasSame(.day, as: deadlineExecutionDate) && todayDate.hasSame(.month, as: deadlineExecutionDate) && todayDate.hasSame(.year, as: deadlineExecutionDate)) {
+                            deadlinesForToday.append(deadline)
+                        }
+                    }
                 }
-            }
-            if !deadlinesForToday.isEmpty {
-                projectArray.append((project, deadlinesForToday))
+                if !deadlinesForToday.isEmpty {
+                    projectArray.append((project, deadlinesForToday))
+                }
             }
         }
     }
@@ -104,18 +107,22 @@ class SortedDeadlinesViewController: UIViewController {
     func sortDeadlinesForYou() {
         
         for project in allProjects {
-            var deadlinesForYou: [Deadline] = []
-            for deadline in project.deadlines {
-                if let deadlineExecutors = deadline.deadlineExecutors {
-                    if deadlineExecutors.contains(where: { user -> Bool in
-                        return user.username == settings.login
-                    }) {
-                        deadlinesForYou.append(deadline)
+            if project.completeMark == false {
+                var deadlinesForYou: [Deadline] = []
+                for deadline in project.deadlines {
+                    if deadline.completeMark == false {
+                        if let deadlineExecutors = deadline.deadlineExecutors {
+                            if deadlineExecutors.contains(where: { user -> Bool in
+                                return user.username == settings.login
+                            }) {
+                                deadlinesForYou.append(deadline)
+                            }
+                        }
                     }
                 }
-            }
-            if !deadlinesForYou.isEmpty {
-                projectArray.append((project, deadlinesForYou))
+                if !deadlinesForYou.isEmpty {
+                    projectArray.append((project, deadlinesForYou))
+                }
             }
         }
     }
@@ -124,8 +131,12 @@ class SortedDeadlinesViewController: UIViewController {
     func sortDeadlineSheduled() {
         var allDeadlines: [Deadline] = []
         for project in allProjects {
-            for deadline in project.deadlines {
-                allDeadlines.append(deadline)
+            if project.completeMark == false {
+                for deadline in project.deadlines {
+                    if deadline.completeMark == false {
+                        allDeadlines.append(deadline)
+                    }
+                }
             }
         }
         
@@ -244,6 +255,24 @@ extension SortedDeadlinesViewController: UITableViewDelegate, UITableViewDataSou
         cell.numberView.isHidden = true
         return cell
     }
+    
+    /**
+     TableView func: didSelectRowAt
+    */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var deadline: Deadline?
+        switch sortedType {
+        case .today, .forYou:
+            deadline = projectArray[indexPath.section].deadlines[indexPath.row]
+        case .sheduled:
+            deadline = sheduledArray[indexPath.section].deadlines[indexPath.row]
+        }
+        guard let detailVC = UIStoryboard(name: "ProjectDetails", bundle: Bundle.main).instantiateViewController(withIdentifier: "DeadlineDetailsViewController") as? DeadlineDetailsViewController else { return }
+        detailVC.deadline = deadline
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     
     
 }

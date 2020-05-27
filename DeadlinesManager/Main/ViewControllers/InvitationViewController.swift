@@ -173,5 +173,15 @@ extension InvitationViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
         
-    
+    /**
+     TableView func: didSelectRowAt
+    */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        guard let detailVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProjectDetailsViewController") as? ProjectDetailsViewController else { return }
+            detailVC.project = projects[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+
 }

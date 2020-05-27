@@ -113,6 +113,10 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
      */
     func formUsersArrays() {
         if let users = project?.projectUsers {
+            if let projectOwner = project?.projectOwner {
+                usersToAddUsernames.append(projectOwner.username)
+                usersToAddNames.append(projectOwner.userFirstName + " " + projectOwner.userSecondName)
+            }
             for user in users {
                 usersToAddUsernames.append(user.username)
                 usersToAddNames.append(user.userFirstName + " " + user.userSecondName)
@@ -144,11 +148,7 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         searchVC.titleToShow = ""
         searchVC.isHideSegmentControl = false
         let navigationC = UINavigationController()
-        
         navigationC.viewControllers = [searchVC]
-        
-        print(project)
-        
         present(navigationC, animated: true, completion: nil)
     }
     
