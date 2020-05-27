@@ -54,8 +54,10 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
         timeIntervalFromDatePicker = Int(Date().timeIntervalSince1970)
         
         if isAddProject {
+            self.title = "Новий проект"
             projectNameTextField.placeholder = "Назва проекту"
         } else {
+            self.title = "Нова задача"
             projectNameTextField.placeholder = "Назва задачі"
         }
         
