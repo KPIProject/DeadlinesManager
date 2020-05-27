@@ -175,17 +175,28 @@ class MenuViewController: UIViewController {
     */
     @IBAction func didPressTodayButton(_ sender: UIButton) {
         guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
-        DispatchQueue.main.async {
-            todayVC.allProjects = self.unCompletedProjects
-            self.navigationController?.pushViewController(todayVC, animated: true)
-        }
+        todayVC.allProjects = self.unCompletedProjects
+        todayVC.sortedType = .today
+        self.navigationController?.pushViewController(todayVC, animated: true)
     }
 
     /**
      Button which push `` if needed
     */
     @IBAction func didPressForYouButton(_ sender: UIButton) {
+        guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
+        todayVC.allProjects = self.unCompletedProjects
+        todayVC.sortedType = .forYou
+        self.navigationController?.pushViewController(todayVC, animated: true)
     }
+    
+    @IBAction func didPressSheduledButton(_ sender: UIButton) {
+        guard let todayVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SortedDeadlinesViewController") as? SortedDeadlinesViewController else { return }
+        todayVC.allProjects = self.unCompletedProjects
+        todayVC.sortedType = .sheduled
+        self.navigationController?.pushViewController(todayVC, animated: true)
+    }
+    
 }
 
 
