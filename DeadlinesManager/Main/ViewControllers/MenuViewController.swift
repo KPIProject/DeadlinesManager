@@ -242,17 +242,25 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         
         if !isShowCompletedProjects && indexPath.section == 0 && indexPath.row == unCompletedProjects.count {
-            cell.nameLabel.text = "Показати виконані"
-            cell.detailLabel.text = ""
-            cell.arrowView.isHidden = true
-            cell.nameLabel.textAlignment = .center
-            cell.numberView.isHidden = true
-        } else if isShowCompletedProjects && indexPath.section == 1 && indexPath.row == completedProjects.count{
-            cell.nameLabel.text = "Сховати виконані"
-            cell.detailLabel.text = ""
-            cell.arrowView.isHidden = true
-            cell.nameLabel.textAlignment = .center
-            cell.numberView.isHidden = true
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
+            cell.textLabel?.text = "Показати виконані"
+            cell.textLabel?.textAlignment = .center
+            return cell
+//            cell.nameLabel.text = "Показати виконані"
+//            cell.detailLabel.text = ""
+//            cell.arrowView.isHidden = true
+//            cell.nameLabel.textAlignment = .center
+//            cell.numberView.isHidden = true
+        } else if isShowCompletedProjects && indexPath.section == 1 && indexPath.row == completedProjects.count {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
+            cell.textLabel?.text = "Сховати виконані"
+            cell.textLabel?.textAlignment = .center
+            return cell
+//            cell.nameLabel.text = "Сховати виконані"
+//            cell.detailLabel.text = ""
+//            cell.arrowView.isHidden = true
+//            cell.nameLabel.textAlignment = .center
+//            cell.numberView.isHidden = true
         } else {
             if indexPath.section == 0 {
                 let project = unCompletedProjects[indexPath.row]

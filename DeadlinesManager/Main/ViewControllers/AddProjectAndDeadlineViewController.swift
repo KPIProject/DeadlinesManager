@@ -137,7 +137,7 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
             let parameters = ["project": ["projectName" : projectNameTextField.text ?? "", "projectDescription" : projectDescriptionTextView.text ?? "", "projectExecutionTime" : timeIntervalFromDatePicker , "projectCreationTime" : Int(Date().timeIntervalSince1970)], "usersToAdd": usersToAddUsernames] as [String : Any]
 
             //create the url with URL
-            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/createProjectDebug")! //change the url
+            let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/createProject")! //change the url
 
             postAndGetData(url, parameters)
             
@@ -221,6 +221,10 @@ class AddProjectAndDeadlineViewController: UIViewController, UITextFieldDelegate
                 DispatchQueue.main.async {
                     self.present(self.noticeAlert(message: "Користувача, якого ви хочете додати нема в цьому проекті"), animated: true, completion: nil)
                 }
+            case "Invalid project owner":
+            DispatchQueue.main.async {
+                self.present(self.noticeAlert(message: "Помилка прав доступу"), animated: true, completion: nil)
+            }
             default:
                 break
             }

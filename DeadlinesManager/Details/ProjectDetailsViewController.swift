@@ -48,6 +48,9 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
     /// Member button in nav bar (with count off users)
     @IBOutlet weak var membersButton: UIButton!
     
+    /// Add deadline  button
+    @IBOutlet weak var addDeadlineButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,15 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
         formDeadlinesArrays()
         formUsersArrays()
         reloadData()
+        checkingAccessRights()
         
+    }
+    
+    func checkingAccessRights() {
+        if project?.projectOwner?.username != Settings.shared.login {
+            addDeadlineButton.isUserInteractionEnabled = false
+            addDeadlineButton.tintColor = .systemGray2
+        }
     }
     
     /**
@@ -311,7 +322,7 @@ extension ProjectDetailsViewController: SearchTableViewControllerDelegate {
             
             for user in usersToAdd {
                 // create the url with URL
-                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProjectDebug/\(user)")!
+                let url = URL(string: "http://192.168.31.88:8080/\(Settings.shared.uuID)/\(projectID)/addUserToProject/\(user)")!
                 postAndGetData(url, httpMethod: "POST") { data in
                     self.processingReturnedData(data, indexPath: nil)
                 }
@@ -424,15 +435,15 @@ extension ProjectDetailsViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectAndDeadlineTableViewCell", for: indexPath) as! ProjectAndDeadlineTableViewCell
         
         if !isShowCompletedDeadlines && indexPath.section == 0 && indexPath.row == unCompletedDeadlines.count {
-            cell.nameLabel.text = "Показати виконані"
-            cell.detailLabel.text = ""
-            cell.arrowView.isHidden = true
-            cell.nameLabel.textAlignment = .center
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
+            cell.textLabel?.text = "Показати виконані"
+            cell.textLabel?.textAlignment = .center
+            return cell
         } else if isShowCompletedDeadlines && indexPath.section == 1 && indexPath.row == completedDeadlines.count{
-            cell.nameLabel.text = "Сховати виконані"
-            cell.detailLabel.text = ""
-            cell.arrowView.isHidden = true
-            cell.nameLabel.textAlignment = .center
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
+            cell.textLabel?.text = "Сховати виконані"
+            cell.textLabel?.textAlignment = .center
+            return cell
         } else {
             if indexPath.section == 0 {
                 let deadline = unCompletedDeadlines[indexPath.row]

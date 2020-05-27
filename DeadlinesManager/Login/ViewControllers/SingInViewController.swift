@@ -33,14 +33,6 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
     
         setUpTextFieldDelegate()
         setUpCorrespondingFields()
-        
-        
-//            print(stackViewHeightConstraint!)
-//            let newConstraint = stackViewHeightConstraint.constraintWithMultiplier(0.3)
-//            view.removeConstraint(stackViewHeightConstraint)
-//            view.addConstraint(newConstraint)
-//            view.layoutIfNeeded()
-//            stackViewHeightConstraint = newConstraint
  
         confirmButton.layer.cornerRadius = CGFloat((Double(confirmButton.frame.height) ) / 3.5)
     }
@@ -72,11 +64,8 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
             view.addConstraint(newConstraint)
             view.layoutIfNeeded()
             stackViewHeightConstraint = newConstraint
-            loginTextField.placeholder = "  Введіть логін"
-            passwordTextField.placeholder = "  Введіть пароль"
-//            nameLabel.isHidden = true
-//            secondNameLabel.isHidden = true
-//            confirmPasswordLabel.isHidden = true
+            loginTextField.placeholder = "Введіть логін"
+            passwordTextField.placeholder = "Введіть пароль"
             nameTextField.isHidden = true
             secondNameTextField.isHidden = true
             confirmPasswordTextField.isHidden = true
@@ -85,9 +74,6 @@ class SingInViewController: UIViewController, UITextFieldDelegate {
         /// User pressed Register
         if isRegister {
             self.title = "РЕЄСТРАЦІЯ"
-//           nameLabel.isHidden = false
-//           secondNameLabel.isHidden = false
-//           confirmPasswordLabel.isHighlighted = false
             nameTextField.isHidden = false
             secondNameTextField.isHidden = false
             confirmPasswordTextField.isHidden = false

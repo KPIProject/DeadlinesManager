@@ -215,6 +215,37 @@
             </objects>
             <point key="canvasLocation" x="-1220" y="1489"/>
         </scene>
+        <!--Запрошення-->
+        <scene sceneID="T7c-Ep-rrY">
+            <objects>
+                <viewController storyboardIdentifier="InvitationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eF7-L6-dre" customClass="InvitationViewController" customModule="DeadlinesManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8ok-n3-aRC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QCS-YI-QiG">
+                                <rect key="frame" x="0.0" y="140" width="414" height="624"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lcD-TN-PKd" firstAttribute="bottom" secondItem="QCS-YI-QiG" secondAttribute="bottom" id="Q5S-Hv-mcd"/>
+                            <constraint firstItem="lcD-TN-PKd" firstAttribute="trailing" secondItem="QCS-YI-QiG" secondAttribute="trailing" id="Xn7-aM-8ys"/>
+                            <constraint firstItem="QCS-YI-QiG" firstAttribute="top" secondItem="lcD-TN-PKd" secondAttribute="top" id="eUJ-iO-FIG"/>
+                            <constraint firstItem="QCS-YI-QiG" firstAttribute="leading" secondItem="lcD-TN-PKd" secondAttribute="leading" id="jJw-jR-v2d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lcD-TN-PKd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Запрошення" largeTitleDisplayMode="always" id="Hue-V9-tk7"/>
+                    <connections>
+                        <outlet property="tableView" destination="QCS-YI-QiG" id="MGG-ZQ-Lwc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JWA-pn-stp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2128" y="755"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="BGv-bf-3RG">
             <objects>
@@ -276,6 +307,9 @@
                                                 <color key="titleColor" red="0.94973307849999999" green="0.96442085499999997" blue="0.91398268940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="eF7-L6-dre" kind="show" id="0QP-GO-kkc"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Проекти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIL-da-PRj">
                                             <rect key="frame" x="16" y="210" width="382" height="30"/>
@@ -661,6 +695,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addDeadlineButton" destination="Zav-3D-OAC" id="Pjr-hb-dKz"/>
                         <outlet property="dateLabel" destination="I3G-9p-cKU" id="f4U-7F-XNP"/>
                         <outlet property="descriptionTextView" destination="ieK-Ee-CP6" id="3c9-c9-c4q"/>
                         <outlet property="membersButton" destination="QUI-8M-SmK" id="Vrc-6N-zxU"/>
