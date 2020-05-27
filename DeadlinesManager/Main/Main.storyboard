@@ -184,7 +184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xl-ld-Ptw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="25"/>
+            <point key="canvasLocation" x="1013.0434782608696" y="24.776785714285712"/>
         </scene>
         <!--Sorted Deadlines View Controller-->
         <scene sceneID="P4e-K8-AMZ">
@@ -519,7 +519,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odf-z5-0ez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="25"/>
+            <point key="canvasLocation" x="55.072463768115945" y="24.776785714285712"/>
         </scene>
         <!--Title-->
         <scene sceneID="fsu-Ei-coZ">
@@ -878,7 +878,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-419" y="755"/>
+            <point key="canvasLocation" x="-1182.608695652174" y="24.776785714285712"/>
         </scene>
     </scenes>
     <resources>
