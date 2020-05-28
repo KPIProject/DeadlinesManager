@@ -112,11 +112,11 @@ class ProjectDetailsViewController: UIViewController, UITextFieldDelegate, AddPr
      - array with Names
      */
     func formUsersArrays() {
+        if let projectOwner = project?.projectOwner {
+            usersToAddUsernames.append(projectOwner.username)
+            usersToAddNames.append(projectOwner.userFirstName + " " + projectOwner.userSecondName)
+        }
         if let users = project?.projectUsers {
-            if let projectOwner = project?.projectOwner {
-                usersToAddUsernames.append(projectOwner.username)
-                usersToAddNames.append(projectOwner.userFirstName + " " + projectOwner.userSecondName)
-            }
             for user in users {
                 usersToAddUsernames.append(user.username)
                 usersToAddNames.append(user.userFirstName + " " + user.userSecondName)

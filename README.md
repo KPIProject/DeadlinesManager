@@ -14,15 +14,17 @@
 
 Скріншоти роботи додатку:
 
+![1](images/IPZ.001.png)
+
+![1](images/IPZ.002.png)
+
+![1](images/IPZ.003.png)
+
+![1](images/IPZ.004.png)
+
+![1](images/IPZ.005.png)
 
 
-
-
-
-
-Відео роботи додатку:
-
-​	[YouTube](https://github.com/ipzProject/DeadlinesServer)
 
 
 
